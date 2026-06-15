@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+﻿export const dynamic = 'force-dynamic'
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -6,14 +6,14 @@ import { SubpageLayout } from '@/components/mcraft/SubpageLayout'
 import { toSubpageLayoutProps } from '@/lib/servicePageData'
 
 export const metadata = {
-  title: 'MCRAFT — Meble premium',
+  title: 'MCRAFT - Meble premium',
   description: 'Unikalne meble stalowe i loftowe tworzone z dbałością o detal i najwyższą jakość.',
 }
 
 const FALLBACK = {
   eyebrow: 'Obszar działalności',
   title: 'Meble premium',
-  description: 'Unikalne meble stalowe i loftowe tworzone z dbałością o detal i najwyższą jakość — projekty autorskie i realizacje na zamówienie.',
+  description: 'Unikalne meble stalowe i loftowe tworzone z dbałością o detal i najwyższą jakość - projekty autorskie i realizacje na zamówienie.',
   items: [
     { text: 'Meble loftowe i industrialne' },
     { text: 'Projekty autorskie na zamówienie' },

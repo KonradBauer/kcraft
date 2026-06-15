@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+﻿export const dynamic = 'force-dynamic'
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -6,14 +6,14 @@ import { SubpageLayout } from '@/components/mcraft/SubpageLayout'
 import { toSubpageLayoutProps } from '@/lib/servicePageData'
 
 export const metadata = {
-  title: 'MCRAFT — Konstrukcje stalowe',
+  title: 'MCRAFT - Konstrukcje stalowe',
   description: 'Projektowanie i realizacja konstrukcji stalowych dla przemysłu, budownictwa i infrastruktury.',
 }
 
 const FALLBACK = {
   eyebrow: 'Obszar działalności',
   title: 'Konstrukcje stalowe',
-  description: 'Projektowanie i realizacja konstrukcji stalowych dla przemysłu, budownictwa i infrastruktury — z dbałością o jakość i terminowość.',
+  description: 'Projektowanie i realizacja konstrukcji stalowych dla przemysłu, budownictwa i infrastruktury - z dbałością o jakość i terminowość.',
   items: [
     { text: 'Konstrukcje przemysłowe i hale' },
     { text: 'Elementy infrastruktury' },

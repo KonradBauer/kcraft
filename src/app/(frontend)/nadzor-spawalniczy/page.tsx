@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+﻿export const dynamic = 'force-dynamic'
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -6,14 +6,14 @@ import { SubpageLayout } from '@/components/mcraft/SubpageLayout'
 import { toSubpageLayoutProps } from '@/lib/servicePageData'
 
 export const metadata = {
-  title: 'MCRAFT — Nadzór spawalniczy',
+  title: 'MCRAFT - Nadzór spawalniczy',
   description: 'Kompleksowy nadzór nad procesami spawalniczymi zgodnie z normami i wymaganiami jakości.',
 }
 
 const FALLBACK = {
   eyebrow: 'Obszar działalności',
   title: 'Nadzór spawalniczy',
-  description: 'Kompleksowy nadzór nad procesami spawalniczymi zgodnie z normami i wymaganiami jakości — od kwalifikowania technologii po dokumentację odbiorową.',
+  description: 'Kompleksowy nadzór nad procesami spawalniczymi zgodnie z normami i wymaganiami jakości - od kwalifikowania technologii po dokumentację odbiorową.',
   items: [
     { text: 'Kwalifikowanie technologii spawania (WPS / WPQR)' },
     { text: 'Nadzór nad jakością złączy spawanych' },

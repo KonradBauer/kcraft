@@ -1,4 +1,4 @@
-import { Barlow, Great_Vibes, Montserrat } from 'next/font/google'
+﻿import { Barlow, Great_Vibes, Montserrat } from 'next/font/google'
 import React from 'react'
 import './styles.css'
 
@@ -24,8 +24,8 @@ const greatVibes = Great_Vibes({
 })
 
 export const metadata = {
-  description: 'Dr inż. Michał Macherzyński — Inżynier spawalnik, IWE / IWI / VT2 / PT2',
-  title: 'MCRAFT — Dr inż. Michał Macherzyński',
+  description: 'Dr inż. Michał Macherzyński - Inżynier spawalnik, IWE / IWI / VT2 / PT2',
+  title: 'MCRAFT - Dr inż. Michał Macherzyński',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

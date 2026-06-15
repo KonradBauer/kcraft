@@ -99,7 +99,7 @@ function ModalCV({ cvModal }: { cvModal: CvModal }) {
 
   return (
     <>
-      <ModalHead eyebrowText="Dowiedz się więcej" title="Dr inż. Michał Macherzyński" sub="CV zawodowe — doświadczenie i kwalifikacje" />
+      <ModalHead eyebrowText="Dowiedz się więcej" title="Dr inż. Michał Macherzyński" sub="CV zawodowe - doświadczenie i kwalifikacje" />
       <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
         {hasData ? (
           <>
@@ -138,7 +138,7 @@ function ModalCV({ cvModal }: { cvModal: CvModal }) {
             <ModalBodySection title="Doświadczenie zawodowe">
               <ul className="flex flex-col gap-2">
                 {[
-                  ['Obecnie', 'Główny Spawalnik oraz Kierownik Projektów B+R — ZUGIL S.A.'],
+                  ['Obecnie', 'Główny Spawalnik oraz Kierownik Projektów B+R - ZUGIL S.A.'],
                   ['18+ lat', 'Nadzór spawalniczy, kwalifikowanie technologii spawania (WPQR/WPS), dokumentacja jakościowa.'],
                   ['B+R', 'Robotyzacja i automatyzacja procesów spawalniczych, wdrożenia przemysłowe.'],
                 ].map(([yr, text]) => (
@@ -152,9 +152,9 @@ function ModalCV({ cvModal }: { cvModal: CvModal }) {
             <ModalBodySection title="Kwalifikacje i certyfikaty">
               <ul className="flex flex-col gap-2">
                 {[
-                  ['IWE', 'International Welding Engineer — Międzynarodowy Inżynier Spawalnik.'],
-                  ['IWI', 'International Welding Inspector — Międzynarodowy Inspektor Spawalniczy.'],
-                  ['VT2 / PT2', 'Badania nieniszczące — wizualne i penetracyjne, poziom 2.'],
+                  ['IWE', 'International Welding Engineer - Międzynarodowy Inżynier Spawalnik.'],
+                  ['IWI', 'International Welding Inspector - Międzynarodowy Inspektor Spawalniczy.'],
+                  ['VT2 / PT2', 'Badania nieniszczące - wizualne i penetracyjne, poziom 2.'],
                 ].map(([yr, text]) => (
                   <li key={yr} className="grid grid-cols-[110px_1fr] gap-3 text-[13.5px] leading-[1.55] text-[#56544e] max-[980px]:grid-cols-[80px_1fr]">
                     <span className="font-montserrat font-semibold text-[12px] tracking-[0.04em] text-dark-text">{yr}</span>
@@ -180,7 +180,7 @@ function ModalBio({ bioModal }: { bioModal: BioModal }) {
 
   return (
     <>
-      <ModalHead eyebrowText="Więcej o mnie" title="Michał Macherzyński" sub="Życiorys — droga i pasja" />
+      <ModalHead eyebrowText="Więcej o mnie" title="Michał Macherzyński" sub="Życiorys - droga i pasja" />
       <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
         {hasData ? (
           bioModal.sections!.map((section) => (
@@ -191,10 +191,10 @@ function ModalBio({ bioModal }: { bioModal: BioModal }) {
         ) : (
           <>
             <ModalBodySection title="Moja droga">
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Tu znajdzie się bardziej osobista opowieść — życiorys, początki fascynacji metalem i spawaniem, droga od warsztatu do tytułu doktora inżyniera. Treść zostanie przygotowana i wczytana z zasobów.</p>
+              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Tu znajdzie się bardziej osobista opowieść - życiorys, początki fascynacji metalem i spawaniem, droga od warsztatu do tytułu doktora inżyniera. Treść zostanie przygotowana i wczytana z zasobów.</p>
             </ModalBodySection>
             <ModalBodySection title="Pasja">
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Poza pracą zawodową — tworzenie unikalnych mebli stalowych, projekty autorskie i ciągłe doskonalenie rzemiosła. To miejsce na prywatną, mniej formalną część historii.</p>
+              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Poza pracą zawodową - tworzenie unikalnych mebli stalowych, projekty autorskie i ciągłe doskonalenie rzemiosła. To miejsce na prywatną, mniej formalną część historii.</p>
             </ModalBodySection>
             <ModalBodySection title="Wartości">
               <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Jakość jako standard, a nie cel. Rzetelność, dbałość o detal i partnerskie podejście do każdego projektu.</p>
@@ -261,6 +261,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
   const [isOpen, setIsOpen] = useState(false)
   const [transform, setTransform] = useState('translate(-50%, -50%) scale(0.12)')
   const [opacity, setOpacity] = useState(0)
+  const [isClosing, setIsClosing] = useState(false)
   const lastOrigin = useRef({ dx: 0, dy: 0 })
 
   const areaBySlug = Object.fromEntries(areas.map((a) => [a.slug, a]))
@@ -283,10 +284,11 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
 
   const closeModal = useCallback(() => {
     const { dx, dy } = lastOrigin.current
+    setIsClosing(true)
     setTransform(`translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.12)`)
     setOpacity(0)
     document.body.style.overflow = ''
-    setTimeout(() => { setIsOpen(false); setModalKey(null) }, 600)
+    setTimeout(() => { setIsOpen(false); setModalKey(null); setIsClosing(false) }, 250)
   }, [])
 
   useEffect(() => {
@@ -300,7 +302,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
   const heroSubtitle = hero.subtitle ?? 'Inżynier spawalnik\nIWE / IWI / VT2 / PT2'
   const heroDescription = hero.description ?? 'Łączę doświadczenie praktyczne z wiedzą inżynierską, dostarczając rozwiązania o najwyższej jakości w zakresie spawalnictwa i konstrukcji stalowych.'
   const portraitUrl = mediaUrl(about.portraitPhoto)
-  const bioText = about.bioText ?? 'Główny Spawalnik oraz Kierownik Projektów B+R w ZUGIL S.A. Od ponad 18 lat związany ze spawalnictwem i konstrukcjami stalowymi. Krótka prezentacja, doświadczenie i wartości — pełny opis zostanie wczytany z zasobów.'
+  const bioText = about.bioText ?? 'Główny Spawalnik oraz Kierownik Projektów B+R w ZUGIL S.A. Od ponad 18 lat związany ze spawalnictwem i konstrukcjami stalowymi. Krótka prezentacja, doświadczenie i wartości - pełny opis zostanie wczytany z zasobów.'
 
   return (
     <>
@@ -409,7 +411,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
                     <Image src={portraitUrl} alt="Dr inż. Michał Macherzyński" fill className="object-cover" />
                   </div>
                 ) : (
-                  <ImageSlot placeholder="Zdjęcie — Kim jestem" className="w-full h-[430px] max-[980px]:h-[380px]" />
+                  <ImageSlot placeholder="Zdjęcie - Kim jestem" className="w-full h-[430px] max-[980px]:h-[380px]" />
                 )}
               </div>
             </div>
@@ -602,14 +604,14 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
 
       {/* ====== MODAL ====== */}
       <div
-        className={`fixed inset-0 z-[90] bg-[rgba(8,16,14,0.5)] [backdrop-filter:blur(9px)] transition-[opacity,visibility] duration-[420ms] ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        className={`fixed inset-0 z-[90] bg-[rgba(8,16,14,0.5)] [backdrop-filter:blur(9px)] ${isClosing ? 'transition-[opacity,visibility] duration-[200ms]' : 'transition-[opacity,visibility] duration-[420ms]'} ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
         onClick={closeModal}
       />
       <div
         className={`fixed top-1/2 left-1/2 z-[95] w-[min(880px,66vw)] max-h-[88vh] bg-cream shadow-[0_40px_120px_rgba(0,0,0,0.55)] overflow-hidden flex flex-col max-[980px]:w-[92vw] ${isOpen ? 'visible' : 'invisible'}`}
         role="dialog"
         aria-modal="true"
-        style={{ transform, opacity, transition: 'transform 0.55s cubic-bezier(.16,1,.3,1), opacity 0.4s ease' }}
+        style={{ transform, opacity, transition: isClosing ? 'transform 0.22s ease-in, opacity 0.18s ease-in' : 'transform 0.55s cubic-bezier(.16,1,.3,1), opacity 0.4s ease' }}
       >
         <button
           className="absolute top-4 right-4 z-[5] w-[42px] h-[42px] border border-white/35 bg-black/[0.18] text-white rounded-full text-xl leading-none cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-accent hover:border-accent"

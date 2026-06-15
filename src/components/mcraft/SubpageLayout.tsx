@@ -1,4 +1,4 @@
-import Image from 'next/image'
+﻿import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { ImageSlot } from './ImageSlot'
@@ -80,7 +80,7 @@ export function SubpageLayout({
                   <Image src={mainImageUrl} alt={title} fill className="object-cover" />
                 </div>
               ) : (
-                <ImageSlot placeholder={`Zdjęcie — ${title}`} className="w-full h-[340px]" />
+                <ImageSlot placeholder={`Zdjęcie - ${title}`} className="w-full h-[340px]" />
               )}
             </div>
           </div>

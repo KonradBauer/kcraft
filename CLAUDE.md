@@ -106,3 +106,7 @@ Fonts: Montserrat (headings + UI labels), Barlow (body), Great Vibes (signature/
 - Use `overrideAccess: false` when operating on behalf of a user
 - Use `req.context` flags to prevent infinite hook loops
 - Run `pnpm generate:types` after any schema change
+
+## Konwencje treści
+
+- **Em dashe zabronione** — używaj zwykłego myślnika `-` zamiast `—` we wszystkich tekstach widocznych dla użytkownika (JSX, metadata, stringi)
