@@ -11,7 +11,7 @@ export default async function HomePage() {
     payload.findGlobal({ slug: 'cv-modal', depth: 1 }),
     payload.findGlobal({ slug: 'bio-modal', depth: 1 }),
     payload.find({ collection: 'stat-tiles', sort: 'order', limit: 100, depth: 0 }),
-    payload.find({ collection: 'service-pages', depth: 0, limit: 10 }),
+    payload.find({ collection: 'service-pages', depth: 1, limit: 10 }),
   ])
 
   return (

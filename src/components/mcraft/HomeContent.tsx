@@ -26,7 +26,7 @@ export interface HomeContentProps {
   cvModal: CvModal
   bioModal: BioModal
   tiles: StatTile[]
-  areas: Pick<ServicePage, 'slug' | 'thumbnailTitle'>[]
+  areas: Pick<ServicePage, 'slug' | 'thumbnailTitle' | 'thumbnailImage'>[]
 }
 
 type ModalKey = 'cv' | 'bio' | 'tiles'
@@ -503,13 +503,20 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
             {AREA_DEFAULTS.map(({ href, slug, name }) => {
               const cmsArea = areaBySlug[slug]
               const displayName = cmsArea?.thumbnailTitle ?? name
+              const thumbUrl = mediaUrl(cmsArea?.thumbnailImage)
               return (
                 <Link
                   key={href}
                   href={href}
-                  className="group flex flex-col items-center justify-center gap-[22px] border border-hairline-light bg-white/40 px-[26px] pt-12 pb-10 text-center transition-all duration-[250ms] relative min-h-[230px] hover:border-accent hover:bg-white hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(14,26,23,0.10)]"
+                  className="group flex flex-col items-center justify-center gap-[22px] border border-hairline-light bg-white/40 px-[26px] pt-12 pb-10 text-center transition-all duration-[250ms] relative min-h-[230px] hover:border-accent hover:bg-white hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(14,26,23,0.10)] overflow-hidden"
                 >
-                  <span className="text-[#3a3933] transition-colors duration-[250ms] group-hover:text-accent">{AREA_ICONS[slug]}</span>
+                  {thumbUrl ? (
+                    <div className="relative w-full h-[120px] -mx-[26px] -mt-12 mb-0">
+                      <Image src={thumbUrl} alt={displayName} fill className="object-cover" />
+                    </div>
+                  ) : (
+                    <span className="text-[#3a3933] transition-colors duration-[250ms] group-hover:text-accent">{AREA_ICONS[slug]}</span>
+                  )}
                   <span className="font-montserrat font-semibold text-[15px] tracking-[0.1em] uppercase text-dark-text leading-[1.5] whitespace-pre-line">{displayName}</span>
                   <span className="inline-flex items-center gap-[9px] font-montserrat text-[10.5px] font-semibold tracking-[0.16em] uppercase text-accent opacity-0 translate-y-1.5 transition-all duration-[250ms] group-hover:opacity-100 group-hover:translate-y-0">
                     Zobacz <ArrowRight className="w-5 h-[9px]" />
