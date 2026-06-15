@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'stat-tiles': StatTile;
+    'service-pages': ServicePage;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +80,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'stat-tiles': StatTilesSelect<false> | StatTilesSelect<true>;
+    'service-pages': ServicePagesSelect<false> | ServicePagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,8 +91,18 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'hero-section': HeroSection;
+    'about-section': AboutSection;
+    'cv-modal': CvModal;
+    'bio-modal': BioModal;
+  };
+  globalsSelect: {
+    'hero-section': HeroSectionSelect<false> | HeroSectionSelect<true>;
+    'about-section': AboutSectionSelect<false> | AboutSectionSelect<true>;
+    'cv-modal': CvModalSelect<false> | CvModalSelect<true>;
+    'bio-modal': BioModalSelect<false> | BioModalSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -163,6 +177,60 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stat-tiles".
+ */
+export interface StatTile {
+  id: string;
+  number: string;
+  label: string;
+  description: string;
+  /**
+   * Mniejsza liczba = wyświetla się wcześniej
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "service-pages".
+ */
+export interface ServicePage {
+  id: string;
+  /**
+   * Musi odpowiadać ścieżce URL. Nie zmieniaj bez konsultacji z deweloperem.
+   */
+  slug: string;
+  eyebrow?: string | null;
+  title: string;
+  description?: string | null;
+  scopeItems?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  mainImage?: (string | null) | Media;
+  galleryImages?:
+    | {
+        image: string | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Tekst widoczny w sekcji "Obszary działalności" na stronie głównej
+   */
+  thumbnailTitle?: string | null;
+  /**
+   * Jeśli puste — wyświetlana jest ikona SVG
+   */
+  thumbnailImage?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -192,6 +260,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'stat-tiles';
+        value: string | StatTile;
+      } | null)
+    | ({
+        relationTo: 'service-pages';
+        value: string | ServicePage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -277,6 +353,46 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stat-tiles_select".
+ */
+export interface StatTilesSelect<T extends boolean = true> {
+  number?: T;
+  label?: T;
+  description?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "service-pages_select".
+ */
+export interface ServicePagesSelect<T extends boolean = true> {
+  slug?: T;
+  eyebrow?: T;
+  title?: T;
+  description?: T;
+  scopeItems?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  mainImage?: T;
+  galleryImages?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  thumbnailTitle?: T;
+  thumbnailImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -314,6 +430,138 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero-section".
+ */
+export interface HeroSection {
+  id: string;
+  backgroundImage?: (string | null) | Media;
+  personPhoto?: (string | null) | Media;
+  subtitle?: string | null;
+  description?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-section".
+ */
+export interface AboutSection {
+  id: string;
+  portraitPhoto?: (string | null) | Media;
+  bioText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cv-modal".
+ */
+export interface CvModal {
+  id: string;
+  experience?:
+    | {
+        year: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  qualifications?:
+    | {
+        code: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  competencies?: string | null;
+  cvFile?: (string | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bio-modal".
+ */
+export interface BioModal {
+  id: string;
+  sections?:
+    | {
+        title: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  bioFile?: (string | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero-section_select".
+ */
+export interface HeroSectionSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  personPhoto?: T;
+  subtitle?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-section_select".
+ */
+export interface AboutSectionSelect<T extends boolean = true> {
+  portraitPhoto?: T;
+  bioText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cv-modal_select".
+ */
+export interface CvModalSelect<T extends boolean = true> {
+  experience?:
+    | T
+    | {
+        year?: T;
+        description?: T;
+        id?: T;
+      };
+  qualifications?:
+    | T
+    | {
+        code?: T;
+        description?: T;
+        id?: T;
+      };
+  competencies?: T;
+  cvFile?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bio-modal_select".
+ */
+export interface BioModalSelect<T extends boolean = true> {
+  sections?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        id?: T;
+      };
+  bioFile?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
