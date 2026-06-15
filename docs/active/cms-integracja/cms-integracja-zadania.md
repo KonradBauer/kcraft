@@ -52,12 +52,12 @@
 
 ---
 
-## Faza 4 — Obszary na stronie głównej
+## Faza 4 — Obszary na stronie głównej ✅
 
-- [ ] **Pytanie do klienta:** czy kafelki OBSZARÓW mają zdjęcia czy SVG ikony? ← potwierdzić przed implementacją
-- [ ] Sekcja OBSZARY w `HomeContent.tsx`: kafelki pobierają `thumbnailTitle` i `thumbnailImage` z props
-- [ ] Jeśli zdjęcia: zastąpić SVG ikonę przez `next/image` z `thumbnailImage`
-- [ ] Jeśli ikony pozostają: `thumbnailTitle` edytowalny z CMS, ikony hardcoded SVG
+- [x] Decyzja klienta: SVG jako fallback, thumbnailImage opcjonalne
+- [x] Sekcja OBSZARY: kafelki pobierają `thumbnailTitle` i `thumbnailImage` z CMS
+- [x] Kafelek z thumbnailImage: next/image (120px strip u góry kafelka)
+- [x] Kafelek bez thumbnailImage: SVG ikona (fallback hardcoded per slug)
 
 ---
 
