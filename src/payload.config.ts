@@ -7,6 +7,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Documents } from './collections/Documents'
 import { StatTile } from './collections/StatTile'
 import { ServicePage } from './collections/ServicePage'
 import { HeroSection } from './globals/HeroSection'
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, StatTile, ServicePage],
+  collections: [Users, Media, Documents, StatTile, ServicePage],
   globals: [HeroSection, AboutSection, CvModal, BioModal],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

@@ -7,6 +7,7 @@ import type {
   AboutSection,
   BioModal,
   CvModal,
+  Document,
   HeroSection,
   Media,
   ServicePage,
@@ -15,9 +16,9 @@ import type {
 import { ImageSlot } from './ImageSlot'
 import { Logo } from './Logo'
 
-function mediaUrl(field: string | Media | null | undefined): string | null {
+function mediaUrl(field: string | Media | Document | null | undefined): string | null {
   if (!field || typeof field === 'string') return null
-  return field.url ?? null
+  return (field as { url?: string | null }).url ?? null
 }
 
 export interface HomeContentProps {
@@ -446,11 +447,11 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
 
       {/* ====== ABOUT ====== */}
       <section className="bg-cream relative pt-24 pb-[78px]" id="about">
-        <div className="absolute top-[46px] left-[34px] w-[120px] h-[90px] opacity-50 dots-pattern" />
         <div className={wrap}>
           <div className="grid grid-cols-[0.7fr_1.3fr] gap-[70px] items-start max-[980px]:grid-cols-1 max-[980px]:gap-10">
 
             <div className="relative p-[18px] max-[980px]:p-[12px]">
+              <div className="absolute top-0 left-0 w-[100px] h-[80px] opacity-50 dots-pattern z-20 pointer-events-none" />
               {/* narożnik lewy górny */}
               <span className="absolute top-0 left-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-t border-l border-accent pointer-events-none" />
               {/* narożnik prawy górny */}

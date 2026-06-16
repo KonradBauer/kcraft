@@ -107,7 +107,7 @@ export const CvModal: GlobalConfig = {
       name: 'cvFile',
       label: 'Plik CV (PDF)',
       type: 'upload',
-      relationTo: 'media',
+      relationTo: 'documents',
     },
   ],
 }
