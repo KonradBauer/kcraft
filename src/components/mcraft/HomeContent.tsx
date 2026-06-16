@@ -450,8 +450,15 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
         <div className={wrap}>
           <div className="grid grid-cols-[0.7fr_1.3fr] gap-[70px] items-start max-[980px]:grid-cols-1 max-[980px]:gap-10">
 
-            <div className="relative pl-[18px] pt-[18px] pb-[18px]">
-              <div className="absolute left-0 top-[42px] bottom-0 w-[78%] border border-accent z-0" />
+            <div className="relative p-[18px] max-[980px]:p-[12px]">
+              {/* narożnik lewy górny */}
+              <span className="absolute top-0 left-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-t border-l border-accent pointer-events-none" />
+              {/* narożnik prawy górny */}
+              <span className="absolute top-0 right-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-t border-r border-accent pointer-events-none" />
+              {/* narożnik lewy dolny */}
+              <span className="absolute bottom-0 left-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-b border-l border-accent pointer-events-none" />
+              {/* narożnik prawy dolny */}
+              <span className="absolute bottom-0 right-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-b border-r border-accent pointer-events-none" />
               <div className="relative z-10">
                 {portraitUrl ? (
                   <Image src={portraitUrl} alt="Dr inż. Michał Macherzyński" width={600} height={800} className="w-full h-auto" />
@@ -666,7 +673,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
         >
           &times;
         </button>
-        <div className="overflow-y-auto h-full flex flex-col">
+        <div className="overflow-y-auto h-full flex flex-col modal-scroll">
           {modalKey === 'cv' && <ModalCV cvModal={cvModal} />}
           {modalKey === 'bio' && <ModalBio bioModal={bioModal} />}
           {modalKey === 'tiles' && <ModalTiles tiles={tiles} />}
