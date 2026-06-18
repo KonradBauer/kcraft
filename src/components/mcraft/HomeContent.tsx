@@ -372,9 +372,8 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
         />
 
         <div className="absolute inset-0 z-[1] pointer-events-none [background:linear-gradient(to_right,rgba(14,26,23,0.95)_0%,rgba(14,26,23,0.55)_32%,rgba(14,26,23,0)_55%)]" />
-        <div className="hidden max-[560px]:block absolute inset-0 z-[1] pointer-events-none [background:linear-gradient(to_right,rgba(14,26,23,0.98)_0%,rgba(14,26,23,0.85)_55%,rgba(14,26,23,0.5)_100%)]" />
 
-        <div className="absolute bottom-0 z-[2] pointer-events-none left-1/2 -translate-x-[55%] max-[980px]:-translate-x-1/2 max-[980px]:opacity-50 max-[560px]:opacity-[0.22] max-[560px]:translate-x-0 max-[560px]:left-auto max-[560px]:right-0">
+        <div className="absolute bottom-0 z-[2] pointer-events-none left-1/2 -translate-x-[55%] max-[980px]:-translate-x-1/2 max-[980px]:opacity-50 max-[560px]:opacity-100 max-[560px]:translate-x-0 max-[560px]:left-auto max-[560px]:right-0">
           <Image
             src={heroPersonPhoto}
             alt="Dr inż. Michał Macherzyński"
@@ -415,11 +414,11 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
                   Michał<br />Macherzyński
                 </h1>
                 <div className="w-16 h-0.5 bg-accent mt-[34px] mb-[26px]" />
-                <div className="font-montserrat font-light text-[22px] tracking-[0.22em] uppercase text-light leading-[1.5] whitespace-pre-line">
+                <div className="font-montserrat font-light text-[22px] tracking-[0.22em] uppercase text-light leading-[1.5] whitespace-pre-line max-[560px]:hidden">
                   {heroSubtitle}
                 </div>
                 <button
-                  className="inline-flex items-center gap-[30px] mt-[90px] border border-[#3A3A3A] px-[26px] py-[17px] font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-light transition-all duration-[250ms] bg-transparent cursor-pointer hover:bg-accent hover:border-accent hover:text-ink"
+                  className="inline-flex items-center gap-[30px] mt-[90px] max-[560px]:mt-[28px] border border-[#3A3A3A] px-[26px] py-[17px] font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-light transition-all duration-[250ms] bg-transparent cursor-pointer hover:bg-accent hover:border-accent hover:text-ink"
                   onClick={(e) => openModal('cv', e.currentTarget)}
                 >
                   Dowiedz się więcej <ArrowRight />
