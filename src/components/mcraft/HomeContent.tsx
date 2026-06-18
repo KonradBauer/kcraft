@@ -418,7 +418,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
                   {heroSubtitle}
                 </div>
                 <button
-                  className="inline-flex items-center gap-[30px] mt-[90px] max-[560px]:mt-[28px] border border-[#3A3A3A] px-[26px] py-[17px] font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-light transition-all duration-[250ms] bg-transparent cursor-pointer hover:bg-accent hover:border-accent hover:text-ink"
+                  className="inline-flex items-center gap-[30px] mt-[90px] max-[560px]:hidden border border-[#3A3A3A] px-[26px] py-[17px] font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-light transition-all duration-[250ms] bg-transparent cursor-pointer hover:bg-accent hover:border-accent hover:text-ink"
                   onClick={(e) => openModal('cv', e.currentTarget)}
                 >
                   Dowiedz się więcej <ArrowRight />
@@ -446,6 +446,19 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Mobile bottom CTA */}
+        <div className="hidden max-[560px]:flex absolute bottom-[36px] left-0 right-0 z-[4] flex-col items-start px-5 gap-[14px]">
+          <p className="font-montserrat font-light text-[11px] tracking-[0.22em] uppercase text-light/55 whitespace-pre-line leading-[1.9]">
+            {heroSubtitle}
+          </p>
+          <button
+            className="inline-flex items-center gap-[30px] border border-[#3A3A3A] px-[26px] py-[17px] font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-light transition-all duration-[250ms] bg-transparent cursor-pointer hover:bg-accent hover:border-accent hover:text-ink"
+            onClick={(e) => openModal('cv', e.currentTarget)}
+          >
+            Dowiedz się więcej <ArrowRight />
+          </button>
         </div>
       </header>
 
