@@ -88,7 +88,21 @@ export function MobileNav({ links }: MobileNavProps) {
         </nav>
 
         <div className="px-8 pb-10 flex-none">
-          <div className="w-10 h-px bg-accent" />
+          <div className="w-10 h-px bg-accent mb-6" />
+          <a
+            href="https://www.linkedin.com/in/micha%C5%82-macherzy%C5%84ski-399521276/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="inline-flex items-center gap-3 font-montserrat text-[11px] font-semibold tracking-[0.2em] uppercase text-light/50 hover:text-accent transition-colors duration-200"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px] flex-none">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
         </div>
       </div>
     </>
