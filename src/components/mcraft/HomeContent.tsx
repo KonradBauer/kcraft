@@ -14,6 +14,7 @@ import type {
   StatTile,
 } from '@/payload-types'
 import { ImageSlot } from './ImageSlot'
+import { ImageWithSkeleton } from './ImageWithSkeleton'
 
 function mediaUrl(field: string | Media | Document | null | undefined): string | null {
   if (!field || typeof field === 'string') return null
@@ -455,7 +456,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
               <span className="absolute bottom-0 right-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-b border-r border-accent pointer-events-none" />
               <div className="relative z-10 h-full">
                 {portraitUrl ? (
-                  <Image src={portraitUrl} alt="Dr inż. Michał Macherzyński" fill className="object-cover object-top" />
+                  <ImageWithSkeleton src={portraitUrl} alt="Dr inż. Michał Macherzyński" className="object-cover object-top" />
                 ) : (
                   <ImageSlot placeholder="Zdjęcie - Kim jestem" className="w-full h-full" />
                 )}
@@ -537,7 +538,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
                 >
                   {thumbUrl ? (
                     <div className="relative w-full h-[120px] -mx-[26px] -mt-12 mb-0">
-                      <Image src={thumbUrl} alt={displayName} fill className="object-cover" />
+                      <ImageWithSkeleton src={thumbUrl} alt={displayName} className="object-cover" />
                     </div>
                   ) : (
                     <span className="text-[#3a3933] transition-colors duration-[250ms] group-hover:text-accent">{AREA_ICONS[slug]}</span>

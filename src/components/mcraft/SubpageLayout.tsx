@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { ImageSlot } from './ImageSlot'
+import { ImageWithSkeleton } from './ImageWithSkeleton'
 
 export interface SubpageLayoutProps {
   eyebrow?: string | null
@@ -78,7 +78,7 @@ export function SubpageLayout({
             <div>
               {mainImageUrl ? (
                 <div className="relative w-full h-[340px]">
-                  <Image src={mainImageUrl} alt={title} fill className="object-cover" />
+                  <ImageWithSkeleton src={mainImageUrl} alt={title} className="object-cover" />
                 </div>
               ) : (
                 <ImageSlot placeholder={`Zdjęcie - ${title}`} className="w-full h-[340px]" />
@@ -93,7 +93,7 @@ export function SubpageLayout({
               {galleryImages.length > 0
                 ? galleryImages.map((img, i) => (
                     <div key={i} className="relative w-full h-[220px]">
-                      <Image src={img.url} alt={img.alt ?? `Realizacja ${i + 1}`} fill className="object-cover" />
+                      <ImageWithSkeleton src={img.url} alt={img.alt ?? `Realizacja ${i + 1}`} className="object-cover" />
                     </div>
                   ))
                 : (['Realizacja 1', 'Realizacja 2', 'Realizacja 3'] as const).map((ph) => (
