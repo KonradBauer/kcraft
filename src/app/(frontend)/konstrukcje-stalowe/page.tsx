@@ -1,13 +1,21 @@
-﻿export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
+import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { SubpageLayout } from '@/components/mcraft/SubpageLayout'
 import { toSubpageLayoutProps } from '@/lib/servicePageData'
 
-export const metadata = {
-  title: 'MCRAFT - Konstrukcje stalowe',
-  description: 'Projektowanie i realizacja konstrukcji stalowych dla przemysłu, budownictwa i infrastruktury.',
+export const metadata: Metadata = {
+  title: 'Konstrukcje stalowe - prefabrykacja i montaz | MCRAFT',
+  description: 'Projektowanie i realizacja konstrukcji stalowych: hale przemyslowe, elementy infrastruktury, prefabrykacja w warsztacie, montaz na obiekcie. MCRAFT Michal Macherzynski.',
+  alternates: { canonical: 'https://mcraft.pl/konstrukcje-stalowe' },
+  openGraph: {
+    title: 'Konstrukcje stalowe - prefabrykacja i montaz | MCRAFT',
+    description: 'Konstrukcje przemyslowe i hale, elementy infrastruktury, prefabrykacja w warsztacie, montaz na obiekcie.',
+    url: 'https://mcraft.pl/konstrukcje-stalowe',
+    images: [{ url: 'https://mcraft.pl/opengraph-image', width: 1200, height: 630 }],
+  },
 }
 
 const FALLBACK = {

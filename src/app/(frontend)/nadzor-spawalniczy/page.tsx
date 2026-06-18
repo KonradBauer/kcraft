@@ -1,13 +1,21 @@
-﻿export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
+import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { SubpageLayout } from '@/components/mcraft/SubpageLayout'
 import { toSubpageLayoutProps } from '@/lib/servicePageData'
 
-export const metadata = {
-  title: 'MCRAFT - Nadzór spawalniczy',
-  description: 'Kompleksowy nadzór nad procesami spawalniczymi zgodnie z normami i wymaganiami jakości.',
+export const metadata: Metadata = {
+  title: 'Nadzor spawalniczy - IWE / IWI / VT2 / PT2 | MCRAFT',
+  description: 'Kompleksowy nadzor spawalniczy: kwalifikowanie technologii WPS/WPQR, badania nieniszczace VT/PT, dokumentacja jakosciowa. Dr inz. Michal Macherzynski IWE/IWI.',
+  alternates: { canonical: 'https://mcraft.pl/nadzor-spawalniczy' },
+  openGraph: {
+    title: 'Nadzor spawalniczy - IWE / IWI | MCRAFT Michal Macherzynski',
+    description: 'Kwalifikowanie technologii WPS/WPQR, nadzor nad jakoscia zlacz spawanych, badania VT/PT, dokumentacja odbiorowa.',
+    url: 'https://mcraft.pl/nadzor-spawalniczy',
+    images: [{ url: 'https://mcraft.pl/opengraph-image', width: 1200, height: 630 }],
+  },
 }
 
 const FALLBACK = {

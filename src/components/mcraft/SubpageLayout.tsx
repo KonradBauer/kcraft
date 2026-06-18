@@ -88,7 +88,7 @@ export function SubpageLayout({
             <div>
               {mainImageUrl ? (
                 <div className="relative w-full h-[340px]">
-                  <ImageWithSkeleton src={mainImageUrl} alt={title} className="object-cover" />
+                  <ImageWithSkeleton src={mainImageUrl} alt={title} className="object-cover" sizes="(max-width: 980px) 100vw, 50vw" />
                 </div>
               ) : (
                 <ImageSlot placeholder={`Zdjęcie - ${title}`} className="w-full h-[340px]" />
@@ -103,7 +103,7 @@ export function SubpageLayout({
               {galleryImages.length > 0
                 ? galleryImages.map((img, i) => (
                     <div key={i} className="relative w-full h-[220px]">
-                      <ImageWithSkeleton src={img.url} alt={img.alt ?? `Realizacja ${i + 1}`} className="object-cover" />
+                      <ImageWithSkeleton src={img.url} alt={img.alt ?? `${title} - realizacja MCRAFT`} className="object-cover" sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 33vw" />
                     </div>
                   ))
                 : (['Realizacja 1', 'Realizacja 2', 'Realizacja 3'] as const).map((ph) => (
@@ -178,8 +178,9 @@ export function SubpageLayout({
 
           </div>
 
-          <div className="border-t border-white/10 mt-[46px] pt-[22px] text-center text-xs tracking-[0.04em] text-[rgba(236,234,228,0.4)]">
-            © 2025 MCRAFT Michał Macherzyński. Wszystkie prawa zastrzeżone.
+          <div className="border-t border-white/10 mt-[46px] pt-[22px] flex flex-col items-center gap-2 text-xs tracking-[0.04em] text-[rgba(236,234,228,0.4)]">
+            <span>© 2025 MCRAFT Michał Macherzyński. Wszystkie prawa zastrzeżone.</span>
+            <Link href="/polityka-prywatnosci" className="hover:text-white/60 transition-colors duration-200">Polityka prywatnosci</Link>
           </div>
         </div>
       </footer>

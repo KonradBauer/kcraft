@@ -8,9 +8,10 @@ interface ImageWithSkeletonProps {
   alt: string
   className?: string
   style?: React.CSSProperties
+  sizes?: string
 }
 
-export function ImageWithSkeleton({ src, alt, className, style }: ImageWithSkeletonProps) {
+export function ImageWithSkeleton({ src, alt, className, style, sizes = '100vw' }: ImageWithSkeletonProps) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   return (
@@ -23,6 +24,7 @@ export function ImageWithSkeleton({ src, alt, className, style }: ImageWithSkele
         src={src}
         alt={alt}
         fill
+        sizes={sizes}
         className={className}
         style={style}
         onLoad={() => setIsLoaded(true)}

@@ -365,6 +365,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
         <Image
           src={heroBackground}
           fill
+          sizes="100vw"
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           alt=""
           priority
@@ -479,7 +480,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
               <span className="absolute bottom-0 right-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-b border-r border-accent pointer-events-none" />
               <div className="relative z-10 h-full">
                 {portraitUrl ? (
-                  <ImageWithSkeleton src={portraitUrl} alt="Dr inż. Michał Macherzyński" className="object-cover object-top" />
+                  <ImageWithSkeleton src={portraitUrl} alt="Dr inż. Michał Macherzyński" className="object-cover object-top" sizes="(max-width: 700px) 100vw, 35vw" />
                 ) : (
                   <ImageSlot placeholder="Zdjęcie - Kim jestem" className="w-full h-full" />
                 )}
@@ -561,7 +562,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
                 >
                   {thumbUrl ? (
                     <div className="relative w-full h-[120px] -mx-[26px] -mt-12 mb-0">
-                      <ImageWithSkeleton src={thumbUrl} alt={displayName} className="object-cover" />
+                      <ImageWithSkeleton src={thumbUrl} alt={displayName} className="object-cover" sizes="(max-width: 980px) 100vw, 33vw" />
                     </div>
                   ) : (
                     <span className="text-[#3a3933] transition-colors duration-[250ms] group-hover:text-accent">{AREA_ICONS[slug]}</span>
@@ -632,8 +633,9 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
             </div>
           </div>
 
-          <div className="border-t border-hairline-dark mt-[46px] pt-[22px] text-center text-xs tracking-[0.04em] text-[rgba(236,234,228,0.4)]">
-            © 2025 MCRAFT Michał Macherzyński. Wszystkie prawa zastrzeżone.
+          <div className="border-t border-hairline-dark mt-[46px] pt-[22px] flex flex-col items-center gap-2 text-xs tracking-[0.04em] text-[rgba(236,234,228,0.4)]">
+            <span>© 2025 MCRAFT Michał Macherzyński. Wszystkie prawa zastrzeżone.</span>
+            <Link href="/polityka-prywatnosci" className="hover:text-light/60 transition-colors duration-200">Polityka prywatnosci</Link>
           </div>
         </div>
       </footer>
