@@ -450,7 +450,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
 
         {/* Mobile bottom CTA */}
         <div className="hidden max-[560px]:flex absolute bottom-[36px] left-0 right-0 z-[4] flex-col items-start px-5 gap-[14px]">
-          <p className="font-montserrat font-light text-[11px] tracking-[0.22em] uppercase text-light/55 whitespace-pre-line leading-[1.9]">
+          <p className="font-montserrat font-light text-[11px] tracking-[0.22em] uppercase text-white whitespace-pre-line leading-[1.9]">
             {heroSubtitle}
           </p>
           <button
