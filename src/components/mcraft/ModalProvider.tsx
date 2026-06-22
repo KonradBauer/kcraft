@@ -29,14 +29,14 @@ function DownloadIcon() {
   )
 }
 
-function ModalHead({ eyebrowText, title, sub }: { eyebrowText: string; title: string; sub: string }) {
+function ModalHead({ eyebrowText, title, sub }: { eyebrowText?: string; title: string; sub?: string }) {
   return (
     <div className="bg-ink text-light px-12 pt-7 pb-6 relative overflow-hidden flex-none max-[980px]:px-7">
       <div className="absolute inset-0 opacity-50 blueprint-bg pointer-events-none" />
       <div className="relative">
-        <span className="font-montserrat text-[11px] font-semibold tracking-[0.26em] uppercase text-accent-bright">{eyebrowText}</span>
-        <h2 className="font-light text-[34px] uppercase tracking-[0.02em] text-white mt-[14px] max-[980px]:text-[27px]">{title}</h2>
-        <div className="font-montserrat font-light text-[14px] tracking-[0.14em] uppercase text-light-muted mt-2.5">{sub}</div>
+        {eyebrowText && <span className="font-montserrat text-[11px] font-semibold tracking-[0.26em] uppercase text-accent-bright">{eyebrowText}</span>}
+        <h2 className={`font-light text-[34px] uppercase tracking-[0.02em] text-white max-[980px]:text-[27px] ${eyebrowText ? 'mt-[14px]' : ''}`}>{title}</h2>
+        {sub && <div className="font-montserrat font-light text-[14px] tracking-[0.14em] uppercase text-light-muted mt-2.5">{sub}</div>}
       </div>
     </div>
   )
@@ -224,7 +224,7 @@ function ModalBio({ bioModal }: { bioModal: BioModal }) {
 function ModalTilesContent({ tiles }: { tiles: StatTile[] }) {
   return (
     <>
-      <ModalHead eyebrowText="W liczbach" title="Doświadczenie i kwalifikacje" sub="Kliknij dowolny kafelek, by poznać szczegóły" />
+      <ModalHead title="Doświadczenie i kwalifikacje" />
       <div className="grid grid-cols-4 p-[20px_48px_24px] max-[980px]:grid-cols-2 max-[980px]:p-5 max-[560px]:grid-cols-1">
         {tiles.map((t) => {
           const Icon = getTileIcon(t.number, t.icon)
