@@ -8,18 +8,34 @@ const PAGES = [
     title: 'Meble premium',
     eyebrow: 'Obszar działalności',
     thumbnailTitle: 'Meble premium',
+    scopeItems: [
+      { text: 'Autorskie meble premium' },
+      { text: 'Realizacje indywidualne na zamówienie' },
+      { text: 'Stal, kamień, drewno i szkło' },
+      { text: 'Konstrukcje wykonywane ręcznie' },
+      { text: 'Detale i wykończenia klasy premium' },
+    ],
   },
   {
     slug: 'konstrukcje-stalowe',
     title: 'Konstrukcje stalowe',
     eyebrow: 'Obszar działalności',
     thumbnailTitle: 'Konstrukcje stalowe',
+    scopeItems: [
+      { text: 'Konstrukcje przemysłowe' },
+      { text: 'Zadaszenia i zabudowy' },
+      { text: 'Konstrukcje wsporcze i użytkowe' },
+      { text: 'Elementy infrastruktury' },
+      { text: 'Prefabrykacja warsztatowa' },
+      { text: 'Indywidualne realizacje stalowe' },
+    ],
   },
   {
     slug: 'nadzor-spawalniczy',
     title: 'Nadzor spawalniczy',
     eyebrow: 'Obszar działalności',
     thumbnailTitle: 'Nadzor spawalniczy',
+    scopeItems: [],
   },
 ]
 
@@ -47,7 +63,13 @@ export async function GET() {
       })
       results.push({ slug: page.slug, status: 'created' })
     } else {
-      results.push({ slug: page.slug, status: 'exists' })
+      await payload.update({
+        collection: 'service-pages',
+        id: existing.docs[0].id,
+        data: page,
+        overrideAccess: true,
+      })
+      results.push({ slug: page.slug, status: 'updated' })
     }
   }
 
