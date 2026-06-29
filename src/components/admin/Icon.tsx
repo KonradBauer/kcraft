@@ -7,7 +7,7 @@ export default function Icon() {
       fontWeight: 700,
       fontSize: '18px',
       letterSpacing: '0.14em',
-      color: '#0e1a17',
+      color: '#FFFFFF',
       lineHeight: 1,
     }}>
       MC

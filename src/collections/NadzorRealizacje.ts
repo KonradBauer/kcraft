@@ -1,5 +1,30 @@
 import type { CollectionConfig } from 'payload'
 
+function stringToLexical(text: string) {
+  const paragraphs = text.split('\n').filter((line) => line.trim())
+  return {
+    root: {
+      type: 'root',
+      children: paragraphs.length > 0
+        ? paragraphs.map((line) => ({
+            type: 'paragraph',
+            children: [{ type: 'text', text: line, detail: 0, format: 0, mode: 'normal', style: '', version: 1 }],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            textStyle: '',
+            version: 1,
+          }))
+        : [{ type: 'paragraph', children: [], direction: null, format: '', indent: 0, textFormat: 0, textStyle: '', version: 1 }],
+      direction: 'ltr',
+      format: '',
+      indent: 0,
+      version: 1,
+    },
+  }
+}
+
 export const NadzorRealizacje: CollectionConfig = {
   slug: 'nadzor-realizacje',
   labels: {
@@ -33,7 +58,15 @@ export const NadzorRealizacje: CollectionConfig = {
     {
       name: 'description',
       label: 'Opis realizacji',
-      type: 'textarea',
+      type: 'richText',
+      hooks: {
+        afterRead: [
+          ({ value }) => {
+            if (typeof value === 'string') return stringToLexical(value)
+            return value
+          },
+        ],
+      },
     },
     {
       name: 'thumbnail',

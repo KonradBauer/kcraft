@@ -6,9 +6,9 @@ import config from '@payload-config'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Media, ServicePage } from '@/payload-types'
-import { ImageWithSkeleton } from '@/components/mcraft/ImageWithSkeleton'
-import { ImageSlot } from '@/components/mcraft/ImageSlot'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import { MobileNav } from '@/components/mcraft/MobileNav'
+import { RealizacjaGaleria } from '@/components/mcraft/RealizacjaGaleria'
 
 const PORTFOLIO_PAGES = ['meble-premium', 'konstrukcje-stalowe']
 
@@ -105,7 +105,7 @@ export default async function RealizacjaPage({ params }: Props) {
       </div>
 
       {/* Header */}
-      <header className="bg-ink text-light relative overflow-hidden pt-16 pb-[72px]">
+      <header className="bg-ink text-light relative overflow-hidden pt-16 pb-[64px]">
         <div className="absolute inset-0 opacity-50 blueprint-bg pointer-events-none" />
         <div className={`${wrap} relative`}>
           <Link
@@ -120,39 +120,35 @@ export default async function RealizacjaPage({ params }: Props) {
           <span className="block font-montserrat text-xs font-semibold tracking-[0.28em] uppercase text-accent mb-[18px]">
             Realizacja
           </span>
-          <h1 className="font-light text-[52px] tracking-[0.01em] uppercase text-white max-[980px]:text-[38px]">
+          <h1 className="font-light text-[52px] tracking-[0.01em] uppercase text-white max-[980px]:text-[38px] max-[560px]:text-[30px]">
             {item.title}
           </h1>
-          <div className="w-16 h-0.5 bg-accent my-[26px]" />
-          {item.description && (
-            <p className="max-w-[660px] text-base leading-[1.75] text-light-muted font-light">
-              {item.description}
-            </p>
-          )}
+          <div className="w-16 h-0.5 bg-accent mt-[26px]" />
         </div>
       </header>
 
-      {/* Gallery */}
-      <section className="py-20">
+      {/* Main: gallery + description */}
+      <section className="py-20 bg-cream">
         <div className={wrap}>
-          <div className="grid grid-cols-3 gap-[18px] max-[980px]:grid-cols-2 max-[560px]:grid-cols-1">
-            {galleryImages.length > 0
-              ? galleryImages.map((img, i) => (
-                  <div key={i} className="relative w-full h-[280px]">
-                    <ImageWithSkeleton
-                      src={img.url}
-                      alt={img.alt}
-                      className="object-cover"
-                      sizes="(max-width: 560px) 100vw, (max-width: 980px) 50vw, 33vw"
-                    />
-                  </div>
-                ))
-              : (
-                  <div className="col-span-3 max-[980px]:col-span-2 max-[560px]:col-span-1">
-                    <ImageSlot placeholder="Brak zdjęć galerii" className="w-full h-[280px]" />
-                  </div>
-                )
-            }
+          <div className="grid grid-cols-[1fr_1fr] gap-[56px] items-start max-[980px]:grid-cols-1 max-[980px]:gap-12">
+            {/* Left: gallery */}
+            <div>
+              <RealizacjaGaleria images={galleryImages} />
+            </div>
+
+            {/* Right: description */}
+            <div>
+              {item.description ? (
+                <RichText
+                  data={item.description}
+                  className="prose-mcraft"
+                />
+              ) : (
+                <p className="text-dark-muted font-light text-base leading-relaxed">
+                  Brak opisu realizacji.
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </section>
