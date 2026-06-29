@@ -37,13 +37,6 @@ const PAGES = [
     thumbnailTitle: 'Nadzór spawalniczy',
     scopeItems: [],
   },
-  {
-    slug: 'szkolenia',
-    title: 'Szkolenia',
-    eyebrow: 'Obszar działalności',
-    thumbnailTitle: 'Szkolenia',
-    scopeItems: [],
-  },
 ]
 
 export async function GET() {
