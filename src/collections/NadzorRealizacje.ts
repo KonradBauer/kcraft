@@ -1,17 +1,17 @@
 import type { CollectionConfig } from 'payload'
 
-export const Portfolio: CollectionConfig = {
-  slug: 'portfolio-projects',
+export const NadzorRealizacje: CollectionConfig = {
+  slug: 'nadzor-realizacje',
   labels: {
-    singular: 'Realizacja',
-    plural: 'Realizacje (Meble i Konstrukcje)',
+    singular: 'Realizacja nadzoru',
+    plural: 'Realizacje (Nadzór spawalniczy)',
   },
   access: {
     read: () => true,
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'servicePage', 'order'],
+    defaultColumns: ['title', 'slug', 'order'],
   },
   fields: [
     {
@@ -27,20 +27,7 @@ export const Portfolio: CollectionConfig = {
       required: true,
       unique: true,
       admin: {
-        description: 'Używany w adresie URL. Małe litery, myślniki zamiast spacji. Nie zmieniaj po opublikowaniu. Np. stol-loftowy-debowy',
-      },
-    },
-    {
-      name: 'servicePage',
-      label: 'Obszar (Meble lub Konstrukcje)',
-      type: 'relationship',
-      relationTo: 'service-pages',
-      required: true,
-      filterOptions: {
-        slug: { in: ['meble-premium', 'konstrukcje-stalowe'] },
-      },
-      admin: {
-        description: 'Tylko Meble premium lub Konstrukcje stalowe',
+        description: 'Używany w adresie URL. Małe litery, myślniki zamiast spacji. Nie zmieniaj po opublikowaniu.',
       },
     },
     {

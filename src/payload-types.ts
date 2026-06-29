@@ -73,6 +73,7 @@ export interface Config {
     'stat-tiles': StatTile;
     'service-pages': ServicePage;
     'portfolio-projects': PortfolioProject;
+    'nadzor-realizacje': NadzorRealizacje;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     'stat-tiles': StatTilesSelect<false> | StatTilesSelect<true>;
     'service-pages': ServicePagesSelect<false> | ServicePagesSelect<true>;
     'portfolio-projects': PortfolioProjectsSelect<false> | PortfolioProjectsSelect<true>;
+    'nadzor-realizacje': NadzorRealizacjeSelect<false> | NadzorRealizacjeSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -306,9 +308,33 @@ export interface PortfolioProject {
    */
   slug: string;
   /**
-   * Do której podstrony przypisana jest ta realizacja
+   * Tylko Meble premium lub Konstrukcje stalowe
    */
   servicePage: string | ServicePage;
+  description?: string | null;
+  thumbnail?: (string | null) | Media;
+  images?:
+    | {
+        image: string | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nadzor-realizacje".
+ */
+export interface NadzorRealizacje {
+  id: string;
+  title: string;
+  /**
+   * Używany w adresie URL. Małe litery, myślniki zamiast spacji. Nie zmieniaj po opublikowaniu.
+   */
+  slug: string;
   description?: string | null;
   thumbnail?: (string | null) | Media;
   images?:
@@ -369,6 +395,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'portfolio-projects';
         value: string | PortfolioProject;
+      } | null)
+    | ({
+        relationTo: 'nadzor-realizacje';
+        value: string | NadzorRealizacje;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -519,6 +549,26 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   servicePage?: T;
+  description?: T;
+  thumbnail?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nadzor-realizacje_select".
+ */
+export interface NadzorRealizacjeSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   description?: T;
   thumbnail?: T;
   images?:
