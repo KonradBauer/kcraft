@@ -71,3 +71,24 @@ export async function GET() {
 
   return NextResponse.json({ ok: true, results })
 }
+
+export async function DELETE() {
+  const payload = await getPayload({ config })
+  const allowed = new Set(PAGES.map((p) => p.slug))
+
+  const all = await payload.find({
+    collection: 'service-pages',
+    limit: 100,
+    overrideAccess: true,
+  })
+
+  const deleted: string[] = []
+  for (const doc of all.docs) {
+    if (!allowed.has(doc.slug)) {
+      await payload.delete({ collection: 'service-pages', id: doc.id, overrideAccess: true })
+      deleted.push(doc.slug)
+    }
+  }
+
+  return NextResponse.json({ ok: true, deleted })
+}
