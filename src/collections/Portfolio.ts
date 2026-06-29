@@ -4,7 +4,7 @@ export const Portfolio: CollectionConfig = {
   slug: 'portfolio-projects',
   labels: {
     singular: 'Realizacja',
-    plural: 'Realizacje',
+    plural: 'Realizacje (Meble i Konstrukcje)',
   },
   access: {
     read: () => true,
