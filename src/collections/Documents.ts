@@ -17,7 +17,7 @@ export const Documents: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: './public/media',
+    staticDir: './documents-media',
     mimeTypes: ['application/pdf'],
   },
 }
