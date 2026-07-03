@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { BRAND_NAME } from '@/lib/siteConfig'
 
 type NavItem =
   | { href: string; label: string; sub?: never }
@@ -66,7 +67,7 @@ export function MobileNav({ links }: MobileNavProps) {
         aria-label="Menu nawigacyjne"
       >
         <div className="flex items-center justify-between px-5 py-[30px] border-b border-white/10 flex-none">
-          <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">MCRAFT</span>
+          <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
           <button
             className="w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-200 cursor-pointer bg-transparent border-none"
             onClick={close}

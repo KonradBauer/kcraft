@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { BRAND_NAME, CONTACT, LEGAL_NAME } from '@/lib/siteConfig'
 
 export const metadata: Metadata = {
   title: 'Polityka prywatności',
-  description: 'Polityka prywatności serwisu mcraft.com.pl - informacje o przetwarzaniu danych osobowych.',
+  description: 'Polityka prywatności serwisu kcraft.com.pl - informacje o przetwarzaniu danych osobowych.',
   robots: { index: false },
 }
 
@@ -15,7 +16,7 @@ export default function PolitykaPrywatnosci() {
       <div className="bg-ink text-light py-6">
         <div className={wrap}>
           <Link href="/" className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">
-            MCRAFT
+            {BRAND_NAME}
           </Link>
         </div>
       </div>
@@ -29,7 +30,7 @@ export default function PolitykaPrywatnosci() {
         <div className="prose max-w-none text-[15px] leading-[1.85] text-[#56544e] space-y-6">
           <section>
             <h2 className="font-montserrat font-semibold text-[13px] tracking-[0.16em] uppercase text-accent mb-3">1. Administrator danych</h2>
-            <p>Administratorem danych osobowych jest MCRAFT Michał Macherzyński, NIP: 5742046939, ul. Żołnierzy Września 36, 42-152 Wilkowiecko. Kontakt: kontakt@poczta-mcraft.pl, tel. +48 601-488-318.</p>
+            <p>Administratorem danych osobowych jest {LEGAL_NAME}, {CONTACT.address.street}, {CONTACT.address.postalCode} {CONTACT.address.city}. Kontakt: {CONTACT.email}, tel. {CONTACT.phoneDisplay}.</p>
           </section>
 
           <section>
@@ -49,7 +50,7 @@ export default function PolitykaPrywatnosci() {
 
           <section>
             <h2 className="font-montserrat font-semibold text-[13px] tracking-[0.16em] uppercase text-accent mb-3">5. Zewnętrzne serwisy</h2>
-            <p>Strona korzysta z Google Maps (mapa w stopce) - podlegającego osobnej polityce prywatności Google LLC. Strona zawiera link do profilu LinkedIn.</p>
+            <p>Strona korzysta z Google Maps (mapa w stopce) - podlegającego osobnej polityce prywatności Google LLC.</p>
           </section>
 
           <section>
@@ -70,7 +71,7 @@ export default function PolitykaPrywatnosci() {
 
       <footer className="bg-ink-3 text-light py-6 mt-16">
         <div className={`${wrap} text-center text-xs tracking-[0.04em] text-[rgba(236,234,228,0.4)]`}>
-          © 2025 MCRAFT Michał Macherzyński. Wszystkie prawa zastrzeżone.
+          © 2026 {LEGAL_NAME}. Wszystkie prawa zastrzeżone.
         </div>
       </footer>
     </div>

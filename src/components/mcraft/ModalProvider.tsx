@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import type { BioModal, CvModal, StatTile } from '@/payload-types'
 import { getTileIcon } from '@/lib/tileIcons'
 import { mediaUrl } from '@/lib/mediaUrl'
+import { OWNER_NAME } from '@/lib/siteConfig'
 
 export type ModalKey = 'cv' | 'bio' | 'tiles' | 'scope'
 
@@ -89,7 +90,7 @@ function ModalCV({ cvModal }: { cvModal: CvModal }) {
 
   return (
     <>
-      <ModalHead eyebrowText="Dowiedz się więcej" title="Dr inż. Michał Macherzyński" sub="CV zawodowe - doświadczenie i kwalifikacje" />
+      <ModalHead eyebrowText="Dowiedz się więcej" title={OWNER_NAME} sub="CV zawodowe - doświadczenie i kwalifikacje" />
       <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
         {hasData ? (
           <>
@@ -141,54 +142,9 @@ function ModalCV({ cvModal }: { cvModal: CvModal }) {
             )}
           </>
         ) : (
-          <>
-            <ModalBodySection title="Doświadczenie zawodowe">
-              <ul className="flex flex-col gap-2">
-                <CvLi year="2022r. - do dziś" title="Główny Spawalnik" sub="ZUGIL S.A." />
-                <CvLi year="2025r. - do dziś" title="Kierownik projektu B+R" sub="Numer wniosku o dofinansowanie: FENG.01.01-IP.01-A0QL/24" />
-                <CvLi year="2021r. - do dziś" title="Właściciel firmy" sub="MCRAFT Michał Macherzyński" />
-                <CvLi year="2019r. - 2023r." title="Kluczowy personel w projekcie B+R" sub="Numer wniosku o dofinansowanie: POIR.01.01.01-00-0779/18" />
-                <CvLi year="2016r. - 2022r." title="Technolog Spawalnik" sub="ZUGIL S.A." />
-                <CvLi year="2016r. - 2020r." title="Wykładowca" sub="Szkolenia spawaczy organizowane przez Wojewódzki Uniwersytet Robotniczy Sp. z o.o." />
-              </ul>
-            </ModalBodySection>
-            <ModalBodySection title="Kwalifikacje">
-              <ul className="flex flex-col gap-2">
-                <CvLi year="IWE" title="Międzynarodowy Inżynier Spawalnik" />
-                <CvLi year="IWI" title="Międzynarodowy Inspektor Spawalniczy" />
-                <CvLi year="VT2" title="Certyfikat kompetencji II stopnia zgodny z PN-EN ISO 9712, Instytut spawalnictwa w Gliwicach" />
-                <CvLi year="PT2" title="Certyfikat kompetencji II stopnia zgodny z PN-EN ISO 9712, Instytut spawalnictwa w Gliwicach" />
-              </ul>
-            </ModalBodySection>
-            <ModalBodySection title="Edukacja">
-              <ul className="flex flex-col gap-2">
-                <CvLi year="2017r. - 2022r." title="Politechnika Częstochowska" sub="Wydział Inżynierii Mechanicznej i Informatyki, Budowa i Eksploatacja Maszyn, III stopień" />
-                <CvLi year="2021r." title="Sieć Badawcza Łukasiewicz - Instytut Spawalnictwa" sub="Kurs Międzynarodowego Inspektora Spawalniczego IWI-C" />
-                <CvLi year="08.2019r." title="Wärtsilä Finland Oy" sub="Staż naukowy" />
-                <CvLi year="2016r. - 2018r." title="Politechnika Częstochowska" sub="Studium Kształcenia i Doskonalenia Nauczycieli, Fakultatywne Studia Pedagogiczne" />
-                <CvLi year="2017r. - 2018r." title="Politechnika Częstochowska" sub="Zakład Spawalnictwa, Wymagania i Kompetencje Międzynarodowego Inżyniera Spawalnika (IWE)" />
-                <CvLi year="2012r. - 2017r." title="Politechnika Częstochowska" sub="Wydział Inżynierii Mechanicznej i Informatyki, Mechanika i Budowa Maszyn, Spawalnictwo, I i II stopień, tryb stacjonarny" />
-                <CvLi year="2008r. - 2012r." title="Zespół Szkół nr 1 w Kłobucku" sub="Technikum Mechaniczne, Obróbka Skrawaniem" />
-              </ul>
-            </ModalBodySection>
-            <ModalBodySection title="Dodatkowe kwalifikacje">
-              <ul className="flex flex-col gap-2">
-                <CvLi year="09.2014r." title="Kurs KPP - uzyskanie tytułu Ratownika" />
-                <CvLi year="03.2014r." title="Kurs Autoryzowanego Centrum Szkoleniowego Autodesk - AutoCAD zaawansowany" />
-                <CvLi year="11.2010r." title="Prawo jazdy kategorii: A, B" />
-              </ul>
-            </ModalBodySection>
-            <ModalBodySection title="Umiejętności">
-              <ul className="flex flex-col gap-2">
-                <CvLi year="Obsługa" title="Autodesk Inventor Professional 3D, Autodesk AutoCAD, Siemens PLM Software Solid Edge 2D Drafting, Dassault Systemes Solid Works, Microsoft Office: Word, Excel, PowerPoint" />
-                <CvLi year="Spawanie" title="MMA (111), MIG (131), MAG (135, 136, 138), TIG (141)" />
-                <CvLi year="Dodatkowo" title="Znajomość rysunku technicznego, zarządzanie zespołem, praca zespołowa, rozwiązywanie problemów technicznych, bardzo dobra organizacja pracy" />
-              </ul>
-            </ModalBodySection>
-            <ModalBodySection title="Zainteresowania i hobby">
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Sport, motoryzacja, podróże</p>
-            </ModalBodySection>
-          </>
+          <ModalBodySection title="Doświadczenie i kwalifikacje">
+            <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Treść CV - doświadczenie zawodowe i kwalifikacje spawalnicze - zostanie uzupełniona wkrótce.</p>
+          </ModalBodySection>
         )}
       </div>
       <ModalDownloadBtn label="Pobierz CV (PDF)" href={cvFileUrl} />
@@ -200,7 +156,7 @@ function ModalBio({ bioModal }: { bioModal: BioModal }) {
   const hasData = (bioModal.sections?.length ?? 0) > 0
   return (
     <>
-      <ModalHead eyebrowText="Więcej o mnie" title="Michał Macherzyński" sub="Życiorys - droga i pasja" />
+      <ModalHead eyebrowText="Więcej o mnie" title={OWNER_NAME} sub="Życiorys - droga i pasja" />
       <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
         {hasData ? (
           bioModal.sections!.map((section) => (
@@ -209,17 +165,9 @@ function ModalBio({ bioModal }: { bioModal: BioModal }) {
             </ModalBodySection>
           ))
         ) : (
-          <>
-            <ModalBodySection title="Moja droga">
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Tu znajdzie się bardziej osobista opowieść - życiorys, początki fascynacji metalem i spawaniem, droga od warsztatu do tytułu doktora inżyniera. Treść zostanie przygotowana i wczytana z zasobów.</p>
-            </ModalBodySection>
-            <ModalBodySection title="Pasja">
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Poza pracą zawodową - tworzenie unikalnych mebli stalowych, projekty autorskie i ciągłe doskonalenie rzemiosła. To miejsce na prywatną, mniej formalną część historii.</p>
-            </ModalBodySection>
-            <ModalBodySection title="Wartości">
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Jakość jako standard, a nie cel. Rzetelność, dbałość o detal i partnerskie podejście do każdego projektu.</p>
-            </ModalBodySection>
-          </>
+          <ModalBodySection title="Moja droga">
+            <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Historia firmy i pasja do spawania oraz ślusarstwa - treść zostanie przygotowana i wczytana z zasobów.</p>
+          </ModalBodySection>
         )}
       </div>
     </>

@@ -3,6 +3,7 @@ import { Barlow, Great_Vibes, Montserrat } from 'next/font/google'
 import Script from 'next/script'
 import React from 'react'
 import { PageLoader } from '@/components/mcraft/PageLoader'
+import { BRAND_NAME, CONTACT, LEGAL_NAME, OWNER_NAME, SITE_URL } from '@/lib/siteConfig'
 import './styles.css'
 
 const montserrat = Montserrat({
@@ -26,35 +27,35 @@ const greatVibes = Great_Vibes({
   weight: ['400'],
 })
 
-const siteUrl = 'https://mcraft.com.pl'
+const siteUrl = SITE_URL
 const ogImage = `${siteUrl}/og-image.png`
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Inżynier spawalnik Dr inż. Michał Macherzyński | MCRAFT',
-    template: '%s | MCRAFT',
+    default: `Spawanie i ślusarstwo dla przemysłu i rolnictwa | ${BRAND_NAME}`,
+    template: `%s | ${BRAND_NAME}`,
   },
-  description: 'Dr inz. Michał Macherzyński - inżynier spawalnik IWE/IWI/VT2/PT2. Nadzór spawalniczy, konstrukcje stalowe, meble premium. Wilkowiecko, woj. śląskie.',
-  keywords: ['inżynier spawalnik', 'nadzór spawalniczy', 'IWE', 'IWI', 'spawalnictwo', 'konstrukcje stalowe', 'meble stalowe', 'MCRAFT', 'Macherzyński'],
-  authors: [{ name: 'Michał Macherzyński', url: siteUrl }],
-  creator: 'Michał Macherzyński',
+  description: `${OWNER_NAME} - profesjonalne spawanie i ślusarstwo dla przemysłu oraz rolnictwa. Maszyny produkcyjne, maszyny rolnicze, usługi ślusarsko-spawalnicze. ${CONTACT.address.city}, woj. ${CONTACT.address.region}.`,
+  keywords: ['spawanie', 'ślusarstwo', 'maszyny produkcyjne', 'maszyny rolnicze', 'spawanie TIG', 'spawanie MIG', 'spawanie MAG', BRAND_NAME],
+  authors: [{ name: OWNER_NAME, url: siteUrl }],
+  creator: OWNER_NAME,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   alternates: { canonical: siteUrl },
   icons: { icon: '/favicon.png' },
   openGraph: {
-    title: 'Inżynier spawalnik Dr inż. Michał Macherzyński | MCRAFT',
-    description: 'Nadzór spawalniczy, konstrukcje stalowe, meble premium. IWE/IWI/VT2/PT2. Wilkowiecko, woj. śląskie.',
+    title: `Spawanie i ślusarstwo dla przemysłu i rolnictwa | ${BRAND_NAME}`,
+    description: `Maszyny produkcyjne, maszyny rolnicze, usługi ślusarsko-spawalnicze. ${CONTACT.address.city}, woj. ${CONTACT.address.region}.`,
     url: siteUrl,
-    siteName: 'MCRAFT',
+    siteName: BRAND_NAME,
     locale: 'pl_PL',
     type: 'website',
-    images: [{ url: ogImage, width: 1200, height: 630, alt: 'MCRAFT - Dr inż. Michał Macherzyński' }],
+    images: [{ url: ogImage, width: 1200, height: 630, alt: `${BRAND_NAME} - ${OWNER_NAME}` }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Inżynier spawalnik Dr inż. Michał Macherzyński | MCRAFT',
-    description: 'Nadzór spawalniczy, konstrukcje stalowe, meble premium. IWE/IWI/VT2/PT2.',
+    title: `Spawanie i ślusarstwo dla przemysłu i rolnictwa | ${BRAND_NAME}`,
+    description: 'Maszyny produkcyjne, maszyny rolnicze, usługi ślusarsko-spawalnicze.',
     images: [ogImage],
   },
 }
@@ -65,51 +66,40 @@ const schemaOrg = JSON.stringify({
     {
       '@type': ['LocalBusiness', 'ProfessionalService'],
       '@id': `${siteUrl}/#business`,
-      name: 'MCRAFT Michał Macherzyński',
-      legalName: 'MCRAFT Michał Macherzyński',
-      description: 'Nadzór spawalniczy, konstrukcje stalowe i meble premium. Dr inż. Michał Macherzyński - inżynier spawalnik IWE/IWI/VT2/PT2.',
+      name: LEGAL_NAME,
+      legalName: LEGAL_NAME,
+      description: `Spawanie i ślusarstwo dla przemysłu oraz rolnictwa - maszyny produkcyjne, maszyny rolnicze, usługi ślusarsko-spawalnicze. ${OWNER_NAME}.`,
       url: siteUrl,
-      telephone: '+48601488318',
-      email: 'kontakt@poczta-mcraft.pl',
-      taxID: '5742046939',
+      telephone: CONTACT.phone,
+      email: CONTACT.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'ul. Żołnierzy Września 36',
-        addressLocality: 'Wilkowiecko',
-        postalCode: '42-152',
-        addressCountry: 'PL',
-        addressRegion: 'śląskie',
+        streetAddress: CONTACT.address.street,
+        addressLocality: CONTACT.address.city,
+        postalCode: CONTACT.address.postalCode,
+        addressCountry: CONTACT.address.country,
+        addressRegion: CONTACT.address.region,
       },
-      geo: { '@type': 'GeoCoordinates', latitude: 50.892, longitude: 18.942 },
+      geo: { '@type': 'GeoCoordinates', latitude: 50.85, longitude: 18.93 },
       areaServed: { '@type': 'Country', name: 'PL' },
-      sameAs: ['https://www.linkedin.com/in/micha%C5%82-macherzy%C5%84ski-399521276/'],
       founder: { '@id': `${siteUrl}/#person` },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Usługi spawalnicze i metalowe',
+        name: 'Usługi spawalnicze i ślusarskie',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Nadzór spawalniczy', url: `${siteUrl}/nadzor-spawalniczy` } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Konstrukcje stalowe', url: `${siteUrl}/konstrukcje-stalowe` } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Meble premium', url: `${siteUrl}/meble-premium` } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maszyny produkcyjne', url: `${siteUrl}/maszyny-produkcyjne` } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maszyny rolnicze', url: `${siteUrl}/maszyny-rolnicze` } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Usługi ślusarsko-spawalnicze', url: `${siteUrl}/uslugi-slusarsko-spawalnicze` } },
         ],
       },
     },
     {
       '@type': 'Person',
       '@id': `${siteUrl}/#person`,
-      name: 'Michał Macherzyński',
-      honorificPrefix: 'Dr inż.',
-      jobTitle: 'Inżynier spawalnik',
-      description: 'Główny Spawalnik i Kierownik Projektów B+R w ZUGIL S.A. Ponad 18 lat doświadczenia w spawalnictwie.',
-      hasCredential: [
-        { '@type': 'EducationalOccupationalCredential', name: 'IWE - Międzynarodowy Inżynier Spawalnik' },
-        { '@type': 'EducationalOccupationalCredential', name: 'IWI - Międzynarodowy Inspektor Spawalniczy' },
-        { '@type': 'EducationalOccupationalCredential', name: 'VT2 - PN-EN ISO 9712, Instytut Spawalnictwa Gliwice' },
-        { '@type': 'EducationalOccupationalCredential', name: 'PT2 - PN-EN ISO 9712, Instytut Spawalnictwa Gliwice' },
-      ],
-      alumniOf: [{ '@type': 'EducationalOrganization', name: 'Politechnika Częstochowska' }],
+      name: OWNER_NAME,
+      jobTitle: 'Spawacz i ślusarz',
+      description: `Właściciel firmy ${BRAND_NAME} - spawanie i ślusarstwo dla przemysłu oraz rolnictwa.`,
       worksFor: { '@id': `${siteUrl}/#business` },
-      sameAs: ['https://www.linkedin.com/in/micha%C5%82-macherzy%C5%84ski-399521276/'],
       url: siteUrl,
     },
   ],

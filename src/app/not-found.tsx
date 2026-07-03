@@ -1,5 +1,6 @@
 ﻿import { Barlow, Montserrat } from 'next/font/google'
 import Link from 'next/link'
+import { BRAND_NAME, LEGAL_NAME } from '@/lib/siteConfig'
 import './(frontend)/styles.css'
 
 const montserrat = Montserrat({
@@ -17,7 +18,7 @@ const barlow = Barlow({
 })
 
 export const metadata = {
-  title: '404 - Nie znaleziono strony | MCRAFT',
+  title: `404 - Nie znaleziono strony | ${BRAND_NAME}`,
 }
 
 export default function NotFound() {
@@ -52,7 +53,7 @@ export default function NotFound() {
         </div>
 
         <footer className="py-6 text-center font-montserrat text-[11px] tracking-[0.14em] uppercase text-light-faint">
-          MCRAFT - Dr inż. Michał Macherzyński
+          {LEGAL_NAME}
         </footer>
       </body>
     </html>

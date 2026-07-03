@@ -1,33 +1,20 @@
-# MCRAFT - Michal Macherzynski
+# KCRAFT - Kamil Kemuś
 
-> Dr inz. Michal Macherzynski - Inzynier spawalnik IWE/IWI/VT2/PT2. Nadzor spawalniczy, konstrukcje stalowe, meble premium ze stali. Wilkowiecko, woj. slaskie, Polska.
+> KCRAFT - Kamil Kemuś. Profesjonalne spawanie i ślusarstwo dla przemysłu oraz rolnictwa. Waleńczów, woj. śląskie, Polska.
 
 ## Uslugi
 
-- [Nadzor spawalniczy](https://mcraft.com.pl/nadzor-spawalniczy): WPS/WPQR, badania VT/PT, dokumentacja spawalnicza, kontrola jakosci
-- [Konstrukcje stalowe](https://mcraft.com.pl/konstrukcje-stalowe): Hale przemyslowe, prefabrykacja elementow stalowych, montaz
-- [Meble premium](https://mcraft.com.pl/meble-premium): Meble stalowe loftowe, projekty autorskie, wykonanie na zamowienie
-
-## Kwalifikacje
-
-- Dr inz. - doktorat Politechnika Czestochowska, kierunek Budownictwo i Eksploatacja Maszyn
-- IWE - Miedzynarodowy Inzynier Spawalnik (International Welding Engineer)
-- IWI - Miedzynarodowy Inspektor Spawalniczy (International Welding Inspector)
-- VT2 - Badania wizualne II stopien (PN-EN ISO 9712, Instytut Spawalnictwa Gliwice)
-- PT2 - Badania penetracyjne II stopien (PN-EN ISO 9712, Instytut Spawalnictwa Gliwice)
-- Glowny Spawalnik ZUGIL S.A.
-- Kierownik projektu B+R (FENG.01.01-IP.01-A0QL/24)
+- [Maszyny produkcyjne](https://kcraft.com.pl/maszyny-produkcyjne): Budowa, doposażanie i modernizacja linii i stanowisk pracy
+- [Maszyny rolnicze](https://kcraft.com.pl/maszyny-rolnicze): Naprawa, budowa i wzmacnianie konstrukcji, serwis lemieszy, ram i osprzętu
+- [Usługi ślusarsko-spawalnicze](https://kcraft.com.pl/uslugi-slusarsko-spawalnicze): Cięcie, gięcie, spawanie TIG/MIG/MAG
 
 ## Firma
 
-- Nazwa: MCRAFT Michal Macherzynski
-- NIP: 5742046939
-- REGON: 388131678
-- Adres: ul. Zolnierzy Wrzesnia 36, 42-152 Wilkowiecko, Polska
+- Nazwa: KCRAFT Kamil Kemuś
+- Adres: ul. Zakrzewska 13, 42-151 Waleńczów, Polska
 
 ## Kontakt
 
-- Telefon: +48 601-488-318
-- Email: kontakt@poczta-mcraft.pl
-- LinkedIn: https://www.linkedin.com/in/micha%C5%82-macherzy%C5%84ski-399521276/
-- Strona: [mcraft.com.pl](https://mcraft.com.pl)
+- Telefon: +48 662-050-419
+- Email: kontakt@kcraft.com.pl
+- Strona: [kcraft.com.pl](https://kcraft.com.pl)

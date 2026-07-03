@@ -3,29 +3,29 @@ import { test, expect } from '@playwright/test'
 test.describe('Frontend', () => {
   test('homepage loads with correct title', async ({ page }) => {
     await page.goto('http://localhost:3000')
-    await expect(page).toHaveTitle(/MCRAFT/)
+    await expect(page).toHaveTitle(/KCRAFT/)
   })
 
   test('homepage renders hero heading', async ({ page }) => {
     await page.goto('http://localhost:3000')
     const heading = page.locator('h1').first()
-    await expect(heading).toContainText('Macherzyński')
+    await expect(heading).toContainText('Profesjonalne Spawanie i Ślusarstwo')
   })
 
-  test('subpage nadzor-spawalniczy loads', async ({ page }) => {
-    await page.goto('http://localhost:3000/nadzor-spawalniczy')
-    await expect(page).toHaveTitle(/Nadzór spawalniczy/)
+  test('subpage maszyny-produkcyjne loads', async ({ page }) => {
+    await page.goto('http://localhost:3000/maszyny-produkcyjne')
+    await expect(page).toHaveTitle(/Maszyny produkcyjne/)
     const heading = page.locator('h1').first()
-    await expect(heading).toContainText('Nadzór')
+    await expect(heading).toContainText('Maszyny produkcyjne')
   })
 
-  test('subpage konstrukcje-stalowe loads', async ({ page }) => {
-    await page.goto('http://localhost:3000/konstrukcje-stalowe')
-    await expect(page).toHaveTitle(/Konstrukcje stalowe/)
+  test('subpage maszyny-rolnicze loads', async ({ page }) => {
+    await page.goto('http://localhost:3000/maszyny-rolnicze')
+    await expect(page).toHaveTitle(/Maszyny rolnicze/)
   })
 
-  test('subpage meble-premium loads', async ({ page }) => {
-    await page.goto('http://localhost:3000/meble-premium')
-    await expect(page).toHaveTitle(/Meble premium/)
+  test('subpage uslugi-slusarsko-spawalnicze loads', async ({ page }) => {
+    await page.goto('http://localhost:3000/uslugi-slusarsko-spawalnicze')
+    await expect(page).toHaveTitle(/Usługi ślusarsko-spawalnicze/)
   })
 })
