@@ -7,9 +7,9 @@ services:
         NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL:-http://localhost:3000}
     restart: unless-stopped
     ports:
-      - "9192:3000"
+      - "9193:3000"
     environment:
-      DATABASE_URL: mongodb://mongo:27017/mcraft
+      DATABASE_URL: mongodb://mongo:27017/kcraft
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
       NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL:-http://localhost:3000}
       NODE_ENV: production
