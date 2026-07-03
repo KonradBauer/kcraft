@@ -1,27 +1,28 @@
 import type { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/siteConfig'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://mcraft.com.pl',
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://mcraft.com.pl/nadzor-spawalniczy',
+      url: `${SITE_URL}/maszyny-produkcyjne`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://mcraft.com.pl/konstrukcje-stalowe',
+      url: `${SITE_URL}/maszyny-rolnicze`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://mcraft.com.pl/meble-premium',
+      url: `${SITE_URL}/uslugi-slusarsko-spawalnicze`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,

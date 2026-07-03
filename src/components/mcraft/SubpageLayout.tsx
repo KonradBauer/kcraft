@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { BRAND_NAME, CONTACT, LEGAL_NAME } from '@/lib/siteConfig'
 import { ImageSlot } from './ImageSlot'
 import { ImageWithSkeleton } from './ImageWithSkeleton'
 import { MobileNav } from './MobileNav'
@@ -24,9 +25,9 @@ const SUBPAGE_NAV_LINKS = [
   {
     label: 'Realizacje',
     sub: [
-      { href: '/nadzor-spawalniczy', label: 'Nadzor spawalniczy' },
-      { href: '/meble-premium', label: 'Meble premium' },
-      { href: '/konstrukcje-stalowe', label: 'Konstrukcje stalowe' },
+      { href: '/maszyny-produkcyjne', label: 'Maszyny produkcyjne' },
+      { href: '/maszyny-rolnicze', label: 'Maszyny rolnicze' },
+      { href: '/uslugi-slusarsko-spawalnicze', label: 'Usługi ślusarsko-spawalnicze' },
     ],
   },
   { href: '/#contact', label: 'Kontakt' },
@@ -48,7 +49,7 @@ export function SubpageLayout({
         <div className={wrap}>
           <nav className="flex items-center justify-between py-[30px]">
             <Link href="/">
-              <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">MCRAFT</span>
+              <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
             </Link>
             <div className="flex gap-[38px] max-[980px]:hidden">
               <Link href="/#about" className={navLink}>O mnie</Link>
@@ -156,46 +157,38 @@ export function SubpageLayout({
               <span className="block font-montserrat text-[12px] font-semibold tracking-[0.28em] uppercase text-[#008A58] mb-[18px]">Porozmawiajmy o Twoim projekcie</span>
               <h2 className="font-semibold text-[30px] tracking-[0.04em] uppercase text-white mb-[22px]">Skontaktuj się</h2>
               <div className="mb-[22px]">
-                <div className="font-montserrat font-semibold text-[13px] tracking-[0.08em] text-white mb-[8px]">MCRAFT Michał Macherzyński</div>
-                <div className="text-[13px] text-light-muted leading-[1.8]">
-                  NIP: 5742046939<br />
-                  REGON: 388131678
-                </div>
+                <div className="font-montserrat font-semibold text-[13px] tracking-[0.08em] text-white mb-[8px]">{LEGAL_NAME}</div>
               </div>
               <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
-                <a href="tel:+48601488318" className="hover:text-light transition-colors duration-200">+48 601-488-318</a>
+                <a href={`tel:${CONTACT.phone}`} className="hover:text-light transition-colors duration-200">{CONTACT.phoneDisplay}</a>
               </div>
               <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></svg>
-                <a href="mailto:kontakt@poczta-mcraft.pl" className="hover:text-light transition-colors duration-200">kontakt@poczta-mcraft.pl</a>
-              </div>
-              <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                <span>ul. Żołnierzy Września 36, 42-152 Wilkowiecko</span>
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-light transition-colors duration-200">{CONTACT.email}</a>
               </div>
               <div className="flex items-center gap-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-[17px] h-[17px] text-accent flex-none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
-                <a href="https://www.linkedin.com/in/micha%C5%82-macherzy%C5%84ski-399521276/" target="_blank" rel="noopener noreferrer" className="hover:text-light transition-colors duration-200">LinkedIn</a>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                <span>{CONTACT.address.street}, {CONTACT.address.postalCode} {CONTACT.address.city}</span>
               </div>
             </div>
 
             <div className="border-l border-white/10 pl-[46px] max-[768px]:border-l-0 max-[768px]:pl-0 max-[768px]:border-t max-[768px]:border-white/10 max-[768px]:pt-[34px] overflow-hidden">
               <iframe
-                src="https://maps.google.com/maps?q=ul.+Żołnierzy+Września+36,+42-152+Wilkowiecko&output=embed"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(CONTACT.mapQuery)}&output=embed`}
                 width="100%"
                 height="300"
                 style={{ border: 0, filter: 'grayscale(1) invert(0.85) contrast(0.9)' }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Lokalizacja MCRAFT"
+                title={`Lokalizacja ${BRAND_NAME}`}
               />
             </div>
 
           </div>
 
           <div className="border-t border-white/10 mt-[46px] pt-[22px] flex flex-row items-center justify-between gap-4 text-xs tracking-[0.04em] text-[rgba(236,234,228,0.4)] max-[768px]:flex-col max-[768px]:items-start max-[768px]:gap-2">
-            <span>© 2025 MCRAFT Michał Macherzyński. Wszystkie prawa zastrzeżone.</span>
+            <span>© 2026 {LEGAL_NAME}. Wszystkie prawa zastrzeżone.</span>
             <Link href="/polityka-prywatnosci" className="hover:text-white/60 transition-colors duration-200">Polityka prywatności</Link>
             <span>Wykonanie: <a href="https://studiocodeart.pl" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors duration-200">studiocodeart.pl</a></span>
           </div>

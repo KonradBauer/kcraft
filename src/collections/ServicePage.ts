@@ -97,7 +97,6 @@ export const ServicePage: CollectionConfig = {
             { label: 'Zap',            value: 'Zap' },
           ],
           admin: {
-            condition: (data) => data?.slug === 'nadzor-spawalniczy',
             components: {
               Field: '@/components/admin/IconPickerField',
             },

@@ -29,7 +29,7 @@ export const Portfolio: CollectionConfig = {
   slug: 'portfolio-projects',
   labels: {
     singular: 'Realizacja',
-    plural: 'Realizacje (Meble i Konstrukcje)',
+    plural: 'Realizacje',
   },
   access: {
     read: () => true,
@@ -57,15 +57,15 @@ export const Portfolio: CollectionConfig = {
     },
     {
       name: 'servicePage',
-      label: 'Obszar (Meble lub Konstrukcje)',
+      label: 'Obszar działalności',
       type: 'relationship',
       relationTo: 'service-pages',
       required: true,
       filterOptions: {
-        slug: { in: ['meble-premium', 'konstrukcje-stalowe'] },
+        slug: { in: ['maszyny-produkcyjne', 'maszyny-rolnicze', 'uslugi-slusarsko-spawalnicze'] },
       },
       admin: {
-        description: 'Tylko Meble premium lub Konstrukcje stalowe',
+        description: 'Maszyny produkcyjne, Maszyny rolnicze lub Usługi ślusarsko-spawalnicze',
       },
     },
     {

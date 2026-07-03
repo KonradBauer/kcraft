@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { BRAND_NAME, OWNER_NAME } from '@/lib/siteConfig'
 
 const MIN_VISIBLE_MS = 900
 const MAX_VISIBLE_MS = 4000
@@ -75,14 +76,14 @@ export function PageLoader() {
           strokeLinecap="round"
           className="loader-mark w-[46px] h-[46px]"
         >
-          <path d="M8 50V12l22 24 22-24v38" />
+          <path d="M14 8v44M14 30L47 8M14 30L47 52" />
           <path d="M8 12h6M52 12h-6" />
         </svg>
 
         <div className="flex flex-col items-center gap-[6px]">
-          <span className="font-montserrat font-light text-[20px] tracking-[0.45em] text-white uppercase">MCRAFT</span>
+          <span className="font-montserrat font-light text-[20px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
           <span className="font-montserrat text-[11px] font-semibold tracking-[0.28em] uppercase text-accent-bright text-center">
-            Dr inż. Michał Macherzyński
+            {OWNER_NAME}
           </span>
         </div>
 

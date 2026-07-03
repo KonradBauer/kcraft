@@ -50,6 +50,27 @@
 - Faza 6 (migracja Mongo) wymaga wdrożonego kodu z Fazy 2 PRZED wywołaniem seed route - kolejność produkcyjna, nie tylko w repo.
 - Faza 7 (testy) zależy od Faz 3, 5, 2 - testy odwołują się do zmienionych treści/tras.
 
+## Wykonane fazy (2026-07-03, jedna sesja)
+
+Fazy 1, 2, 3, 5, 7 ukończone. Odkryto i naprawiono przy okazji (poza literalną listą plików w planie, ale w zakresie R1/R5):
+- `MobileNav.tsx`, `PageLoader.tsx` — hardcoded "MCRAFT"/"Dr inż. Michał Macherzyński" (grepem znalezione, nie było na liście plików Unit 2).
+- Fallback treść CV/Bio w `ModalProvider.tsx` (branch `hasData === false`) zawierała prawdziwe dane Michała (ZUGIL S.A., numery certyfikatów IWE/IWI, historia zawodowa) na sztywno w kodzie — nie tylko nagłówki. Zastąpiono neutralnym placeholderem "treść zostanie uzupełniona", zamiast fabrykować fałszywe CV dla Kamila Kemusia (spójne z decyzją o nie-fabrykowaniu NIP/REGON/LinkedIn).
+- Marka wymuszona jako **"KCRAFT" (wielkie litery)** wszędzie jako nazwa wyświetlana - user skorygował w trakcie sesji. Domena/e-mail (`kcraft.com.pl`, `kontakt@kcraft.com.pl`) zostają małymi literami (URL/e-mail, nie wordmark).
+- `.next` cache trzeba wyczyścić (`rm -rf .next`) przed pierwszym `pnpm build` po usunięciu starych tras usług — stary build-manifest referencjonował usunięte pliki i failował typecheck.
+- Doinstalowano binarkę Chromium dla Playwright (`pnpm exec playwright install chromium`) — brakowało jej w środowisku, nie było to nowe wpisy w package.json.
+
+Weryfikacja końcowa: `pnpm lint` czyste, `pnpm build` czyste (TypeScript + routing), `pnpm test:int` 14/14, `pnpm test:e2e` 5/5. Ręczny smoke test przez `next start` + curl potwierdził poprawny render hero/stopki/podstron.
+
+## Blokady
+
+**Faza 4 (Reset danych w CMS/Mongo) i Faza 6 (migracja Mongo — usunięcie starych `service-pages`) NIE zostały wykonane w tej sesji.** Obie operują na realnych danych osobowych Michała Macherzyńskiego w lokalnej bazie dev i są z natury nieodwracalne (skasowanie, nie tylko zmiana kodu) — zgodnie z zasadami bezpieczeństwa wymagają jawnego potwierdzenia przez usera przed wykonaniem, nie tylko wynikające z planu.
+
+Potwierdzony podczas smoke testu ślad danych Michała, który przetrwa w bazie do czasu Fazy 4: uploadowany plik CV w globalu `cv-modal` (`cvFile`) o nazwie `CV Michał Macherzyński PL (06.2026).pdf` — widoczny w response strony głównej jako link do pobrania. To jedyne miejsce w renderowanej stronie, gdzie nadal pojawia się stare nazwisko (dane CMS, nie kod).
+
+`GET /api/seed` był jednokrotnie wywołany ręcznie w tej sesji (przez `pnpm dev`/`next start` na porcie 3000) — utworzył/zaktualizował 3 nowe `service-pages` (`maszyny-produkcyjne`, `maszyny-rolnicze`, `uslugi-slusarsko-spawalnicze`). To krok 1-2 z runbooku Fazy 6 (addytywny, bezpieczny). Stare 3 rekordy `service-pages` (`nadzor-spawalniczy`, `konstrukcje-stalowe`, `meble-premium`) **nadal istnieją w bazie** — krok `DELETE /api/seed` (usuwający je) NIE został wywołany, czeka na Fazę 6.
+
+**Przed uruchomieniem Fazy 4/6 zalecany dump/backup bazy dev** (zgodnie z notatką wykonawczą w planie technicznym) - dane Michała zostaną nieodwracalnie utracone po skasowaniu, jeśli nie zarchiwizowane.
+
 ## Źródła
 - Requirements doc: [docs/dev-brainstorms/2026-07-03-rebrand-kcraft-requirements.md](../../dev-brainstorms/2026-07-03-rebrand-kcraft-requirements.md)
 - Plan techniczny: [docs/plans/2026-07-03-004-feat-rebrand-kcraft-plan.md](../../plans/2026-07-03-004-feat-rebrand-kcraft-plan.md)

@@ -11,7 +11,7 @@ export default function Logo() {
         color: '#FFFFFF',
         lineHeight: 1,
       }}>
-        MCRAFT
+        KCRAFT
       </div>
       <div style={{
         fontFamily: 'Montserrat, sans-serif',

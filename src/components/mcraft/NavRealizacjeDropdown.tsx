@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const AREAS = [
-  { href: '/nadzor-spawalniczy', label: 'Nadzor spawalniczy' },
-  { href: '/meble-premium', label: 'Meble premium' },
-  { href: '/konstrukcje-stalowe', label: 'Konstrukcje stalowe' },
+  { href: '/maszyny-produkcyjne', label: 'Maszyny produkcyjne' },
+  { href: '/maszyny-rolnicze', label: 'Maszyny rolnicze' },
+  { href: '/uslugi-slusarsko-spawalnicze', label: 'Usługi ślusarsko-spawalnicze' },
 ]
 
 export function NavRealizacjeDropdown({ triggerClass }: { triggerClass: string }) {

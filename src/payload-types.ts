@@ -347,7 +347,7 @@ export interface PortfolioProject {
    */
   slug: string;
   /**
-   * Tylko Meble premium lub Konstrukcje stalowe
+   * Maszyny produkcyjne, Maszyny rolnicze lub Usługi ślusarsko-spawalnicze
    */
   servicePage: string | ServicePage;
   description?: {
