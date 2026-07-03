@@ -258,7 +258,7 @@ Brak - repo ma silny lokalny wzorzec dla tego zadania, external research pomini�
 
 ---
 
-- [ ] **Unit 6: Migracja danych Mongo - reseed i czyszczenie starych rekordów**
+- [x] **Unit 6: Migracja danych Mongo - reseed i czyszczenie starych rekordów**
 
 **Cel:** Baza po wdrożeniu zawiera tylko 3 nowe `service-pages`, bez osieroconych powiązań portfolio.
 

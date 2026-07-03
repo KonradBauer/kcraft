@@ -72,13 +72,13 @@
 
 ---
 
-## Faza 6 — Migracja danych Mongo (Unit 6)
+## Faza 6 — Migracja danych Mongo (Unit 6) ✅
 
-- [ ] (ręczne) Wdrożyć/uruchomić kod z Fazy 2 (nowy `PAGES` w seed route)
-- [ ] (ręczne) Wywołać `GET /api/seed` → tworzy 3 nowe `service-pages`
-- [ ] (ręczne) Sprawdzić w panelu admina, czy istnieją `portfolio-projects` wskazujące na stare `service-pages` — jeśli tak, ręcznie przypisać do nowych rekordów lub usunąć
-- [ ] (ręczne) Wywołać `DELETE /api/seed` z zaktualizowaną allowlistą (tylko nowe 3 slugi) → usuwa stare rekordy
-- [ ] Weryfikacja (ręczna): kolekcja `service-pages` ma dokładnie 3 rekordy z nowymi slugami; brak `portfolio-projects` z martwym relationship
+- [x] (ręczne) Wdrożyć/uruchomić kod z Fazy 2 (nowy `PAGES` w seed route)
+- [x] (ręczne) Wywołać `GET /api/seed` → tworzy 3 nowe `service-pages`
+- [x] (ręczne) Sprawdzić w panelu admina, czy istnieją `portfolio-projects` wskazujące na stare `service-pages` — sprawdzone przez `GET /api/portfolio-projects`, `totalDocs: 0`, brak ryzyka osieroconych rekordów
+- [x] (ręczne) Wywołać `DELETE /api/seed` z zaktualizowaną allowlistą (tylko nowe 3 slugi) → usunięto stare rekordy: `nadzor-spawalniczy` ("Nadzor spawalniczy i szkolenia"), `konstrukcje-stalowe`, `meble-premium`
+- [x] Weryfikacja: kolekcja `service-pages` ma dokładnie 3 rekordy z nowymi slugami (`maszyny-produkcyjne`, `maszyny-rolnicze`, `uslugi-slusarsko-spawalnicze`); brak `portfolio-projects` z martwym relationship
 
 ---
 

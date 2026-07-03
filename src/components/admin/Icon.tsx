@@ -10,7 +10,7 @@ export default function Icon() {
       color: '#FFFFFF',
       lineHeight: 1,
     }}>
-      MC
+      K
     </div>
   )
 }
