@@ -9,9 +9,11 @@ Start with `.claude/skills/payload/SKILL.md` for a quick reference, then see `.c
 
 ## Project
 
-Marketing website for **MCRAFT / Dr inż. Michał Macherzyński** (welding engineer) built on **Next.js 16 + Payload CMS 3.x** with MongoDB.
+Strona firmowa **KCRAFT / Kamil Kemuś** (spawanie i ślusarstwo dla przemysłu i rolnictwa) na **Next.js 16 + Payload CMS 3.x** z MongoDB.
 
-Production URL: `https://mcraft.com.pl`
+Produkcja: `https://kcraft.com.pl`
+
+**Uwaga po rebrandzie (MCRAFT → KCRAFT, 2026-07):** wszystkie dane marki (nazwa, kontakt, domena) pochodzą z `src/lib/siteConfig.ts` - NIGDY nie hardcoduj nazwy firmy, telefonu czy adresu w komponentach. Historyczne dokumenty w `docs/` mogą odwoływać się do starej nazwy `mcraft` i starych slugów podstron.
 
 ## Commands
 
@@ -41,6 +43,10 @@ pnpm exec playwright test tests/e2e/admin.e2e.spec.ts
 ```powershell
 $env:NODE_OPTIONS="--use-system-ca"; pnpm <command>
 ```
+For `git` (fetch/push) with the same certificate problem:
+```bash
+git -c http.sslBackend=schannel <command>
+```
 
 ## Architecture
 
@@ -48,8 +54,9 @@ $env:NODE_OPTIONS="--use-system-ca"; pnpm <command>
 
 ```
 src/app/
-  (frontend)/     ← public marketing site (MCRAFT brand)
+  (frontend)/     ← public marketing site (KCRAFT brand)
   (payload)/      ← Payload admin panel, auto-handled by withPayload()
+  api/seed/       ← GET endpoint seeding the three ServicePage docs (idempotent)
   robots.ts       ← /robots.txt
   sitemap.ts      ← /sitemap.xml
 ```
@@ -60,28 +67,43 @@ src/app/
 
 All pages use `export const dynamic = 'force-dynamic'` — Docker build has no access to Payload/MongoDB, so static pre-rendering is disabled. Do NOT switch to `revalidate` without ensuring the build environment has CMS access.
 
-- `layout.tsx` — metadata (OG, Twitter Card, JSON-LD schema via `<Script>`), Google Fonts, `styles.css`
+- `layout.tsx` — metadata (OG, Twitter Card, JSON-LD schema via `<Script>`), Google Fonts, `styles.css`, `<PageLoader>`
 - `page.tsx` → `<HomeContent />` server component
-- `nadzor-spawalniczy/`, `konstrukcje-stalowe/`, `meble-premium/` — service subpages
+- `maszyny-produkcyjne/`, `maszyny-rolnicze/`, `uslugi-slusarsko-spawalnicze/` — service subpages (shared `SubpageLayout`, data via `src/lib/servicePageData.ts`)
+- `[serviceSlug]/realizacje/[slug]/` — portfolio project detail pages (gallery + rich text); `serviceSlug` validated against the three service slugs, unknown → `notFound()`
 - `polityka-prywatnosci/` — privacy policy (static, no CMS)
-- `opengraph-image.tsx` — dynamic OG image via `next/og` (edge runtime)
 
-### Components (`src/components/mcraft/`)
+OG image is a static file: `public/og-image.png` (no dynamic `opengraph-image.tsx`).
+
+### Components (`src/components/kcraft/`)
 
 **Server components (SSR, crawlable):**
-- `HomeContent.tsx` — server component; full homepage HTML: Hero → About → Areas → Footer. Wraps everything in `<ModalProvider>`. Contains no hooks.
-- `SubpageLayout.tsx` — server component for all three service subpages.
+- `HomeContent.tsx` — full homepage HTML: Hero → About → Areas → Footer. Wraps everything in `<ModalProvider>`. Contains no hooks.
+- `SubpageLayout.tsx` — layout for all three service subpages, incl. realizacje (portfolio) grid.
+- `ImageSlot.tsx` — dark placeholder div for missing CMS images.
+- `Logo.tsx` — brand logo.
 
 **Client components (interactive islands):**
 - `ModalProvider.tsx` — `'use client'`; modal context + state + zoom-from-origin animation + modal panel (CV, Bio, Tiles). Provides `useModal()` hook. Receives `cvModal`, `bioModal`, `tiles` as serializable props from server.
-- `ModalTrigger.tsx` — `'use client'`; button/div that calls `openModal` from context.
-- `TilesMarquee.tsx` — `'use client'`; interactive scrolling tiles container (opens Tiles modal on click).
-- `MobileNav.tsx` — `'use client'`; hamburger + fullscreen overlay menu. iOS-safe scroll lock (position:fixed + top:-scrollY pattern).
-- `ImageWithSkeleton.tsx` — `'use client'`; `fill` image with ink shimmer skeleton during load. Accepts `sizes` prop (default `"100vw"`).
-- `ImageSlot.tsx` — server; dark placeholder div for missing CMS images.
+- `ModalTrigger.tsx` — button/div that calls `openModal` from context.
+- `TilesMarquee.tsx` — interactive scrolling tiles container (opens Tiles modal on click).
+- `MobileNav.tsx` — hamburger + fullscreen overlay menu. iOS-safe scroll lock (position:fixed + top:-scrollY pattern).
+- `NavRealizacjeDropdown.tsx` — desktop nav dropdown for the three realizacje subpages.
+- `RealizacjaGaleria.tsx` — portfolio project image gallery with lightbox.
+- `PageLoader.tsx` — initial page load overlay.
+- `ImageWithSkeleton.tsx` — `fill` image with ink shimmer skeleton during load. Accepts `sizes` prop (default `"100vw"`).
 
-**Shared utility:**
-- `src/lib/mediaUrl.ts` — extracts `.url` from Payload `Media | Document | string | null` fields.
+**Admin components (`src/components/admin/`):**
+- `Logo.tsx`, `Icon.tsx` — Payload admin branding (registered in `payload.config.ts`)
+- `BulkImageUpload.tsx` — UI field in Portfolio for uploading many gallery images at once
+- `IconPickerField.tsx` — icon picker for StatTile (icons defined in `src/lib/tileIcons.tsx`)
+- `ScopeItemRowLabel.tsx` — row labels in ServicePage scope items array (title-only items)
+
+**Shared utilities (`src/lib/`):**
+- `siteConfig.ts` — **single source of truth** for brand name, owner, contact data, and domain (`SITE_URL`, `BRAND_NAME`, `OWNER_NAME`, `LEGAL_NAME`, `CONTACT`)
+- `mediaUrl.ts` — extracts `.url` from Payload `Media | Document | string | null` fields
+- `servicePageData.ts` — maps ServicePage / Portfolio docs to `SubpageLayout` props with static fallbacks
+- `tileIcons.tsx` — icon registry for scope items
 
 ### Modal architecture
 
@@ -91,9 +113,10 @@ Server-rendered children are passed as React fragments into `ModalProvider`, so 
 
 ### Payload (`src/`)
 
-- `payload.config.ts` — collections: `Users`, `Media`, `Documents`, `StatTile`, `ServicePage`; globals: `HeroSection`, `AboutSection`, `CvModal`, `BioModal`
+- `payload.config.ts` — collections: `Users`, `Media`, `Documents`, `StatTile`, `ServicePage`, `Portfolio` (slug `portfolio-projects`); globals: `HeroSection`, `AboutSection`, `CvModal`, `BioModal`; admin: dark theme + custom Logo/Icon
 - `payload-types.ts` — **auto-generated**, never edit manually; regenerate with `pnpm generate:types`
-- `collections/` — add new collections here and register in `payload.config.ts`
+- `collections/` — collections; `globals/` — globals; register new ones in `payload.config.ts`
+- `Portfolio` docs relate to `ServicePage` via `servicePage` relationship (filtered to the three service slugs); URL: `/{serviceSlug}/realizacje/{slug}`
 
 ### Testing
 
@@ -108,18 +131,24 @@ Server-rendered children are passed as React fragments into `ModalProvider`, so 
 @payload-config →  ./src/payload.config.ts
 ```
 
+### Docs workflow
+
+- `docs/plans/`, `docs/dev-brainstorms/` — implementation plans and requirements
+- `docs/active/<task>/` — context/plan/tasks for in-progress work
+- `docs/seo/`, `docs/audits/` — SEO and CWV audit reports
+
 ## Design system
 
-Styling uses **Tailwind v4** (`@import "tailwindcss"` in `styles.css`) with arbitrary-value utilities (`max-[980px]:hidden`, `[background:...]`). No `tailwind.config.js` — tokens are defined in `@theme {}` inside `styles.css`.
+Styling uses **Tailwind v4** (`@import "tailwindcss"` in `styles.css`) with arbitrary-value utilities (`max-[980px]:hidden`, `[background:...]`). No `tailwind.config.js` — tokens are defined in `@theme {}` inside `src/app/(frontend)/styles.css`.
 
-Key tokens:
+Key tokens (usable as Tailwind color utilities, e.g. `bg-ink`, `text-accent`):
 
 | Variable | Value |
 |----------|-------|
-| `--ink` | `#0e1a17` (dark green-black) |
-| `--cream` | `#f3ece0` (warm off-white) |
-| `--accent` | `#4f9a8c` (teal) |
-| `--light` | `#eceae4` (light warm) |
+| `--color-ink` | `#0e1a17` (dark green-black; variants `ink-2`, `ink-3`) |
+| `--color-cream` | `#f3ece0` (warm off-white; variant `cream-2`) |
+| `--color-accent` | `#4f9a8c` (teal; variant `accent-bright`) |
+| `--color-light` | `#eceae4` (light warm; variants `light-muted`, `light-faint`) |
 
 Fonts: Montserrat (headings + UI labels), Barlow (body), Great Vibes (decorative).
 
@@ -137,12 +166,13 @@ The hero on `≤980px` shows a mobile layout: `min-h-[100svh]`, photo at full op
 ## SEO
 
 - `src/app/robots.ts` — allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot) explicitly
-- `src/app/sitemap.ts` — 4 pages with priorities
+- `src/app/sitemap.ts` — homepage + 3 service subpages, URLs built from `SITE_URL`
 - `public/llms.txt` — structured facts for LLM crawlers
-- JSON-LD schema (LocalBusiness + Person) injected via `<Script id="schema-org" type="application/ld+json">` in `layout.tsx`
-- OG image auto-generated at `/opengraph-image` via `next/og`
+- JSON-LD schema (LocalBusiness/ProfessionalService + Person) built from `siteConfig` and injected via `<Script id="schema-org">` in `layout.tsx`
+- Static OG image at `public/og-image.png`
 
 ## Konwencje treści
 
 - **Em dashe zabronione** — używaj zwykłego myślnika `-` zamiast `—` we wszystkich tekstach widocznych dla użytkownika (JSX, metadata, stringi)
 - **Zawsze polskie znaki** - wszystkie teksty pisz z pełnymi polskimi znakami diakrytycznymi (ą, ć, ę, ł, ń, ó, ś, ź, ż); nigdy nie zastępuj ich odpowiednikami ASCII
+- Dane marki/kontaktu zawsze z `src/lib/siteConfig.ts`, nigdy hardcode
