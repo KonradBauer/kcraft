@@ -131,10 +131,10 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
             <nav className="flex items-center justify-between py-[30px]">
               <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
               <div className="flex gap-[38px] max-[980px]:hidden">
-                <a href="#about" className={`${navLink} text-black after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-[22px] after:h-0.5 after:bg-accent`}>O mnie</a>
-                <a href="#areas" className={`${navLink} text-black/70 hover:text-black`}>Obszary</a>
-                <NavRealizacjeDropdown triggerClass={`${navLink} text-black/70 hover:text-black`} />
-                <a href="#contact" className={`${navLink} text-black/70 hover:text-black`}>Kontakt</a>
+                <a href="#about" className={`${navLink} text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-[22px] after:h-0.5 after:bg-accent`}>O mnie</a>
+                <a href="#areas" className={`${navLink} text-white/70 hover:text-white`}>Obszary</a>
+                <NavRealizacjeDropdown triggerClass={`${navLink} text-white/70 hover:text-white`} />
+                <a href="#contact" className={`${navLink} text-white/70 hover:text-white`}>Kontakt</a>
               </div>
               <MobileNav links={HOME_NAV_LINKS} />
             </nav>
