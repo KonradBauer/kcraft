@@ -11,7 +11,7 @@ export interface SubpageLayoutProps {
   title: string
   description?: string | null
   heroImageUrl?: string | null
-  items: { text: string; description?: string | null }[]
+  items: { text: string }[]
   realizacje?: { href: string; title: string; thumbnailUrl: string | null }[]
   ctaLabel?: string
 }

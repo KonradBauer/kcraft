@@ -271,52 +271,7 @@ export interface ServicePage {
   description?: string | null;
   scopeItems?:
     | {
-        icon?:
-          | (
-              | 'Award'
-              | 'BadgeCheck'
-              | 'Box'
-              | 'Briefcase'
-              | 'Calendar'
-              | 'CheckCircle'
-              | 'ClipboardCheck'
-              | 'ClipboardList'
-              | 'Clock'
-              | 'Cpu'
-              | 'Droplets'
-              | 'Eye'
-              | 'Factory'
-              | 'FileSearch'
-              | 'FileText'
-              | 'Flame'
-              | 'FlaskConical'
-              | 'Globe'
-              | 'GraduationCap'
-              | 'HardHat'
-              | 'Layers'
-              | 'Microscope'
-              | 'PenTool'
-              | 'Ruler'
-              | 'Search'
-              | 'Settings2'
-              | 'ShieldCheck'
-              | 'Star'
-              | 'Timer'
-              | 'Train'
-              | 'TrendingUp'
-              | 'UserCheck'
-              | 'Users'
-              | 'Warehouse'
-              | 'Wrench'
-              | 'Zap'
-            )
-          | null;
         text: string;
-        description?: string | null;
-        /**
-         * Jeśli puste, w oknie modal użyty zostanie krótki opis z karty.
-         */
-        modalDescription?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -550,10 +505,7 @@ export interface ServicePagesSelect<T extends boolean = true> {
   scopeItems?:
     | T
     | {
-        icon?: T;
         text?: T;
-        description?: T;
-        modalDescription?: T;
         id?: T;
       };
   thumbnailTitle?: T;

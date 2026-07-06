@@ -18,12 +18,7 @@ export function toSubpageLayoutProps(
     description: page.description ?? fallback.description,
     heroImageUrl: resolveMediaUrl(page.heroImage),
     items: page.scopeItems?.length
-      ? page.scopeItems.map((s) => ({
-          icon: s.icon ?? null,
-          text: s.text,
-          description: s.description ?? null,
-          modalDescription: s.modalDescription ?? null,
-        }))
+      ? page.scopeItems.map((s) => ({ text: s.text }))
       : fallback.items,
   }
 }
