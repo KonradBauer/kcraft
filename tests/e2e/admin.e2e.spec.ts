@@ -71,7 +71,7 @@ test.describe('Admin Panel', () => {
     const originalBio = await textarea.inputValue()
 
     await textarea.fill(testBio)
-    await page.click('button[type="submit"]')
+    await page.getByRole('button', { name: 'Save' }).click()
     await expect(page.locator('[role="status"]').or(page.locator('.toast')).or(page.locator('[data-testid="toast"]'))).toBeVisible({ timeout: 5000 }).catch(() => {})
 
     await page.goto('http://localhost:3000')
@@ -80,6 +80,6 @@ test.describe('Admin Panel', () => {
     // restore original value
     await page.goto('http://localhost:3000/admin/globals/about-section')
     await page.locator('#field-bioText').fill(originalBio)
-    await page.click('button[type="submit"]')
+    await page.getByRole('button', { name: 'Save' }).click()
   })
 })

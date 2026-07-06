@@ -8,12 +8,6 @@ export const AboutSection: GlobalConfig = {
   },
   fields: [
     {
-      name: 'portraitPhoto',
-      label: 'Zdjęcie portretowe',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
       name: 'bioText',
       label: 'Tekst bio (paragraf)',
       type: 'textarea',

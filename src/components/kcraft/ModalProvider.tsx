@@ -3,7 +3,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import type { BioModal, CvModal, StatTile } from '@/payload-types'
 import { getTileIcon } from '@/lib/tileIcons'
-import { mediaUrl } from '@/lib/mediaUrl'
 import { OWNER_NAME } from '@/lib/siteConfig'
 
 export type ModalKey = 'cv' | 'bio' | 'tiles' | 'scope'
@@ -27,14 +26,6 @@ export function useModal() {
 
 /* ─── modal sub-components ─── */
 
-function DownloadIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-      <path d="M12 3v12M7 11l5 5 5-5M5 21h14" />
-    </svg>
-  )
-}
-
 function ModalHead({ eyebrowText, title, sub }: { eyebrowText?: string; title: string; sub?: string }) {
   return (
     <div className="bg-ink text-light px-12 pt-7 pb-6 relative overflow-hidden flex-none max-[980px]:px-7">
@@ -46,18 +37,6 @@ function ModalHead({ eyebrowText, title, sub }: { eyebrowText?: string; title: s
       </div>
     </div>
   )
-}
-
-function ModalDownloadBtn({ label, href }: { label: string; href?: string }) {
-  const cls = 'self-start mx-12 mb-5 mt-1 inline-flex items-center gap-3 bg-ink text-light font-montserrat text-xs font-semibold tracking-[0.16em] uppercase px-5 py-3 cursor-pointer border-none transition-all duration-[220ms] hover:bg-accent hover:text-ink max-[980px]:mx-7'
-  if (href) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-        <DownloadIcon />{label}
-      </a>
-    )
-  }
-  return <button className={cls}><DownloadIcon />{label}</button>
 }
 
 function ModalBodySection({ title, children }: { title: string; children: React.ReactNode }) {
@@ -86,11 +65,10 @@ function CvLi({ year, title, sub }: { year: string; title: string; sub?: string 
 
 function ModalCV({ cvModal }: { cvModal: CvModal }) {
   const hasData = (cvModal.experience?.length ?? 0) > 0
-  const cvFileUrl = mediaUrl(cvModal.cvFile) ?? undefined
 
   return (
     <>
-      <ModalHead eyebrowText="Dowiedz się więcej" title={OWNER_NAME} sub="CV zawodowe - doświadczenie i kwalifikacje" />
+      <ModalHead eyebrowText="Dowiedz się więcej" title={OWNER_NAME} sub="Doświadczenie i kwalifikacje" />
       <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
         {hasData ? (
           <>
@@ -143,11 +121,10 @@ function ModalCV({ cvModal }: { cvModal: CvModal }) {
           </>
         ) : (
           <ModalBodySection title="Doświadczenie i kwalifikacje">
-            <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Treść CV - doświadczenie zawodowe i kwalifikacje spawalnicze - zostanie uzupełniona wkrótce.</p>
+            <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Doświadczenie zawodowe i kwalifikacje spawalnicze - treść zostanie uzupełniona wkrótce.</p>
           </ModalBodySection>
         )}
       </div>
-      <ModalDownloadBtn label="Pobierz CV (PDF)" href={cvFileUrl} />
     </>
   )
 }

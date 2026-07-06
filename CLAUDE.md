@@ -56,7 +56,7 @@ git -c http.sslBackend=schannel <command>
 src/app/
   (frontend)/     ← public marketing site (KCRAFT brand)
   (payload)/      ← Payload admin panel, auto-handled by withPayload()
-  api/seed/       ← GET endpoint seeding the three ServicePage docs (idempotent)
+  api/seed/       ← GET endpoint seeding the four ServicePage docs (idempotent)
   robots.ts       ← /robots.txt
   sitemap.ts      ← /sitemap.xml
 ```
@@ -69,8 +69,8 @@ All pages use `export const dynamic = 'force-dynamic'` — Docker build has no a
 
 - `layout.tsx` — metadata (OG, Twitter Card, JSON-LD schema via `<Script>`), Google Fonts, `styles.css`, `<PageLoader>`
 - `page.tsx` → `<HomeContent />` server component
-- `maszyny-produkcyjne/`, `maszyny-rolnicze/`, `uslugi-slusarsko-spawalnicze/` — service subpages (shared `SubpageLayout`, data via `src/lib/servicePageData.ts`)
-- `[serviceSlug]/realizacje/[slug]/` — portfolio project detail pages (gallery + rich text); `serviceSlug` validated against the three service slugs, unknown → `notFound()`
+- `maszyny-produkcyjne/`, `maszyny-rolnicze/`, `uslugi-slusarsko-spawalnicze/`, `wyposazenie-loftowe/` — service subpages (shared `SubpageLayout`, data via `src/lib/servicePageData.ts`)
+- `[serviceSlug]/realizacje/[slug]/` — portfolio project detail pages (gallery + rich text); `serviceSlug` validated against `SERVICE_SLUGS` from `src/lib/serviceLinks.ts`, unknown → `notFound()`
 - `polityka-prywatnosci/` — privacy policy (static, no CMS)
 
 OG image is a static file: `public/og-image.png` (no dynamic `opengraph-image.tsx`).
@@ -79,16 +79,16 @@ OG image is a static file: `public/og-image.png` (no dynamic `opengraph-image.ts
 
 **Server components (SSR, crawlable):**
 - `HomeContent.tsx` — full homepage HTML: Hero → About → Areas → Footer. Wraps everything in `<ModalProvider>`. Contains no hooks.
-- `SubpageLayout.tsx` — layout for all three service subpages, incl. realizacje (portfolio) grid.
+- `SubpageLayout.tsx` — layout for all four service subpages, incl. realizacje (portfolio) grid.
 - `ImageSlot.tsx` — dark placeholder div for missing CMS images.
 - `Logo.tsx` — brand logo.
 
 **Client components (interactive islands):**
-- `ModalProvider.tsx` — `'use client'`; modal context + state + zoom-from-origin animation + modal panel (CV, Bio, Tiles). Provides `useModal()` hook. Receives `cvModal`, `bioModal`, `tiles` as serializable props from server.
+- `ModalProvider.tsx` — `'use client'`; modal context + state + zoom-from-origin animation + modal panel (Dowiedz się więcej, Bio, Tiles). Provides `useModal()` hook. Receives `cvModal`, `bioModal`, `tiles` as serializable props from server.
 - `ModalTrigger.tsx` — button/div that calls `openModal` from context.
 - `TilesMarquee.tsx` — interactive scrolling tiles container (opens Tiles modal on click).
 - `MobileNav.tsx` — hamburger + fullscreen overlay menu. iOS-safe scroll lock (position:fixed + top:-scrollY pattern).
-- `NavRealizacjeDropdown.tsx` — desktop nav dropdown for the three realizacje subpages.
+- `NavRealizacjeDropdown.tsx` — desktop nav dropdown for the realizacje subpages (from `SERVICE_LINKS`).
 - `RealizacjaGaleria.tsx` — portfolio project image gallery with lightbox.
 - `PageLoader.tsx` — initial page load overlay.
 - `ImageWithSkeleton.tsx` — `fill` image with ink shimmer skeleton during load. Accepts `sizes` prop (default `"100vw"`).
@@ -101,7 +101,8 @@ OG image is a static file: `public/og-image.png` (no dynamic `opengraph-image.ts
 
 **Shared utilities (`src/lib/`):**
 - `siteConfig.ts` — **single source of truth** for brand name, owner, contact data, and domain (`SITE_URL`, `BRAND_NAME`, `OWNER_NAME`, `LEGAL_NAME`, `CONTACT`)
-- `mediaUrl.ts` — extracts `.url` from Payload `Media | Document | string | null` fields
+- `mediaUrl.ts` — extracts `.url` from Payload `Media | string | null` fields
+- `serviceLinks.ts` — **single source of truth** for the list of service subpages (`SERVICE_LINKS`, `SERVICE_SLUGS`): nav, sitemap, slug validation, Portfolio filterOptions
 - `servicePageData.ts` — maps ServicePage / Portfolio docs to `SubpageLayout` props with static fallbacks
 - `tileIcons.tsx` — icon registry for scope items
 
@@ -113,10 +114,10 @@ Server-rendered children are passed as React fragments into `ModalProvider`, so 
 
 ### Payload (`src/`)
 
-- `payload.config.ts` — collections: `Users`, `Media`, `Documents`, `StatTile`, `ServicePage`, `Portfolio` (slug `portfolio-projects`); globals: `HeroSection`, `AboutSection`, `CvModal`, `BioModal`; admin: dark theme + custom Logo/Icon
+- `payload.config.ts` — collections: `Users`, `Media`, `StatTile`, `ServicePage`, `Portfolio` (slug `portfolio-projects`); globals: `HeroSection`, `AboutSection`, `CvModal`, `BioModal`; admin: dark theme + custom Logo/Icon
 - `payload-types.ts` — **auto-generated**, never edit manually; regenerate with `pnpm generate:types`
 - `collections/` — collections; `globals/` — globals; register new ones in `payload.config.ts`
-- `Portfolio` docs relate to `ServicePage` via `servicePage` relationship (filtered to the three service slugs); URL: `/{serviceSlug}/realizacje/{slug}`
+- `Portfolio` docs relate to `ServicePage` via `servicePage` relationship (filtered to `SERVICE_SLUGS`); URL: `/{serviceSlug}/realizacje/{slug}`
 
 ### Testing
 

@@ -2,7 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 export const CvModal: GlobalConfig = {
   slug: 'cv-modal',
-  label: 'Modal CV (Dowiedz się więcej)',
+  label: 'Modal Dowiedz się więcej',
   access: {
     read: () => true,
   },
@@ -102,13 +102,6 @@ export const CvModal: GlobalConfig = {
       name: 'interests',
       label: 'Zainteresowania i hobby',
       type: 'text',
-    },
-    {
-      name: 'cvFile',
-      label: 'Plik CV (PDF)',
-      type: 'relationship',
-      relationTo: 'documents',
-      hasMany: false,
     },
   ],
 }

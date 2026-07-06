@@ -80,6 +80,7 @@ Strony `(frontend)` używają `export const dynamic = 'force-dynamic'` - build w
 - `/maszyny-produkcyjne`
 - `/maszyny-rolnicze`
 - `/uslugi-slusarsko-spawalnicze`
+- `/wyposazenie-loftowe`
 
 Każda z sekcją realizacji (portfolio), wspólny layout `SubpageLayout`.
 
@@ -87,7 +88,7 @@ Każda z sekcją realizacji (portfolio), wspólny layout `SubpageLayout`.
 
 - `src/lib/siteConfig.ts` - jedno źródło prawdy dla nazwy marki, danych kontaktowych i domeny
 - `src/components/kcraft/HomeContent.tsx` - strona główna (server component)
-- `src/components/kcraft/ModalProvider.tsx` - modale CV/Bio/kafelki (client component)
+- `src/components/kcraft/ModalProvider.tsx` - modale Dowiedz się więcej/Bio/kafelki (client component)
 - `src/collections/`, `src/globals/` - kolekcje i globale Payload
 
 Pełny opis architektury, konwencji i wzorców Payload: [CLAUDE.md](./CLAUDE.md).

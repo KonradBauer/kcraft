@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { SERVICE_LINKS } from '@/lib/serviceLinks'
 import { SITE_URL } from '@/lib/siteConfig'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,24 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${SITE_URL}/maszyny-produkcyjne`,
+    ...SERVICE_LINKS.map(({ href }) => ({
+      url: `${SITE_URL}${href}`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/maszyny-rolnicze`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/uslugi-slusarsko-spawalnicze`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-
+    })),
   ]
 }

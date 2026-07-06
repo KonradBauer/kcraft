@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { SERVICE_LINKS } from '@/lib/serviceLinks'
 import { BRAND_NAME, CONTACT, LEGAL_NAME } from '@/lib/siteConfig'
 import { ImageSlot } from './ImageSlot'
 import { ImageWithSkeleton } from './ImageWithSkeleton'
@@ -24,11 +25,7 @@ const SUBPAGE_NAV_LINKS = [
   { href: '/#areas', label: 'Obszary' },
   {
     label: 'Realizacje',
-    sub: [
-      { href: '/maszyny-produkcyjne', label: 'Maszyny produkcyjne' },
-      { href: '/maszyny-rolnicze', label: 'Maszyny rolnicze' },
-      { href: '/uslugi-slusarsko-spawalnicze', label: 'Usługi ślusarsko-spawalnicze' },
-    ],
+    sub: SERVICE_LINKS.map(({ href, label }) => ({ href, label })),
   },
   { href: '/#contact', label: 'Kontakt' },
 ]

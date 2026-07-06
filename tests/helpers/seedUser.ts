@@ -22,6 +22,15 @@ export async function seedTestUser(): Promise<void> {
     },
   })
 
+  // Stale document locks (e.g. from a killed test run) block admin edit views
+  // with a "document locked" dialog - clear them before tests start
+  await payload.delete({
+    collection: 'payload-locked-documents',
+    where: {
+      id: { exists: true },
+    },
+  })
+
   // Create fresh test user
   await payload.create({
     collection: 'users',

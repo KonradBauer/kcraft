@@ -10,9 +10,8 @@ import { RichText } from '@payloadcms/richtext-lexical/react'
 import { MobileNav } from '@/components/kcraft/MobileNav'
 import { NavRealizacjeDropdown } from '@/components/kcraft/NavRealizacjeDropdown'
 import { RealizacjaGaleria } from '@/components/kcraft/RealizacjaGaleria'
+import { SERVICE_LINKS, SERVICE_SLUGS } from '@/lib/serviceLinks'
 import { BRAND_NAME, CONTACT, LEGAL_NAME } from '@/lib/siteConfig'
-
-const PORTFOLIO_PAGES = ['maszyny-produkcyjne', 'maszyny-rolnicze', 'uslugi-slusarsko-spawalnicze']
 
 const wrap = 'max-w-[1920px] mx-auto px-[56px] max-[980px]:px-[30px] max-[560px]:px-5'
 const navLink =
@@ -23,11 +22,7 @@ const NAV_LINKS = [
   { href: '/#areas', label: 'Obszary' },
   {
     label: 'Realizacje',
-    sub: [
-      { href: '/maszyny-produkcyjne', label: 'Maszyny produkcyjne' },
-      { href: '/maszyny-rolnicze', label: 'Maszyny rolnicze' },
-      { href: '/uslugi-slusarsko-spawalnicze', label: 'Usługi ślusarsko-spawalnicze' },
-    ],
+    sub: SERVICE_LINKS.map(({ href, label }) => ({ href, label })),
   },
   { href: '/#contact', label: 'Kontakt' },
 ]
@@ -43,7 +38,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { serviceSlug, slug } = await params
-  if (!PORTFOLIO_PAGES.includes(serviceSlug)) return {}
+  if (!SERVICE_SLUGS.includes(serviceSlug)) return {}
 
   const payload = await getPayload({ config })
   const { docs } = await payload.find({
@@ -63,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function RealizacjaPage({ params }: Props) {
   const { serviceSlug, slug } = await params
 
-  if (!PORTFOLIO_PAGES.includes(serviceSlug)) notFound()
+  if (!SERVICE_SLUGS.includes(serviceSlug)) notFound()
 
   const payload = await getPayload({ config })
 

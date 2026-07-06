@@ -2,12 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-
-const AREAS = [
-  { href: '/maszyny-produkcyjne', label: 'Maszyny produkcyjne' },
-  { href: '/maszyny-rolnicze', label: 'Maszyny rolnicze' },
-  { href: '/uslugi-slusarsko-spawalnicze', label: 'Usługi ślusarsko-spawalnicze' },
-]
+import { SERVICE_LINKS } from '@/lib/serviceLinks'
 
 export function NavRealizacjeDropdown({ triggerClass }: { triggerClass: string }) {
   const [open, setOpen] = useState(false)
@@ -41,7 +36,7 @@ export function NavRealizacjeDropdown({ triggerClass }: { triggerClass: string }
         className={`absolute top-full left-1/2 -translate-x-1/2 pt-[10px] z-50 transition-all duration-150 ${open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
       >
         <div className="bg-ink border border-white/10 py-1.5 min-w-[230px]">
-          {AREAS.map(({ href, label }) => (
+          {SERVICE_LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}

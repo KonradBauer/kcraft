@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    documents: Document;
     'stat-tiles': StatTile;
     'service-pages': ServicePage;
     'portfolio-projects': PortfolioProject;
@@ -82,7 +81,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    documents: DocumentsSelect<false> | DocumentsSelect<true>;
     'stat-tiles': StatTilesSelect<false> | StatTilesSelect<true>;
     'service-pages': ServicePagesSelect<false> | ServicePagesSelect<true>;
     'portfolio-projects': PortfolioProjectsSelect<false> | PortfolioProjectsSelect<true>;
@@ -167,25 +165,6 @@ export interface User {
 export interface Media {
   id: string;
   alt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "documents".
- */
-export interface Document {
-  id: string;
-  title?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -302,7 +281,7 @@ export interface PortfolioProject {
    */
   slug: string;
   /**
-   * Maszyny produkcyjne, Maszyny rolnicze lub Usługi ślusarsko-spawalnicze
+   * Maszyny produkcyjne, Maszyny rolnicze, Usługi ślusarsko-spawalnicze lub Wyposażenie loftowe
    */
   servicePage: string | ServicePage;
   description?: {
@@ -363,10 +342,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
-      } | null)
-    | ({
-        relationTo: 'documents';
-        value: string | Document;
       } | null)
     | ({
         relationTo: 'stat-tiles';
@@ -450,24 +425,6 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "documents_select".
- */
-export interface DocumentsSelect<T extends boolean = true> {
-  title?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -594,7 +551,6 @@ export interface HeroSection {
  */
 export interface AboutSection {
   id: string;
-  portraitPhoto?: (string | null) | Media;
   bioText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -637,7 +593,6 @@ export interface CvModal {
     | null;
   skills?: string | null;
   interests?: string | null;
-  cvFile?: (string | null) | Document;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -676,7 +631,6 @@ export interface HeroSectionSelect<T extends boolean = true> {
  * via the `definition` "about-section_select".
  */
 export interface AboutSectionSelect<T extends boolean = true> {
-  portraitPhoto?: T;
   bioText?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -719,7 +673,6 @@ export interface CvModalSelect<T extends boolean = true> {
       };
   skills?: T;
   interests?: T;
-  cvFile?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

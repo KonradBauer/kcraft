@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
+import { SERVICE_SLUGS } from '../lib/serviceLinks'
+
 function stringToLexical(text: string) {
   const paragraphs = text.split('\n').filter((line) => line.trim())
   return {
@@ -62,10 +64,10 @@ export const Portfolio: CollectionConfig = {
       relationTo: 'service-pages',
       required: true,
       filterOptions: {
-        slug: { in: ['maszyny-produkcyjne', 'maszyny-rolnicze', 'uslugi-slusarsko-spawalnicze'] },
+        slug: { in: SERVICE_SLUGS },
       },
       admin: {
-        description: 'Maszyny produkcyjne, Maszyny rolnicze lub Usługi ślusarsko-spawalnicze',
+        description: 'Maszyny produkcyjne, Maszyny rolnicze, Usługi ślusarsko-spawalnicze lub Wyposażenie loftowe',
       },
     },
     {

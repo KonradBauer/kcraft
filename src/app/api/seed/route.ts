@@ -42,6 +42,19 @@ const PAGES = [
       { text: 'Transport do klienta' },
     ],
   },
+  {
+    slug: 'wyposazenie-loftowe',
+    title: 'Wyposażenie loftowe',
+    eyebrow: 'Obszar działalności',
+    thumbnailTitle: 'Wyposażenie\nloftowe',
+    scopeItems: [
+      { text: 'Meble loftowe na wymiar - stoły, stoliki, regały' },
+      { text: 'Balustrady i schody w stylu industrialnym' },
+      { text: 'Zabudowy i konstrukcje stalowe do wnętrz' },
+      { text: 'Elementy dekoracyjne ze stali' },
+      { text: 'Łączenie stali z drewnem' },
+    ],
+  },
 ]
 
 export async function GET() {

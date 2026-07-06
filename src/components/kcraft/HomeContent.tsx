@@ -10,8 +10,8 @@ import type {
   StatTile,
 } from '@/payload-types'
 import { mediaUrl } from '@/lib/mediaUrl'
+import { SERVICE_LINKS } from '@/lib/serviceLinks'
 import { BRAND_NAME, CONTACT, LEGAL_NAME, OWNER_NAME } from '@/lib/siteConfig'
-import { ImageSlot } from './ImageSlot'
 import { ImageWithSkeleton } from './ImageWithSkeleton'
 import { MobileNav } from './MobileNav'
 import { NavRealizacjeDropdown } from './NavRealizacjeDropdown'
@@ -38,11 +38,7 @@ const HOME_NAV_LINKS = [
   { href: '#areas', label: 'Obszary' },
   {
     label: 'Realizacje',
-    sub: [
-      { href: '/maszyny-produkcyjne', label: 'Maszyny produkcyjne' },
-      { href: '/maszyny-rolnicze', label: 'Maszyny rolnicze' },
-      { href: '/uslugi-slusarsko-spawalnicze', label: 'Usługi ślusarsko-spawalnicze' },
-    ],
+    sub: SERVICE_LINKS.map(({ href, label }) => ({ href, label })),
   },
   { href: '#contact', label: 'Kontakt' },
 ]
@@ -80,12 +76,20 @@ const AREA_ICONS: Record<string, React.ReactNode> = {
       <path d="M40 36l10 10M46 12l2 6-6-2M52 20l4 4-4 4M12 40l-4 2 2 4" />
     </svg>
   ),
+  'wyposazenie-loftowe': (
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" className="w-[62px] h-[62px]">
+      <path d="M12 54V12M52 54V12" />
+      <path d="M12 22h40M12 36h40M12 50h40" />
+      <path d="M18 22v-6h10v6M36 36v-8h10v8M22 50v-7h8v7" />
+    </svg>
+  ),
 }
 
 const AREA_DEFAULTS = [
   { href: '/maszyny-produkcyjne', slug: 'maszyny-produkcyjne', name: 'Maszyny\nprodukcyjne' },
   { href: '/maszyny-rolnicze', slug: 'maszyny-rolnicze', name: 'Maszyny\nrolnicze' },
   { href: '/uslugi-slusarsko-spawalnicze', slug: 'uslugi-slusarsko-spawalnicze', name: 'Usługi ślusarsko-\nspawalnicze' },
+  { href: '/wyposazenie-loftowe', slug: 'wyposazenie-loftowe', name: 'Wyposażenie\nloftowe' },
 ]
 
 /* ─── main component (server) ─── */
@@ -94,7 +98,6 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
 
   const heroBackground = mediaUrl(hero.backgroundImage) ?? '/hero.png'
   const heroSubtitle = hero.subtitle ?? 'Spawanie i ślusarstwo\ndla przemysłu i rolnictwa'
-  const portraitUrl = mediaUrl(about.portraitPhoto) ?? '/kim-jestem.jpg'
   const bioText = about.bioText ?? 'KCRAFT to spawanie i ślusarstwo dla przemysłu oraz rolnictwa - budowa i naprawa maszyn, konstrukcje na zamówienie i serwis osprzętu. Dlaczego my? Indywidualne projekty dopasowane do potrzeb klienta, materiały najwyższej jakości oraz terminowość i bezpieczeństwo na każdym etapie realizacji.'
 
   const cvBtnClass = 'inline-flex items-center gap-[30px] mt-[90px] max-[980px]:hidden border border-[#3A3A3A] px-[26px] py-[17px] font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-light transition-all duration-[250ms] bg-transparent cursor-pointer hover:bg-accent hover:border-accent hover:text-ink'
@@ -192,28 +195,14 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
       <section className="bg-cream relative pt-24 pb-[78px]" id="about">
         <div className="absolute top-[46px] left-[34px] w-[120px] h-[90px] opacity-50 dots-pattern z-[2]" />
         <div className={wrap}>
-          <div className="grid [grid-template-columns:minmax(250px,0.7fr)_1.3fr] gap-[36px] items-stretch max-[700px]:grid-cols-1 max-[700px]:gap-8">
-
-            <div className="relative p-[18px] h-full max-[700px]:aspect-[4/3]">
-              <span className="absolute top-0 left-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-t border-l border-accent pointer-events-none" />
-              <span className="absolute top-0 right-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-t border-r border-accent pointer-events-none" />
-              <span className="absolute bottom-0 left-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-b border-l border-accent pointer-events-none" />
-              <span className="absolute bottom-0 right-0 w-[28px] h-[28px] max-[980px]:w-[20px] max-[980px]:h-[20px] border-b border-r border-accent pointer-events-none" />
-              <div className="relative h-full">
-                {portraitUrl ? (
-                  <ImageWithSkeleton src={portraitUrl} alt={OWNER_NAME} className="object-cover object-top" sizes="(max-width: 700px) 100vw, 35vw" />
-                ) : (
-                  <ImageSlot placeholder="Zdjęcie - Kim jestem" className="w-full h-full" />
-                )}
-              </div>
-            </div>
+          <div>
 
             <div className="min-w-0">
               <span className={`${eyebrow} mb-[14px]`}>Kim jestem?</span>
               <h2 className="font-medium text-[27px] tracking-[0.02em] text-dark-text mt-[14px] mb-[22px] uppercase">
                 {LEGAL_NAME}
               </h2>
-              <p className="text-[15px] leading-[1.85] text-[#56544e]">
+              <p className="max-w-[860px] text-[15px] leading-[1.85] text-[#56544e]">
                 {bioText}
               </p>
 
@@ -243,7 +232,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
             <span className={`${eyebrow} mb-[14px]`}>Co oferuję?</span>
             <h2 className="font-montserrat font-semibold text-[30px] tracking-[0.04em] uppercase text-dark-text">Obszary działalności</h2>
           </div>
-          <div className="grid grid-cols-3 gap-[26px] mt-[42px] max-[980px]:grid-cols-1">
+          <div className="grid grid-cols-4 gap-[26px] mt-[42px] max-[1200px]:grid-cols-2 max-[700px]:grid-cols-1">
             {AREA_DEFAULTS.map(({ href, slug, name }) => {
               const cmsArea = areaBySlug[slug]
               const displayName = cmsArea?.thumbnailTitle ?? name
