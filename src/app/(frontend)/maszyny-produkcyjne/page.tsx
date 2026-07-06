@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic'
 import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { SubpageLayout } from '@/components/mcraft/SubpageLayout'
+import { SubpageLayout } from '@/components/kcraft/SubpageLayout'
 import { toSubpageLayoutProps, toRealizacjeProps } from '@/lib/servicePageData'
 import { SITE_URL } from '@/lib/siteConfig'
 

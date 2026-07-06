@@ -86,8 +86,8 @@ Każda z sekcją realizacji (portfolio), wspólny layout `SubpageLayout`.
 ### Kluczowe moduły
 
 - `src/lib/siteConfig.ts` - jedno źródło prawdy dla nazwy marki, danych kontaktowych i domeny
-- `src/components/mcraft/HomeContent.tsx` - strona główna (server component)
-- `src/components/mcraft/ModalProvider.tsx` - modale CV/Bio/kafelki (client component)
+- `src/components/kcraft/HomeContent.tsx` - strona główna (server component)
+- `src/components/kcraft/ModalProvider.tsx` - modale CV/Bio/kafelki (client component)
 - `src/collections/`, `src/globals/` - kolekcje i globale Payload
 
 Pełny opis architektury, konwencji i wzorców Payload: [CLAUDE.md](./CLAUDE.md).

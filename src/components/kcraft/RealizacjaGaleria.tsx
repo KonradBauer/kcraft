@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { ImageWithSkeleton } from '@/components/mcraft/ImageWithSkeleton'
+import { ImageWithSkeleton } from '@/components/kcraft/ImageWithSkeleton'
 
 type GalleryImage = {
   url: string

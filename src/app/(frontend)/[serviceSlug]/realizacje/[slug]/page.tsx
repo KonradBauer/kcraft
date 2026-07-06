@@ -7,9 +7,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Media, ServicePage } from '@/payload-types'
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import { MobileNav } from '@/components/mcraft/MobileNav'
-import { NavRealizacjeDropdown } from '@/components/mcraft/NavRealizacjeDropdown'
-import { RealizacjaGaleria } from '@/components/mcraft/RealizacjaGaleria'
+import { MobileNav } from '@/components/kcraft/MobileNav'
+import { NavRealizacjeDropdown } from '@/components/kcraft/NavRealizacjeDropdown'
+import { RealizacjaGaleria } from '@/components/kcraft/RealizacjaGaleria'
 import { BRAND_NAME, CONTACT, LEGAL_NAME } from '@/lib/siteConfig'
 
 const PORTFOLIO_PAGES = ['maszyny-produkcyjne', 'maszyny-rolnicze', 'uslugi-slusarsko-spawalnicze']

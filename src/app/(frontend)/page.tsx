@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { HomeContent } from '@/components/mcraft/HomeContent'
+import { HomeContent } from '@/components/kcraft/HomeContent'
 
 export default async function HomePage() {
   const payload = await getPayload({ config })

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Barlow, Great_Vibes, Montserrat } from 'next/font/google'
 import Script from 'next/script'
 import React from 'react'
-import { PageLoader } from '@/components/mcraft/PageLoader'
+import { PageLoader } from '@/components/kcraft/PageLoader'
 import { BRAND_NAME, CONTACT, LEGAL_NAME, OWNER_NAME, SITE_URL } from '@/lib/siteConfig'
 import './styles.css'
 

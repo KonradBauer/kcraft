@@ -1,5 +1,5 @@
 import type { Media, PortfolioProject, ServicePage } from '@/payload-types'
-import type { SubpageLayoutProps } from '@/components/mcraft/SubpageLayout'
+import type { SubpageLayoutProps } from '@/components/kcraft/SubpageLayout'
 
 function resolveMediaUrl(field: string | Media | null | undefined): string | null {
   if (!field || typeof field === 'string') return null
