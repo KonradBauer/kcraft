@@ -42,11 +42,14 @@ export function SubpageLayout({
   return (
     <>
       {/* Topbar */}
-      <div className="bg-ink text-light">
+      <div className="bg-ink-3 text-light">
         <div className={wrap}>
           <nav className="flex items-center justify-between py-[30px]">
             <Link href="/">
-              <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
+              <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">
+                <span style={{ color: '#FF9228' }}>{BRAND_NAME.charAt(0)}</span>
+                {BRAND_NAME.slice(1)}
+              </span>
             </Link>
             <div className="flex gap-[38px] max-[980px]:hidden">
               <Link href="/#about" className={navLink}>O mnie</Link>
@@ -60,36 +63,36 @@ export function SubpageLayout({
       </div>
 
       {/* Page header */}
-      <header className="bg-ink text-light relative overflow-hidden pt-16 pb-[72px]">
+      <header className="bg-ink-3 text-light relative overflow-hidden pt-16 pb-[72px]">
         {heroImageUrl ? (
           <>
             <ImageWithSkeleton src={heroImageUrl} alt="" className="object-cover" />
-            <div className="absolute inset-0 bg-ink/70" />
+            <div className="absolute inset-0 bg-ink-3/70" />
           </>
         ) : (
           <div className="absolute inset-0 opacity-50 blueprint-bg pointer-events-none" />
         )}
         <div className={`${wrap} relative`}>
           {eyebrow && (
-            <span className="block font-montserrat text-xs font-semibold tracking-[0.28em] uppercase text-accent mb-[18px]">{eyebrow}</span>
+            <span className="block font-montserrat text-xs font-semibold tracking-[0.28em] uppercase text-[#FF9228] mb-[18px]">{eyebrow}</span>
           )}
           <h1 className="font-light text-[52px] tracking-[0.01em] uppercase text-white max-[980px]:text-[38px]">{title}</h1>
-          <div className="w-16 h-0.5 bg-accent my-[26px]" />
+          <div className="w-16 h-0.5 bg-[#FF9228] my-[26px]" />
           {description && (
-            <p className="max-w-[560px] text-base leading-[1.75] text-light-muted font-light">{description}</p>
+            <p className="max-w-[560px] text-base leading-[1.75] text-white/70 font-light">{description}</p>
           )}
         </div>
       </header>
 
       {/* Body */}
-      <section className="py-20">
+      <section className="bg-ink-3 text-white py-20">
         <div className={wrap}>
           <div>
-            <h2 className="font-semibold text-[26px] uppercase tracking-[0.03em] mb-6">Zakres</h2>
+            <h2 className="font-semibold text-[26px] uppercase tracking-[0.03em] mb-6 text-white">Zakres</h2>
             <ul className="flex flex-col gap-4">
               {items.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 text-[15.5px] leading-[1.6] text-[#56544e]">
-                  <span className="w-[9px] h-[9px] bg-accent mt-[7px] flex-none rotate-45" />
+                <li key={i} className="flex items-start gap-4 text-[15.5px] leading-[1.6] text-white/80">
+                  <span className="w-[9px] h-[9px] bg-[#FF9228] mt-[7px] flex-none rotate-45" />
                   <span>{item.text}</span>
                 </li>
               ))}
@@ -98,7 +101,7 @@ export function SubpageLayout({
 
           {/* Realizacje */}
           <div className="mt-[18px]">
-            <h2 className="font-semibold text-[26px] uppercase tracking-[0.03em] mb-6">Realizacje</h2>
+            <h2 className="font-semibold text-[26px] uppercase tracking-[0.03em] mb-6 text-white">Realizacje</h2>
             <div className="grid grid-cols-3 gap-[18px] max-[980px]:grid-cols-2 max-[560px]:grid-cols-1">
               {realizacje && realizacje.length > 0
                 ? realizacje.map((item, i) => (
@@ -130,12 +133,12 @@ export function SubpageLayout({
       </section>
 
       {/* CTA */}
-      <section className="bg-cream-2 py-16 text-center">
+      <section className="bg-ink-3 py-16 text-center">
         <div className={wrap}>
-          <h2 className="font-semibold text-2xl uppercase tracking-[0.03em] mb-[22px]">{ctaLabel}</h2>
+          <h2 className="font-semibold text-2xl uppercase tracking-[0.03em] mb-[22px] text-white">{ctaLabel}</h2>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-6 bg-ink text-light font-montserrat text-xs font-semibold tracking-[0.2em] uppercase px-[28px] py-[17px] transition-all duration-[220ms] hover:bg-accent hover:text-ink"
+            className="inline-flex items-center gap-6 border border-white/30 text-white font-montserrat text-xs font-semibold tracking-[0.2em] uppercase px-[28px] py-[17px] transition-all duration-[220ms] hover:bg-[#FF9228] hover:border-[#FF9228] hover:text-ink-3"
           >
             Skontaktuj się
             <svg viewBox="0 0 30 12" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-5 h-3">
@@ -151,21 +154,21 @@ export function SubpageLayout({
           <div className="grid grid-cols-[1fr_1.2fr] gap-12 items-start max-[768px]:grid-cols-1">
 
             <div>
-              <span className="block font-montserrat text-[12px] font-semibold tracking-[0.28em] uppercase text-[#008A58] mb-[18px]">Porozmawiajmy o Twoim projekcie</span>
+              <span className="block font-montserrat text-[12px] font-semibold tracking-[0.28em] uppercase text-[#FF9228] mb-[18px]">Porozmawiajmy o Twoim projekcie</span>
               <h2 className="font-semibold text-[30px] tracking-[0.04em] uppercase text-white mb-[22px]">Skontaktuj się</h2>
               <div className="mb-[22px]">
                 <div className="font-montserrat font-semibold text-[13px] tracking-[0.08em] text-white mb-[8px]">{LEGAL_NAME}</div>
               </div>
               <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-[#FF9228] flex-none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
                 <a href={`tel:${CONTACT.phone}`} className="hover:text-light transition-colors duration-200">{CONTACT.phoneDisplay}</a>
               </div>
               <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-[#FF9228] flex-none"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></svg>
                 <a href={`mailto:${CONTACT.email}`} className="hover:text-light transition-colors duration-200">{CONTACT.email}</a>
               </div>
               <div className="flex items-center gap-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-[#FF9228] flex-none"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 <span>{CONTACT.address.street}, {CONTACT.address.postalCode} {CONTACT.address.city}</span>
               </div>
             </div>

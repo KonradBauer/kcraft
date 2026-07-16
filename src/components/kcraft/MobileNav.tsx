@@ -67,7 +67,10 @@ export function MobileNav({ links }: MobileNavProps) {
         aria-label="Menu nawigacyjne"
       >
         <div className="flex items-center justify-between px-5 py-[30px] border-b border-white/10 flex-none">
-          <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
+          <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">
+            <span style={{ color: '#FF9228' }}>{BRAND_NAME.charAt(0)}</span>
+            {BRAND_NAME.slice(1)}
+          </span>
           <button
             className="w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors duration-200 cursor-pointer bg-transparent border-none"
             onClick={close}
@@ -122,7 +125,7 @@ export function MobileNav({ links }: MobileNavProps) {
             onClick={close}
             className="inline-flex items-center gap-3 font-montserrat text-[11px] font-semibold tracking-[0.2em] uppercase text-light/50 hover:text-accent transition-colors duration-200"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px] flex-none">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px] flex-none text-[#FF9228]">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
               <rect x="2" y="9" width="4" height="12" />
               <circle cx="4" cy="4" r="2" />

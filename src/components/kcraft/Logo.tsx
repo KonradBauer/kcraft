@@ -19,7 +19,9 @@ export function Logo({ strokeColor = '#fff', size = 38 }: LogoProps) {
       >
         <path d="M14 8v44M14 30L47 8M14 30L47 52" />
       </svg>
-      <span className="font-montserrat font-semibold text-[20px] tracking-[0.34em]">KCRAFT</span>
+      <span className="font-montserrat font-semibold text-[20px] tracking-[0.34em]">
+        <span style={{ color: '#FF9228' }}>K</span>CRAFT
+      </span>
     </Link>
   )
 }

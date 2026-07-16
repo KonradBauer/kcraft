@@ -81,7 +81,10 @@ export function PageLoader() {
         </svg>
 
         <div className="flex flex-col items-center gap-[6px]">
-          <span className="font-montserrat font-light text-[20px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
+          <span className="font-montserrat font-light text-[20px] tracking-[0.45em] text-white uppercase">
+            <span style={{ color: '#FF9228' }}>{BRAND_NAME.charAt(0)}</span>
+            {BRAND_NAME.slice(1)}
+          </span>
           <span className="font-montserrat text-[11px] font-semibold tracking-[0.28em] uppercase text-accent-bright text-center">
             {OWNER_NAME}
           </span>

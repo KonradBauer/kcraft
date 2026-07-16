@@ -7,7 +7,7 @@ export default function Icon() {
       fontWeight: 700,
       fontSize: '18px',
       letterSpacing: '0.14em',
-      color: '#FFFFFF',
+      color: '#FF9228',
       lineHeight: 1,
     }}>
       K

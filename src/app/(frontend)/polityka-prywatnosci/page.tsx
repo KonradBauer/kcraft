@@ -16,7 +16,8 @@ export default function PolitykaPrywatnosci() {
       <div className="bg-ink text-light py-6">
         <div className={wrap}>
           <Link href="/" className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">
-            {BRAND_NAME}
+            <span style={{ color: '#FF9228' }}>{BRAND_NAME.charAt(0)}</span>
+            {BRAND_NAME.slice(1)}
           </Link>
         </div>
       </div>

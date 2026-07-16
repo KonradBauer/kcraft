@@ -7,7 +7,7 @@ const PAGES = [
     slug: 'maszyny-produkcyjne',
     title: 'Maszyny produkcyjne',
     eyebrow: 'Obszar działalności',
-    thumbnailTitle: 'Maszyny\nprodukcyjne',
+    thumbnailTitle: 'Doposażenie\nlinii produkcyjnej',
     scopeItems: [
       { text: 'Budowa maszyn produkcyjnych' },
       { text: 'Doposażanie i modernizacja linii produkcyjnych' },

@@ -1,11 +1,8 @@
 'use client'
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
-import type { BioModal, CvModal, StatTile } from '@/payload-types'
-import { getTileIcon } from '@/lib/tileIcons'
-import { OWNER_NAME } from '@/lib/siteConfig'
 
-export type ModalKey = 'cv' | 'bio' | 'tiles' | 'scope'
+export type ModalKey = 'scope'
 
 export interface ScopeModalContent {
   title: string
@@ -39,139 +36,6 @@ function ModalHead({ eyebrowText, title, sub }: { eyebrowText?: string; title: s
   )
 }
 
-function ModalBodySection({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <>
-      <h3 className="font-montserrat font-semibold text-[11px] tracking-[0.16em] uppercase text-accent mt-4 first:mt-0 mb-2 pb-1.5 border-b border-hairline-light">{title}</h3>
-      {children}
-    </>
-  )
-}
-
-const CV_ITEMS_LI = 'grid grid-cols-[130px_1fr] gap-3 text-[13.5px] leading-[1.55] text-[#56544e] max-[980px]:grid-cols-[90px_1fr]'
-const CV_YEAR = 'font-montserrat font-semibold text-[12px] tracking-[0.04em] text-dark-text'
-
-function CvLi({ year, title, sub }: { year: string; title: string; sub?: string }) {
-  return (
-    <li className={CV_ITEMS_LI}>
-      <span className={CV_YEAR}>{year}</span>
-      <span className="flex flex-col gap-0.5">
-        <span className="font-semibold text-dark-text text-[13.5px]">{title}</span>
-        {sub && <span>{sub}</span>}
-      </span>
-    </li>
-  )
-}
-
-function ModalCV({ cvModal }: { cvModal: CvModal }) {
-  const hasData = (cvModal.experience?.length ?? 0) > 0
-
-  return (
-    <>
-      <ModalHead eyebrowText="Dowiedz się więcej" title={OWNER_NAME} sub="Doświadczenie i kwalifikacje" />
-      <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
-        {hasData ? (
-          <>
-            {cvModal.experience && cvModal.experience.length > 0 && (
-              <ModalBodySection title="Doświadczenie zawodowe">
-                <ul className="flex flex-col gap-2">
-                  {cvModal.experience.map((item) => (
-                    <CvLi key={item.id ?? item.year} year={item.year} title={item.description} sub={item.company ?? undefined} />
-                  ))}
-                </ul>
-              </ModalBodySection>
-            )}
-            {cvModal.qualifications && cvModal.qualifications.length > 0 && (
-              <ModalBodySection title="Kwalifikacje">
-                <ul className="flex flex-col gap-2">
-                  {cvModal.qualifications.map((item) => (
-                    <CvLi key={item.id ?? item.code} year={item.code} title={item.description} />
-                  ))}
-                </ul>
-              </ModalBodySection>
-            )}
-            {cvModal.education && cvModal.education.length > 0 && (
-              <ModalBodySection title="Edukacja">
-                <ul className="flex flex-col gap-2">
-                  {cvModal.education.map((item) => (
-                    <CvLi key={item.id ?? item.year + item.institution} year={item.year} title={item.institution} sub={item.description ?? undefined} />
-                  ))}
-                </ul>
-              </ModalBodySection>
-            )}
-            {cvModal.additionalQualifications && cvModal.additionalQualifications.length > 0 && (
-              <ModalBodySection title="Dodatkowe kwalifikacje">
-                <ul className="flex flex-col gap-2">
-                  {cvModal.additionalQualifications.map((item) => (
-                    <CvLi key={item.id ?? item.year} year={item.year} title={item.description} />
-                  ))}
-                </ul>
-              </ModalBodySection>
-            )}
-            {cvModal.skills && (
-              <ModalBodySection title="Umiejętności">
-                <p className="text-[13.5px] leading-[1.65] text-[#56544e] whitespace-pre-line">{cvModal.skills}</p>
-              </ModalBodySection>
-            )}
-            {cvModal.interests && (
-              <ModalBodySection title="Zainteresowania i hobby">
-                <p className="text-[13.5px] leading-[1.65] text-[#56544e]">{cvModal.interests}</p>
-              </ModalBodySection>
-            )}
-          </>
-        ) : (
-          <ModalBodySection title="Doświadczenie i kwalifikacje">
-            <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Doświadczenie zawodowe i kwalifikacje spawalnicze - treść zostanie uzupełniona wkrótce.</p>
-          </ModalBodySection>
-        )}
-      </div>
-    </>
-  )
-}
-
-function ModalBio({ bioModal }: { bioModal: BioModal }) {
-  const hasData = (bioModal.sections?.length ?? 0) > 0
-  return (
-    <>
-      <ModalHead eyebrowText="Więcej o mnie" title={OWNER_NAME} sub="Życiorys - droga i pasja" />
-      <div className="px-12 pt-4 pb-4 max-[980px]:px-7">
-        {hasData ? (
-          bioModal.sections!.map((section) => (
-            <ModalBodySection key={section.id ?? section.title} title={section.title}>
-              <p className="text-[13.5px] leading-[1.65] text-[#56544e]">{section.content}</p>
-            </ModalBodySection>
-          ))
-        ) : (
-          <ModalBodySection title="Moja droga">
-            <p className="text-[13.5px] leading-[1.65] text-[#56544e]">Historia firmy i pasja do spawania oraz ślusarstwa - treść zostanie przygotowana i wczytana z zasobów.</p>
-          </ModalBodySection>
-        )}
-      </div>
-    </>
-  )
-}
-
-function ModalTilesContent({ tiles }: { tiles: StatTile[] }) {
-  return (
-    <>
-      <ModalHead title="Doświadczenie i kwalifikacje" />
-      <div className="grid grid-cols-4 p-[20px_48px_24px] max-[980px]:grid-cols-2 max-[980px]:p-5 max-[560px]:grid-cols-1">
-        {tiles.map((t) => {
-          const Icon = getTileIcon(t.number, t.icon)
-          return (
-            <div key={t.id} className="overflow-hidden p-[14px_14px] border border-hairline-light -m-px">
-              <Icon className="w-[30px] h-[30px] text-accent mb-3 opacity-75" strokeWidth={1.4} />
-              <div className="font-montserrat font-semibold text-[26px] text-dark-text leading-none break-all">{t.number}</div>
-              <div className="font-montserrat text-[10px] font-semibold tracking-[0.08em] uppercase text-accent mt-2 mb-1.5 leading-[1.4] break-words">{t.label}</div>
-              <p className="text-[12px] leading-[1.5] text-[#6a6862] m-0">{t.description}</p>
-            </div>
-          )
-        })}
-      </div>
-    </>
-  )
-}
-
 function ModalScopeContent({ title, description }: ScopeModalContent) {
   return (
     <>
@@ -187,12 +51,9 @@ function ModalScopeContent({ title, description }: ScopeModalContent) {
 
 interface ModalProviderProps {
   children: React.ReactNode
-  cvModal?: CvModal
-  bioModal?: BioModal
-  tiles?: StatTile[]
 }
 
-export function ModalProvider({ children, cvModal, bioModal, tiles }: ModalProviderProps) {
+export function ModalProvider({ children }: ModalProviderProps) {
   const [modalKey, setModalKey] = useState<ModalKey | null>(null)
   const [scopeContent, setScopeContent] = useState<ScopeModalContent | null>(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -255,9 +116,6 @@ export function ModalProvider({ children, cvModal, bioModal, tiles }: ModalProvi
           &times;
         </button>
         <div className="overflow-y-auto h-full flex flex-col modal-scroll">
-          {modalKey === 'cv' && cvModal && <ModalCV cvModal={cvModal} />}
-          {modalKey === 'bio' && bioModal && <ModalBio bioModal={bioModal} />}
-          {modalKey === 'tiles' && tiles && <ModalTilesContent tiles={tiles} />}
           {modalKey === 'scope' && scopeContent && <ModalScopeContent {...scopeContent} />}
         </div>
       </div>

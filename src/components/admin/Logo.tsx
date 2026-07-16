@@ -11,7 +11,7 @@ export default function Logo() {
         color: '#FFFFFF',
         lineHeight: 1,
       }}>
-        KCRAFT
+        <span style={{ color: '#FF9228' }}>K</span>CRAFT
       </div>
       <div style={{
         fontFamily: 'Montserrat, sans-serif',

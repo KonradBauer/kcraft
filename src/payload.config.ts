@@ -7,13 +7,10 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { StatTile } from './collections/StatTile'
 import { ServicePage } from './collections/ServicePage'
 import { Portfolio } from './collections/Portfolio'
 import { HeroSection } from './globals/HeroSection'
 import { AboutSection } from './globals/AboutSection'
-import { CvModal } from './globals/CvModal'
-import { BioModal } from './globals/BioModal'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,8 +29,8 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Media, StatTile, ServicePage, Portfolio],
-  globals: [HeroSection, AboutSection, CvModal, BioModal],
+  collections: [Users, Media, ServicePage, Portfolio],
+  globals: [HeroSection, AboutSection],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

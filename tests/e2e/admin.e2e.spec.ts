@@ -46,13 +46,6 @@ test.describe('Admin Panel', () => {
     await expect(heading).toBeVisible()
   })
 
-  test('can navigate to stat-tiles collection', async () => {
-    await page.goto('http://localhost:3000/admin/collections/stat-tiles')
-    await expect(page).toHaveURL(/\/admin\/collections\/stat-tiles/)
-    const heading = page.locator('h1').first()
-    await expect(heading).toBeVisible()
-  })
-
   test('can navigate to service-pages collection', async () => {
     await page.goto('http://localhost:3000/admin/collections/service-pages')
     await expect(page).toHaveURL(/\/admin\/collections\/service-pages/)

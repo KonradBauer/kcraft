@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    'stat-tiles': StatTile;
     'service-pages': ServicePage;
     'portfolio-projects': PortfolioProject;
     'payload-kv': PayloadKv;
@@ -81,7 +80,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'stat-tiles': StatTilesSelect<false> | StatTilesSelect<true>;
     'service-pages': ServicePagesSelect<false> | ServicePagesSelect<true>;
     'portfolio-projects': PortfolioProjectsSelect<false> | PortfolioProjectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -96,14 +94,10 @@ export interface Config {
   globals: {
     'hero-section': HeroSection;
     'about-section': AboutSection;
-    'cv-modal': CvModal;
-    'bio-modal': BioModal;
   };
   globalsSelect: {
     'hero-section': HeroSectionSelect<false> | HeroSectionSelect<true>;
     'about-section': AboutSectionSelect<false> | AboutSectionSelect<true>;
-    'cv-modal': CvModalSelect<false> | CvModalSelect<true>;
-    'bio-modal': BioModalSelect<false> | BioModalSelect<true>;
   };
   locale: null;
   widgets: {
@@ -176,64 +170,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "stat-tiles".
- */
-export interface StatTile {
-  id: string;
-  number: string;
-  label: string;
-  /**
-   * Ikona wyświetlana przy kafelku na stronie i w popupie
-   */
-  icon?:
-    | (
-        | 'Clock'
-        | 'Timer'
-        | 'TrendingUp'
-        | 'Warehouse'
-        | 'Users'
-        | 'Zap'
-        | 'Flame'
-        | 'GraduationCap'
-        | 'Search'
-        | 'Eye'
-        | 'Droplets'
-        | 'FileText'
-        | 'ClipboardCheck'
-        | 'ClipboardList'
-        | 'ShieldCheck'
-        | 'Layers'
-        | 'Train'
-        | 'UserCheck'
-        | 'Settings2'
-        | 'Briefcase'
-        | 'Globe'
-        | 'FlaskConical'
-        | 'PenTool'
-        | 'Box'
-        | 'Award'
-        | 'BadgeCheck'
-        | 'HardHat'
-        | 'Wrench'
-        | 'Factory'
-        | 'Ruler'
-        | 'Microscope'
-        | 'Cpu'
-        | 'CheckCircle'
-        | 'Star'
-        | 'Calendar'
-      )
-    | null;
-  description: string;
-  /**
-   * Mniejsza liczba = wyświetla się wcześniej
-   */
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -344,10 +280,6 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'stat-tiles';
-        value: string | StatTile;
-      } | null)
-    | ({
         relationTo: 'service-pages';
         value: string | ServicePage;
       } | null)
@@ -436,19 +368,6 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "stat-tiles_select".
- */
-export interface StatTilesSelect<T extends boolean = true> {
-  number?: T;
-  label?: T;
-  icon?: T;
-  description?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -557,64 +476,6 @@ export interface AboutSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cv-modal".
- */
-export interface CvModal {
-  id: string;
-  experience?:
-    | {
-        year: string;
-        description: string;
-        company?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  qualifications?:
-    | {
-        code: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  education?:
-    | {
-        year: string;
-        institution: string;
-        description?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  additionalQualifications?:
-    | {
-        year: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  skills?: string | null;
-  interests?: string | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "bio-modal".
- */
-export interface BioModal {
-  id: string;
-  sections?:
-    | {
-        title: string;
-        content: string;
-        id?: string | null;
-      }[]
-    | null;
-  bioFile?: (string | null) | Media;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hero-section_select".
  */
 export interface HeroSectionSelect<T extends boolean = true> {
@@ -632,64 +493,6 @@ export interface HeroSectionSelect<T extends boolean = true> {
  */
 export interface AboutSectionSelect<T extends boolean = true> {
   bioText?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cv-modal_select".
- */
-export interface CvModalSelect<T extends boolean = true> {
-  experience?:
-    | T
-    | {
-        year?: T;
-        description?: T;
-        company?: T;
-        id?: T;
-      };
-  qualifications?:
-    | T
-    | {
-        code?: T;
-        description?: T;
-        id?: T;
-      };
-  education?:
-    | T
-    | {
-        year?: T;
-        institution?: T;
-        description?: T;
-        id?: T;
-      };
-  additionalQualifications?:
-    | T
-    | {
-        year?: T;
-        description?: T;
-        id?: T;
-      };
-  skills?: T;
-  interests?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "bio-modal_select".
- */
-export interface BioModalSelect<T extends boolean = true> {
-  sections?:
-    | T
-    | {
-        title?: T;
-        content?: T;
-        id?: T;
-      };
-  bioFile?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
