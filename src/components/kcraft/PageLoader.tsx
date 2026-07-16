@@ -58,13 +58,13 @@ export function PageLoader() {
     >
       <div className="absolute inset-0 blueprint-bg opacity-60" />
 
-      <span className="absolute top-[26px] left-[26px] w-[34px] h-[34px] border-t border-l border-accent/50" />
-      <span className="absolute top-[26px] right-[26px] w-[34px] h-[34px] border-t border-r border-accent/50" />
-      <span className="absolute bottom-[26px] left-[26px] w-[34px] h-[34px] border-b border-l border-accent/50" />
-      <span className="absolute bottom-[26px] right-[26px] w-[34px] h-[34px] border-b border-r border-accent/50" />
+      <span className="absolute top-[26px] left-[26px] w-[34px] h-[34px] border-t border-l border-[#FF9228]/50" />
+      <span className="absolute top-[26px] right-[26px] w-[34px] h-[34px] border-t border-r border-[#FF9228]/50" />
+      <span className="absolute bottom-[26px] left-[26px] w-[34px] h-[34px] border-b border-l border-[#FF9228]/50" />
+      <span className="absolute bottom-[26px] right-[26px] w-[34px] h-[34px] border-b border-r border-[#FF9228]/50" />
 
-      <span className="absolute left-0 right-0 top-1/2 h-px [background:repeating-linear-gradient(90deg,rgba(79,154,140,0.25)_0px,rgba(79,154,140,0.25)_10px,transparent_10px,transparent_20px)]" />
-      <span className="absolute top-0 bottom-0 left-1/2 w-px [background:repeating-linear-gradient(180deg,rgba(79,154,140,0.25)_0px,rgba(79,154,140,0.25)_10px,transparent_10px,transparent_20px)]" />
+      <span className="absolute left-0 right-0 top-1/2 h-px [background:repeating-linear-gradient(90deg,rgba(255,146,40,0.25)_0px,rgba(255,146,40,0.25)_10px,transparent_10px,transparent_20px)]" />
+      <span className="absolute top-0 bottom-0 left-1/2 w-px [background:repeating-linear-gradient(180deg,rgba(255,146,40,0.25)_0px,rgba(255,146,40,0.25)_10px,transparent_10px,transparent_20px)]" />
 
       <div className="relative flex flex-col items-center gap-[26px] px-6">
         <svg

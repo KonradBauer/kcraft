@@ -152,7 +152,7 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
                 <span style={{ color: '#FF9228' }}>{BRAND_NAME.charAt(0)}</span>
                 {BRAND_NAME.slice(1)}
               </span>
-              <div className="flex items-center gap-[38px] px-[28px] py-[12px] bg-ink/60 backdrop-blur-md rounded-full max-[980px]:hidden">
+              <div className="flex items-center gap-[38px] px-[28px] py-[12px] bg-[#FF9228] rounded-full max-[980px]:hidden">
                 <a href="#about" className={`${navLink} text-white`}>O mnie</a>
                 <a href="#areas" className={`${navLink} text-white/70 hover:text-white`}>Obszary</a>
                 <NavRealizacjeDropdown triggerClass={`${navLink} text-white/70 hover:text-white`} />
