@@ -35,7 +35,7 @@ export function NavRealizacjeDropdown({ triggerClass }: { triggerClass: string }
       <div
         className={`absolute top-full left-1/2 -translate-x-1/2 pt-[10px] z-50 transition-all duration-150 ${open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
       >
-        <div className="bg-ink border border-white/10 py-1.5 min-w-[230px]">
+        <div className="bg-ink-3 border border-white/10 py-1.5 min-w-[230px]">
           {SERVICE_LINKS.map(({ href, label }) => (
             <Link
               key={href}
