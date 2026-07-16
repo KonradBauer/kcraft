@@ -52,7 +52,7 @@ export function PageLoader() {
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[9999] bg-ink flex items-center justify-center overflow-hidden transition-opacity ease-in duration-[550ms] ${
+      className={`fixed inset-0 z-[9999] bg-[#211407] flex items-center justify-center overflow-hidden transition-opacity ease-in duration-[550ms] ${
         isHiding ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
@@ -85,7 +85,7 @@ export function PageLoader() {
             <span style={{ color: '#FF9228' }}>{BRAND_NAME.charAt(0)}</span>
             {BRAND_NAME.slice(1)}
           </span>
-          <span className="font-montserrat text-[11px] font-semibold tracking-[0.28em] uppercase text-accent-bright text-center">
+          <span className="font-montserrat text-[11px] font-semibold tracking-[0.28em] uppercase text-[#FF9228] text-center">
             {OWNER_NAME}
           </span>
         </div>
@@ -96,15 +96,15 @@ export function PageLoader() {
             <span className="weld-torch absolute right-0 bottom-0 pointer-events-none">
               <span className="weld-head absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-[9px] h-[9px] rounded-full bg-white" />
               <span className="weld-spark weld-spark-1 absolute left-0 bottom-0 w-[6px] h-[6px] rounded-full bg-white" />
-              <span className="weld-spark weld-spark-2 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-accent-bright" />
+              <span className="weld-spark weld-spark-2 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-[#FF9228]" />
               <span className="weld-spark weld-spark-3 absolute left-0 bottom-0 w-[6px] h-[6px] rounded-full bg-white" />
-              <span className="weld-spark weld-spark-4 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-accent-bright" />
+              <span className="weld-spark weld-spark-4 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-[#FF9228]" />
               <span className="weld-spark weld-spark-5 absolute left-0 bottom-0 w-[4px] h-[4px] rounded-full bg-white" />
-              <span className="weld-spark weld-spark-6 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-accent-bright" />
+              <span className="weld-spark weld-spark-6 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-[#FF9228]" />
               <span className="weld-spark weld-spark-7 absolute left-0 bottom-0 w-[4px] h-[4px] rounded-full bg-white" />
-              <span className="weld-spark weld-spark-8 absolute left-0 bottom-0 w-[6px] h-[6px] rounded-full bg-accent-bright" />
+              <span className="weld-spark weld-spark-8 absolute left-0 bottom-0 w-[6px] h-[6px] rounded-full bg-[#FF9228]" />
               <span className="weld-spark weld-spark-9 absolute left-0 bottom-0 w-[4px] h-[4px] rounded-full bg-white" />
-              <span className="weld-spark weld-spark-10 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-accent-bright" />
+              <span className="weld-spark weld-spark-10 absolute left-0 bottom-0 w-[5px] h-[5px] rounded-full bg-[#FF9228]" />
             </span>
           </div>
         </div>

@@ -8,13 +8,13 @@ import { toSubpageLayoutProps, toRealizacjeProps } from '@/lib/servicePageData'
 import { SITE_URL } from '@/lib/siteConfig'
 
 export const metadata: Metadata = {
-  title: 'Maszyny produkcyjne - budowa i modernizacja',
+  title: 'Doposażenie linii produkcyjnej - budowa i modernizacja',
   description: 'Budowa, doposażanie i modernizacja maszyn produkcyjnych oraz stanowisk pracy - KCRAFT Kamil Kemuś.',
-  alternates: { canonical: `${SITE_URL}/maszyny-produkcyjne` },
+  alternates: { canonical: `${SITE_URL}/doposazenie-linii-produkcyjnej` },
   openGraph: {
-    title: 'Maszyny produkcyjne - budowa i modernizacja',
+    title: 'Doposażenie linii produkcyjnej - budowa i modernizacja',
     description: 'Budowa, doposażanie i modernizacja linii oraz stanowisk pracy dla przemysłu.',
-    url: `${SITE_URL}/maszyny-produkcyjne`,
+    url: `${SITE_URL}/doposazenie-linii-produkcyjnej`,
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 }
@@ -32,11 +32,11 @@ const FALLBACK = {
   ],
 }
 
-export default async function MaszynyProdukcyjnePage() {
+export default async function DoposazenieLiniiProdukcyjnejPage() {
   const payload = await getPayload({ config })
   const { docs } = await payload.find({
     collection: 'service-pages',
-    where: { slug: { equals: 'maszyny-produkcyjne' } },
+    where: { slug: { equals: 'doposazenie-linii-produkcyjnej' } },
     depth: 1,
     limit: 1,
   })
@@ -57,7 +57,7 @@ export default async function MaszynyProdukcyjnePage() {
   return (
     <SubpageLayout
       {...toSubpageLayoutProps(servicePage, FALLBACK)}
-      realizacje={toRealizacjeProps(portfolioDocs, 'maszyny-produkcyjne')}
+      realizacje={toRealizacjeProps(portfolioDocs, 'doposazenie-linii-produkcyjnej')}
     />
   )
 }

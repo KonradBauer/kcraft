@@ -37,7 +37,7 @@ export function RealizacjaGaleria({ images }: Props) {
 
   if (images.length === 0) {
     return (
-      <div className="w-full aspect-[4/3] bg-ink/5 flex items-center justify-center text-ink/30 font-montserrat text-sm tracking-[0.1em] uppercase">
+      <div className="w-full aspect-[4/3] bg-[#211407] flex items-center justify-center text-white/30 font-montserrat text-sm tracking-[0.1em] uppercase">
         Brak zdjęć
       </div>
     )
@@ -49,7 +49,7 @@ export function RealizacjaGaleria({ images }: Props) {
     <>
       {/* Main image */}
       <button
-        className="relative w-full aspect-[4/3] overflow-hidden group cursor-zoom-in bg-[#f0ede7] max-h-[520px]"
+        className="relative w-full aspect-[4/3] overflow-hidden group cursor-zoom-in bg-[#211407] max-h-[520px]"
         onClick={() => setLightboxOpen(true)}
         aria-label={`Powiększ: ${active.alt}`}
       >
@@ -80,7 +80,7 @@ export function RealizacjaGaleria({ images }: Props) {
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
-              className={`relative flex-none w-[68px] h-[50px] overflow-hidden bg-[#f0ede7] transition-opacity duration-200 ${
+              className={`relative flex-none w-[68px] h-[50px] overflow-hidden bg-[#211407] transition-opacity duration-200 ${
                 i === activeIndex
                   ? 'outline outline-2 outline-accent opacity-100'
                   : 'opacity-50 hover:opacity-90'

@@ -12,11 +12,11 @@ test.describe('Frontend', () => {
     await expect(heading).toContainText('Profesjonalne Spawanie i Ślusarstwo')
   })
 
-  test('subpage maszyny-produkcyjne loads', async ({ page }) => {
-    await page.goto('http://localhost:3000/maszyny-produkcyjne')
-    await expect(page).toHaveTitle(/Maszyny produkcyjne/)
+  test('subpage doposazenie-linii-produkcyjnej loads', async ({ page }) => {
+    await page.goto('http://localhost:3000/doposazenie-linii-produkcyjnej')
+    await expect(page).toHaveTitle(/Doposażenie linii produkcyjnej/)
     const heading = page.locator('h1').first()
-    await expect(heading).toContainText('Maszyny produkcyjne')
+    await expect(heading).toContainText('Doposażenie linii produkcyjnej')
   })
 
   test('subpage maszyny-rolnicze loads', async ({ page }) => {

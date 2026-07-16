@@ -4,7 +4,7 @@
 
 ## Uslugi
 
-- [Maszyny produkcyjne](https://kcraft.com.pl/maszyny-produkcyjne): Budowa, doposażanie i modernizacja linii i stanowisk pracy
+- [Doposażenie linii produkcyjnej](https://kcraft.com.pl/doposazenie-linii-produkcyjnej): Budowa, doposażanie i modernizacja linii i stanowisk pracy
 - [Maszyny rolnicze](https://kcraft.com.pl/maszyny-rolnicze): Naprawa, budowa i wzmacnianie konstrukcji, serwis lemieszy, ram i osprzętu
 - [Usługi ślusarsko-spawalnicze](https://kcraft.com.pl/uslugi-slusarsko-spawalnicze): Cięcie, gięcie, spawanie TIG/MIG/MAG
 

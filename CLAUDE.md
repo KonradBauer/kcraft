@@ -69,7 +69,7 @@ All pages use `export const dynamic = 'force-dynamic'` — Docker build has no a
 
 - `layout.tsx` — metadata (OG, Twitter Card, JSON-LD schema via `<Script>`), Google Fonts, `styles.css`, `<PageLoader>`
 - `page.tsx` → `<HomeContent />` server component
-- `maszyny-produkcyjne/`, `maszyny-rolnicze/`, `uslugi-slusarsko-spawalnicze/`, `wyposazenie-loftowe/` — service subpages (shared `SubpageLayout`, data via `src/lib/servicePageData.ts`)
+- `doposazenie-linii-produkcyjnej/`, `maszyny-rolnicze/`, `uslugi-slusarsko-spawalnicze/`, `wyposazenie-loftowe/` — service subpages (shared `SubpageLayout`, data via `src/lib/servicePageData.ts`)
 - `[serviceSlug]/realizacje/[slug]/` — portfolio project detail pages (gallery + rich text); `serviceSlug` validated against `SERVICE_SLUGS` from `src/lib/serviceLinks.ts`, unknown → `notFound()`
 - `polityka-prywatnosci/` — privacy policy (static, no CMS)
 

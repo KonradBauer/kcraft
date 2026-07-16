@@ -77,7 +77,7 @@ Strony `(frontend)` używają `export const dynamic = 'force-dynamic'` - build w
 
 ### Podstrony usług
 
-- `/maszyny-produkcyjne`
+- `/doposazenie-linii-produkcyjnej`
 - `/maszyny-rolnicze`
 - `/uslugi-slusarsko-spawalnicze`
 - `/wyposazenie-loftowe`

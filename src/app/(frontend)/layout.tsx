@@ -87,7 +87,7 @@ const schemaOrg = JSON.stringify({
         '@type': 'OfferCatalog',
         name: 'Usługi spawalnicze i ślusarskie',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maszyny produkcyjne', url: `${siteUrl}/maszyny-produkcyjne` } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Doposażenie linii produkcyjnej', url: `${siteUrl}/doposazenie-linii-produkcyjnej` } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maszyny rolnicze', url: `${siteUrl}/maszyny-rolnicze` } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Usługi ślusarsko-spawalnicze', url: `${siteUrl}/uslugi-slusarsko-spawalnicze` } },
         ],

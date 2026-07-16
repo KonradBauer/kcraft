@@ -125,6 +125,22 @@
   margin: 1em 0;
 }
 
+.prose-mcraft-dark {
+  color: rgba(255, 255, 255, 0.8);
+}
+.prose-mcraft-dark strong { color: #fff; }
+.prose-mcraft-dark h1,
+.prose-mcraft-dark h2,
+.prose-mcraft-dark h3,
+.prose-mcraft-dark h4 {
+  color: #fff;
+}
+.prose-mcraft-dark a { color: #ff9228; }
+.prose-mcraft-dark blockquote {
+  border-left-color: #ff9228;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -144,18 +160,18 @@
 .weld-fill {
   background: repeating-linear-gradient(
     90deg,
-    var(--color-accent) 0px,
-    var(--color-accent-bright) 4px,
-    var(--color-accent) 8px
+    #ff9228 0px,
+    #ffb066 4px,
+    #ff9228 8px
   );
-  box-shadow: 0 0 8px 1px rgba(103, 179, 164, 0.55);
+  box-shadow: 0 0 8px 1px rgba(255, 146, 40, 0.55);
   animation: weld-progress 2.4s ease-in-out infinite;
 }
 
 .weld-head {
   box-shadow:
     0 0 6px 2px rgba(255, 255, 255, 0.95),
-    0 0 20px 8px rgba(103, 179, 164, 0.8);
+    0 0 20px 8px rgba(255, 146, 40, 0.8);
   animation: weld-head-flicker 0.3s ease-in-out infinite alternate;
 }
 
@@ -163,7 +179,7 @@
   opacity: 0;
   box-shadow:
     0 0 8px 2px rgba(255, 255, 255, 0.95),
-    0 0 14px 4px rgba(103, 179, 164, 0.7);
+    0 0 14px 4px rgba(255, 146, 40, 0.7);
 }
 .weld-spark-1 { animation: weld-spark-fly-1 1.1s ease-out infinite; animation-delay: 0s; }
 .weld-spark-2 { animation: weld-spark-fly-2 1.2s ease-out infinite; animation-delay: 0.2s; }

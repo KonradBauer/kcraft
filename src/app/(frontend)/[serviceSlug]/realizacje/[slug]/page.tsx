@@ -87,7 +87,7 @@ export default async function RealizacjaPage({ params }: Props) {
   return (
     <>
       {/* Topbar */}
-      <div className="bg-ink text-light">
+      <div className="bg-ink-3 text-light">
         <div className={wrap}>
           <nav className="flex items-center justify-between py-[30px]">
             <Link href="/">
@@ -108,30 +108,30 @@ export default async function RealizacjaPage({ params }: Props) {
       </div>
 
       {/* Header */}
-      <header className="bg-ink text-light relative overflow-hidden pt-16 pb-[64px]">
+      <header className="bg-ink-3 text-light relative overflow-hidden pt-16 pb-[64px]">
         <div className="absolute inset-0 opacity-50 blueprint-bg pointer-events-none" />
         <div className={`${wrap} relative`}>
           <Link
             href={`/${serviceSlug}`}
-            className="inline-flex items-center gap-2 font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-[22px] hover:text-white transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-montserrat text-xs font-semibold tracking-[0.2em] uppercase text-[#FF9228] mb-[22px] hover:text-white transition-colors duration-200"
           >
             <svg viewBox="0 0 30 12" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-5 h-3 rotate-180">
               <path d="M0 6h28M23 1l5 5-5 5" />
             </svg>
             {sp.title ?? serviceSlug}
           </Link>
-          <span className="block font-montserrat text-xs font-semibold tracking-[0.28em] uppercase text-accent mb-[18px]">
+          <span className="block font-montserrat text-xs font-semibold tracking-[0.28em] uppercase text-[#FF9228] mb-[18px]">
             Realizacja
           </span>
           <h1 className="font-light text-[52px] tracking-[0.01em] uppercase text-white max-[980px]:text-[38px] max-[560px]:text-[30px]">
             {item.title}
           </h1>
-          <div className="w-16 h-0.5 bg-accent mt-[26px]" />
+          <div className="w-16 h-0.5 bg-[#FF9228] mt-[26px]" />
         </div>
       </header>
 
       {/* Main: gallery + description */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-ink-3">
         <div className={wrap}>
           <div className="grid grid-cols-[1fr_1fr] gap-[56px] items-start max-[980px]:grid-cols-1 max-[980px]:gap-12">
             {/* Left (desktop) / top (mobile): gallery */}
@@ -144,10 +144,10 @@ export default async function RealizacjaPage({ params }: Props) {
               {item.description ? (
                 <RichText
                   data={item.description}
-                  className="prose-mcraft"
+                  className="prose-mcraft prose-mcraft-dark"
                 />
               ) : (
-                <p className="text-dark-muted font-light text-base leading-relaxed">
+                <p className="text-white/60 font-light text-base leading-relaxed">
                   Brak opisu realizacji.
                 </p>
               )}
@@ -157,14 +157,14 @@ export default async function RealizacjaPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="bg-cream-2 py-16 text-center">
+      <section className="bg-ink-3 py-16 text-center">
         <div className={wrap}>
-          <h2 className="font-semibold text-2xl uppercase tracking-[0.03em] mb-[22px]">
+          <h2 className="font-semibold text-2xl uppercase tracking-[0.03em] mb-[22px] text-white">
             Zainteresowany podobnym projektem?
           </h2>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-6 bg-ink text-light font-montserrat text-xs font-semibold tracking-[0.2em] uppercase px-[28px] py-[17px] transition-all duration-[220ms] hover:bg-accent hover:text-ink"
+            className="inline-flex items-center gap-6 border border-white/30 text-white font-montserrat text-xs font-semibold tracking-[0.2em] uppercase px-[28px] py-[17px] transition-all duration-[220ms] hover:bg-[#FF9228] hover:border-[#FF9228] hover:text-ink-3"
           >
             Skontaktuj się
             <svg viewBox="0 0 30 12" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-5 h-3">
@@ -179,7 +179,7 @@ export default async function RealizacjaPage({ params }: Props) {
         <div className={wrap}>
           <div className="grid grid-cols-[1fr_1.2fr] gap-12 items-start max-[768px]:grid-cols-1">
             <div>
-              <span className="block font-montserrat text-[12px] font-semibold tracking-[0.28em] uppercase text-[#008A58] mb-[18px]">
+              <span className="block font-montserrat text-[12px] font-semibold tracking-[0.28em] uppercase text-[#FF9228] mb-[18px]">
                 Porozmawiajmy o Twoim projekcie
               </span>
               <h2 className="font-semibold text-[30px] tracking-[0.04em] uppercase text-white mb-[22px]">
@@ -191,7 +191,7 @@ export default async function RealizacjaPage({ params }: Props) {
                 </div>
               </div>
               <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-[#FF9228] flex-none">
                   <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
                 </svg>
                 <a href={`tel:${CONTACT.phone}`} className="hover:text-light transition-colors duration-200">
@@ -199,7 +199,7 @@ export default async function RealizacjaPage({ params }: Props) {
                 </a>
               </div>
               <div className="flex items-center gap-4 mb-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-[#FF9228] flex-none">
                   <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" />
                 </svg>
                 <a href={`mailto:${CONTACT.email}`} className="hover:text-light transition-colors duration-200">
@@ -207,7 +207,7 @@ export default async function RealizacjaPage({ params }: Props) {
                 </a>
               </div>
               <div className="flex items-center gap-4 text-[14.5px] text-light-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-accent flex-none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-[17px] h-[17px] text-[#FF9228] flex-none">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" />
                 </svg>
                 <span>{CONTACT.address.street}, {CONTACT.address.postalCode} {CONTACT.address.city}</span>

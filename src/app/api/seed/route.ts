@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 const PAGES = [
   {
-    slug: 'maszyny-produkcyjne',
+    slug: 'doposazenie-linii-produkcyjnej',
     title: 'Doposażenie linii produkcyjnej',
     eyebrow: 'Obszar działalności',
     thumbnailTitle: 'Doposażenie\nlinii produkcyjnej',

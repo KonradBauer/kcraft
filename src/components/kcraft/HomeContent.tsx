@@ -79,7 +79,7 @@ const HERO_FEATURES = [
 
 /* ─── SVG icons per area slug ─── */
 const AREA_ICONS: Record<string, React.ReactNode> = {
-  'maszyny-produkcyjne': (
+  'doposazenie-linii-produkcyjnej': (
     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" className="w-[62px] h-[62px]">
       <path d="M32 20a12 12 0 1 0 0 24 12 12 0 0 0 0-24z" />
       <path d="M32 12v6M32 46v6M12 32h6M46 32h6M17.5 17.5l4.2 4.2M42.3 42.3l4.2 4.2M46.5 17.5l-4.2 4.2M21.7 42.3l-4.2 4.2" />
@@ -111,7 +111,7 @@ const AREA_ICONS: Record<string, React.ReactNode> = {
 }
 
 const AREA_DEFAULTS = [
-  { href: '/maszyny-produkcyjne', slug: 'maszyny-produkcyjne', name: 'Doposażenie\nlinii produkcyjnej' },
+  { href: '/doposazenie-linii-produkcyjnej', slug: 'doposazenie-linii-produkcyjnej', name: 'Doposażenie\nlinii produkcyjnej' },
   { href: '/maszyny-rolnicze', slug: 'maszyny-rolnicze', name: 'Maszyny\nrolnicze' },
   { href: '/uslugi-slusarsko-spawalnicze', slug: 'uslugi-slusarsko-spawalnicze', name: 'Usługi ślusarsko-\nspawalnicze' },
   { href: '/wyposazenie-loftowe', slug: 'wyposazenie-loftowe', name: 'Wyposażenie\nloftowe' },
