@@ -122,7 +122,9 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
   const areaBySlug = Object.fromEntries(areas.map((a) => [a.slug, a]))
 
   const heroBackground = mediaUrl(hero.backgroundImage) ?? '/hero.png'
+  const heroTitle = hero.title ?? 'Profesjonalne Spawanie i Ślusarstwo\ndla Przemysłu oraz Rolnictwa'
   const heroSubtitle = hero.subtitle ?? 'Spawanie i ślusarstwo\ndla przemysłu i rolnictwa'
+  const heroDescription = hero.description ?? 'Indywidualne projekty dopasowane do potrzeb klienta, materiały najwyższej jakości oraz terminowość i bezpieczeństwo na każdym etapie realizacji.'
   const bioText = about.bioText ?? 'KCRAFT to spawanie i ślusarstwo dla przemysłu oraz rolnictwa - budowa i naprawa maszyn, konstrukcje na zamówienie i serwis osprzętu. Dlaczego my? Indywidualne projekty dopasowane do potrzeb klienta, materiały najwyższej jakości oraz terminowość i bezpieczeństwo na każdym etapie realizacji.'
 
   return (
@@ -162,13 +164,16 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
             <div className="flex items-start justify-between pt-[56px] pb-[90px] max-[980px]:pt-[24px] max-[980px]:pb-[16px] max-[980px]:block">
               <div className="max-w-[460px] flex-shrink-0">
                 <span className={`${eyebrow} mb-[22px]`}>{OWNER_NAME}</span>
-                <h1 className="font-light text-[42px] leading-[1.1] tracking-[0.01em] text-white uppercase max-[980px]:text-[28px]">
-                  Profesjonalne Spawanie i Ślusarstwo<br />dla Przemysłu oraz Rolnictwa
+                <h1 className="font-light text-[42px] leading-[1.1] tracking-[0.01em] text-white uppercase whitespace-pre-line max-[980px]:text-[28px]">
+                  {heroTitle}
                 </h1>
                 <div className="w-16 h-0.5 bg-[#FF9228] mt-[34px] mb-[26px] max-[980px]:mt-[18px] max-[980px]:mb-[14px]" />
                 <div className="font-montserrat font-light text-[22px] tracking-[0.22em] uppercase text-light leading-[1.5] whitespace-pre-line max-[980px]:hidden">
                   {heroSubtitle}
                 </div>
+                <p className="text-[15px] leading-[1.75] text-white/70 mt-[18px] max-w-[420px] max-[980px]:hidden">
+                  {heroDescription}
+                </p>
               </div>
 
               {/*<div className="flex flex-col justify-start mr-[8%] max-[980px]:hidden">*/}

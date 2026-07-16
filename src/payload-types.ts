@@ -184,6 +184,9 @@ export interface ServicePage {
   eyebrow?: string | null;
   title: string;
   description?: string | null;
+  /**
+   * Stała lista 5 pozycji zgodna z frontendem - nie można dodawać ani usuwać, można edytować tylko treść.
+   */
   scopeItems?:
     | {
         text: string;
@@ -458,7 +461,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface HeroSection {
   id: string;
   backgroundImage?: (string | null) | Media;
-  personPhoto?: (string | null) | Media;
+  title?: string | null;
   subtitle?: string | null;
   description?: string | null;
   updatedAt?: string | null;
@@ -480,7 +483,7 @@ export interface AboutSection {
  */
 export interface HeroSectionSelect<T extends boolean = true> {
   backgroundImage?: T;
-  personPhoto?: T;
+  title?: T;
   subtitle?: T;
   description?: T;
   updatedAt?: T;

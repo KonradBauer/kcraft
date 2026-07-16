@@ -47,7 +47,10 @@ export const ServicePage: CollectionConfig = {
       name: 'scopeItems',
       label: 'Zakres usług (lista)',
       type: 'array',
+      minRows: 5,
+      maxRows: 5,
       admin: {
+        description: 'Stała lista 5 pozycji zgodna z frontendem - nie można dodawać ani usuwać, można edytować tylko treść.',
         components: {
           RowLabel: '@/components/admin/ScopeItemRowLabel',
         },

@@ -50,7 +50,7 @@
   }
 
   .dots-pattern {
-    background-image: radial-gradient(var(--color-accent) 1.4px, transparent 1.4px);
+    background-image: radial-gradient(#fff 1.4px, transparent 1.4px);
     background-size: 15px 15px;
   }
 

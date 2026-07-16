@@ -14,10 +14,9 @@ export const HeroSection: GlobalConfig = {
       relationTo: 'media',
     },
     {
-      name: 'personPhoto',
-      label: 'Zdjęcie Michała (wycięte)',
-      type: 'upload',
-      relationTo: 'media',
+      name: 'title',
+      label: 'Główny tekst (nagłówek H1)',
+      type: 'textarea',
     },
     {
       name: 'subtitle',
