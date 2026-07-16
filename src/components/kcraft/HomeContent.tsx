@@ -106,7 +106,7 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
   return (
     <ModalProvider cvModal={cvModal} bioModal={bioModal} tiles={tiles}>
       {/* ====== HERO ====== */}
-      <header className="relative bg-ink text-light min-h-[680px] max-[980px]:min-h-[100svh] overflow-hidden" id="top">
+      <header className="relative bg-ink text-light min-h-[760px] max-[980px]:min-h-[100svh] overflow-hidden" id="top">
         <Image
           src={heroBackground}
           fill
@@ -120,20 +120,14 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
         <div className="absolute inset-0 z-[1] pointer-events-none max-[980px]:hidden [background:linear-gradient(to_right,rgba(14,26,23,0.95)_0%,rgba(14,26,23,0.55)_32%,rgba(14,26,23,0)_55%)]" />
         <div className="hidden max-[980px]:block absolute inset-0 z-[1] pointer-events-none [background:linear-gradient(to_right,rgba(14,26,23,0.98)_0%,rgba(14,26,23,0.85)_55%,rgba(14,26,23,0.5)_100%)]" />
 
-        <div className="absolute left-0 top-[120px] bottom-[60px] z-[3] flex flex-col items-center max-[980px]:hidden">
-          <span className="w-px flex-1 bg-gradient-to-b from-accent to-transparent" />
-          <span className="mt-[14px] text-light-muted">
-            <svg width="14" height="30" viewBox="0 0 14 30" fill="none" stroke="currentColor" strokeWidth="1.4">
-              <path d="M7 0v27M1 21l6 7 6-7" />
-            </svg>
-          </span>
-        </div>
-
         <div className="relative z-[5]">
           <div className={wrap}>
             <nav className="flex items-center justify-between py-[30px]">
-              <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">{BRAND_NAME}</span>
-              <div className="flex gap-[38px] max-[980px]:hidden">
+              <span className="font-montserrat font-light text-[18px] tracking-[0.45em] text-white uppercase">
+                <span style={{ color: '#FF9F25' }}>{BRAND_NAME.charAt(0)}</span>
+                {BRAND_NAME.slice(1)}
+              </span>
+              <div className="flex gap-[38px] px-[28px] py-[12px] bg-ink/60 backdrop-blur-md rounded-full max-[980px]:hidden">
                 <a href="#about" className={`${navLink} text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-[22px] after:h-0.5 after:bg-accent`}>O mnie</a>
                 <a href="#areas" className={`${navLink} text-white/70 hover:text-white`}>Obszary</a>
                 <NavRealizacjeDropdown triggerClass={`${navLink} text-white/70 hover:text-white`} />
@@ -157,25 +151,25 @@ export function HomeContent({ hero, about, cvModal, bioModal, tiles, areas }: Ho
                 </ModalTrigger>
               </div>
 
-              <div className="flex flex-col justify-start mr-[8%] max-[980px]:hidden">
-                <div>
-                  <div className="font-montserrat font-semibold text-[40px] leading-[1.15] text-black">Teoria</div>
-                  <div className="font-montserrat font-semibold text-[40px] leading-[1.15] text-[#069364]">Doświadczenie</div>
-                  <div className="font-montserrat font-semibold text-[40px] leading-[1.15] text-black">Praktyka</div>
-                </div>
-                <div className="mt-4">
-                  <hr className="border-[#ccc] mb-4" />
-                  <p className="relative text-lg font-bold leading-[1.75] text-[#56544e] pl-5">
-                    <span className="absolute left-0 top-0 text-3xl font-bold text-[#00A887]">{'"'}</span>
-                    Doświadczeniem buduję
-                    <br />
-                    most pomiędzy teorią
-                    <br />
-                    a praktyką.
-                    <span className="ml-1 text-3xl font-bold text-[#00A887]">{'"'}</span>
-                  </p>
-                </div>
-              </div>
+              {/*<div className="flex flex-col justify-start mr-[8%] max-[980px]:hidden">*/}
+              {/*  <div>*/}
+              {/*    <div className="font-montserrat font-semibold text-[40px] leading-[1.15] text-black">Teoria</div>*/}
+              {/*    <div className="font-montserrat font-semibold text-[40px] leading-[1.15] text-[#069364]">Doświadczenie</div>*/}
+              {/*    <div className="font-montserrat font-semibold text-[40px] leading-[1.15] text-black">Praktyka</div>*/}
+              {/*  </div>*/}
+              {/*  <div className="mt-4">*/}
+              {/*    <hr className="border-[#ccc] mb-4" />*/}
+              {/*    <p className="relative text-lg font-bold leading-[1.75] text-[#56544e] pl-5">*/}
+              {/*      <span className="absolute left-0 top-0 text-3xl font-bold text-[#00A887]">{'"'}</span>*/}
+              {/*      Doświadczeniem buduję*/}
+              {/*      <br />*/}
+              {/*      most pomiędzy teorią*/}
+              {/*      <br />*/}
+              {/*      a praktyką.*/}
+              {/*      <span className="ml-1 text-3xl font-bold text-[#00A887]">{'"'}</span>*/}
+              {/*    </p>*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
           </div>
         </div>
