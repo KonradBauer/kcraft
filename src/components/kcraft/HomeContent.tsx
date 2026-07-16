@@ -164,8 +164,9 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
             <div className="flex items-start justify-between pt-[56px] pb-[90px] max-[980px]:pt-[24px] max-[980px]:pb-[16px] max-[980px]:block">
               <div className="max-w-[460px] flex-shrink-0">
                 <span className={`${eyebrow} mb-[22px]`}>{OWNER_NAME}</span>
-                <h1 className="font-light text-[42px] leading-[1.1] tracking-[0.01em] text-white uppercase whitespace-pre-line max-[980px]:text-[28px]">
-                  {heroTitle}
+                <h1 className="font-light text-[42px] leading-[1.1] tracking-[0.01em] text-white whitespace-pre-line max-[980px]:text-[28px]">
+                  <span style={{ color: '#FF9228' }}>{heroTitle.charAt(0)}</span>
+                  {heroTitle.slice(1)}
                 </h1>
                 <div className="w-16 h-0.5 bg-[#FF9228] mt-[34px] mb-[26px] max-[980px]:mt-[18px] max-[980px]:mb-[14px]" />
                 <div className="font-montserrat font-light text-[22px] tracking-[0.22em] uppercase text-light leading-[1.5] whitespace-pre-line max-[980px]:hidden">

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const FALLBACK = {
   eyebrow: 'Obszar działalności',
-  title: 'Maszyny produkcyjne',
+  title: 'Doposażenie linii produkcyjnej',
   description: 'Budowa, doposażanie i modernizacja maszyn oraz stanowisk pracy dla przemysłu - z dbałością o jakość i terminowość.',
   items: [
     { text: 'Budowa maszyn produkcyjnych' },
