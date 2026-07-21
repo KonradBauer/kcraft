@@ -61,7 +61,7 @@ export function MobileNav({ links }: MobileNavProps) {
       </button>
 
       <div
-        className={`fixed inset-0 z-[80] bg-ink flex flex-col transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        className={`fixed inset-0 z-[80] bg-ink-3 flex flex-col transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
         role="dialog"
         aria-modal="true"
         aria-label="Menu nawigacyjne"
@@ -87,15 +87,16 @@ export function MobileNav({ links }: MobileNavProps) {
             if (item.sub) {
               return (
                 <div key={item.label} className="border-b border-white/[0.08] py-[14px]">
-                  <span className="block font-montserrat text-[11px] font-semibold tracking-[0.28em] uppercase text-accent/70 mb-[10px]">
+                  <span className="block font-montserrat text-[11px] font-semibold tracking-[0.28em] uppercase text-[#FF9228] mb-[8px]">
                     {item.label}
                   </span>
+                  <span className="block w-8 h-0.5 bg-[#FF9228] mb-[10px]" />
                   {item.sub.map(({ href, label }) => (
                     <Link
                       key={href}
                       href={href}
                       onClick={close}
-                      className="block font-montserrat text-[18px] font-light tracking-[0.22em] uppercase text-light/70 py-[10px] pl-3 hover:text-accent hover:pl-5 transition-all duration-200"
+                      className="block font-montserrat text-[18px] font-light tracking-[0.22em] uppercase text-light/70 py-[10px] pl-3 hover:text-[#FF9228] hover:pl-5 transition-all duration-200"
                     >
                       {label}
                     </Link>
@@ -108,31 +109,13 @@ export function MobileNav({ links }: MobileNavProps) {
                 key={item.href}
                 href={item.href}
                 onClick={close}
-                className="font-montserrat text-[22px] font-light tracking-[0.25em] uppercase text-light/80 py-[18px] border-b border-white/[0.08] hover:text-accent hover:pl-3 transition-all duration-200 last:border-b-0"
+                className="font-montserrat text-[22px] font-light tracking-[0.25em] uppercase text-light/80 py-[18px] border-b border-white/[0.08] hover:text-[#FF9228] hover:pl-3 transition-all duration-200 last:border-b-0"
               >
                 {item.label}
               </Link>
             )
           })}
         </nav>
-
-        <div className="px-8 pb-10 flex-none">
-          <div className="w-10 h-px bg-accent mb-6" />
-          <a
-            href="https://www.linkedin.com/in/micha%C5%82-macherzy%C5%84ski-399521276/"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            className="inline-flex items-center gap-3 font-montserrat text-[11px] font-semibold tracking-[0.2em] uppercase text-light/50 hover:text-accent transition-colors duration-200"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px] flex-none text-[#FF9228]">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-            LinkedIn
-          </a>
-        </div>
       </div>
     </>
   )
