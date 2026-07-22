@@ -136,6 +136,7 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
           src={heroBackground}
           fill
           sizes="100vw"
+          quality={60}
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           alt=""
           priority

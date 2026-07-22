@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
     return [{ source: '/(.*)', headers: securityHeaders }]
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     localPatterns: [
       { pathname: '/api/media/file/**' },
       { pathname: '/hero.png' },
