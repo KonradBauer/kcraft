@@ -138,6 +138,7 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           alt=""
           priority
+          fetchPriority="high"
           className="z-0"
         />
 

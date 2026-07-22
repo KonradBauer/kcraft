@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
 import { ImageWithSkeleton } from '@/components/kcraft/ImageWithSkeleton'
 
@@ -58,6 +59,7 @@ export function RealizacjaGaleria({ images }: Props) {
           alt={active.alt}
           className="object-contain"
           sizes="(max-width: 980px) 100vw, 50vw"
+          priority
         />
         {/* Zoom hint */}
         <div className="absolute bottom-3 right-3 bg-black/40 p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -148,11 +150,15 @@ export function RealizacjaGaleria({ images }: Props) {
                 </svg>
               </div>
             )}
-            <img
+            <Image
               key={active.url}
               src={active.url}
               alt={active.alt}
-              className={`max-w-[88vw] max-h-[80vh] object-contain transition-opacity duration-300 ${lightboxLoaded ? 'opacity-100' : 'opacity-0'}`}
+              width={1600}
+              height={1200}
+              sizes="88vw"
+              style={{ width: 'auto', height: 'auto', maxWidth: '88vw', maxHeight: '80vh' }}
+              className={`object-contain transition-opacity duration-300 ${lightboxLoaded ? 'opacity-100' : 'opacity-0'}`}
               onLoad={() => setLightboxLoaded(true)}
             />
           </div>
@@ -182,7 +188,7 @@ export function RealizacjaGaleria({ images }: Props) {
                   }`}
                   aria-label={`Zdjęcie ${i + 1}`}
                 >
-                  <img src={img.url} alt={img.alt} className="w-full h-full object-contain" />
+                  <Image src={img.url} alt={img.alt} fill sizes="52px" className="object-contain" />
                 </button>
               ))}
             </div>

@@ -66,7 +66,7 @@ export function SubpageLayout({
       <header className="bg-ink-3 text-light relative overflow-hidden pt-16 pb-[72px]">
         {heroImageUrl ? (
           <>
-            <ImageWithSkeleton src={heroImageUrl} alt="" className="object-cover" />
+            <ImageWithSkeleton src={heroImageUrl} alt="" className="object-cover" priority />
             <div className="absolute inset-0 bg-ink-3/70" />
           </>
         ) : (

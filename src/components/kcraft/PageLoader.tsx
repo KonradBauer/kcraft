@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { BRAND_NAME, OWNER_NAME } from '@/lib/siteConfig'
 
-const MIN_VISIBLE_MS = 900
 const MAX_VISIBLE_MS = 4000
 const FADE_OUT_MS = 550
 
@@ -12,25 +11,18 @@ export function PageLoader() {
   const [isRemoved, setIsRemoved] = useState(false)
 
   useEffect(() => {
-    const start = Date.now()
-    let hideTimeout: number
-
-    const scheduleHide = () => {
-      const elapsed = Date.now() - start
-      hideTimeout = window.setTimeout(() => setIsHiding(true), Math.max(MIN_VISIBLE_MS - elapsed, 0))
-    }
+    const hide = () => setIsHiding(true)
 
     if (document.readyState === 'complete') {
-      scheduleHide()
+      hide()
     } else {
-      window.addEventListener('load', scheduleHide, { once: true })
+      window.addEventListener('load', hide, { once: true })
     }
 
-    const fallbackTimeout = window.setTimeout(() => setIsHiding(true), MAX_VISIBLE_MS)
+    const fallbackTimeout = window.setTimeout(hide, MAX_VISIBLE_MS)
 
     return () => {
-      window.removeEventListener('load', scheduleHide)
-      window.clearTimeout(hideTimeout)
+      window.removeEventListener('load', hide)
       window.clearTimeout(fallbackTimeout)
     }
   }, [])
