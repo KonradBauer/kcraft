@@ -10,6 +10,7 @@ import { mediaUrl } from '@/lib/mediaUrl'
 import { SERVICE_LINKS } from '@/lib/serviceLinks'
 import { BRAND_NAME, CONTACT, LEGAL_NAME, OWNER_NAME } from '@/lib/siteConfig'
 import { ImageWithSkeleton } from './ImageWithSkeleton'
+import { MapEmbed } from './MapEmbed'
 import { MobileNav } from './MobileNav'
 import { NavRealizacjeDropdown } from './NavRealizacjeDropdown'
 import { ModalProvider } from './ModalProvider'
@@ -329,15 +330,7 @@ export function HomeContent({ hero, about, areas }: HomeContentProps) {
             </div>
 
             <div className="border-l border-hairline-dark pl-[46px] max-[768px]:border-l-0 max-[768px]:pl-0 max-[768px]:border-t max-[768px]:border-hairline-dark max-[768px]:pt-[34px] overflow-hidden">
-              <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(CONTACT.mapQuery)}&output=embed`}
-                width="100%"
-                height="300"
-                style={{ border: 0, filter: 'grayscale(1) invert(0.85) contrast(0.9)' }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`Lokalizacja ${BRAND_NAME}`}
-              />
+              <MapEmbed mapQuery={CONTACT.mapQuery} title={`Lokalizacja ${BRAND_NAME}`} />
             </div>
           </div>
 
